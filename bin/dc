@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+if [ -f /.dockerenv ] || [ "${LOCAL:-0}" = "1" ]; then
+  exec "$@"
+fi
+
+if docker compose ps --status running --services 2>/dev/null | grep -qx web; then
+  exec docker compose exec -T web "$@"
+fi
+
+exec docker compose run --rm -T web "$@"

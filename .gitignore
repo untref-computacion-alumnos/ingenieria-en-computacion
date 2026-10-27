@@ -1,0 +1,49 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all environment files.
+/.env*
+.env*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Coverage
+coverage/
+
+# Rspec status persistence
+spec/examples.txt
+
+# Gems installed by bundler-cache / deployment config
+/vendor/bundle
+
+# Node tooling
+node_modules/
+
+# Cucumber rerun file and local act output
+rerun.txt
+salida_ci.txt

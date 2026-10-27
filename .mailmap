@@ -1,0 +1,4 @@
+# Maps every name/email a person has committed with to one canonical identity,
+# so `git log`, `git shortlog` and `git blame` show a single author.
+# Format: Canonical Name <canonical@email> Name Used <email.used@example.com>
+Gastón Augusto Ribero <augusto.ribero.15@gmail.com> trigologiaa <augusto.ribero.15@gmail.com>

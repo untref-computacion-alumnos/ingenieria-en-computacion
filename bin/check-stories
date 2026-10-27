@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Compares the Gherkin embedded in each user story (docs/user-stories/**/*.md)
+# with the .feature file named in its "Target file:" line.
+#
+#   - feature file missing and story not Done -> pending (not an error)
+#   - feature file missing and story Done     -> error
+#   - feature file differs from the story     -> error
+#
+# Whitespace and blank lines are ignored. Exit status is 1 on any error.
+
+ROOT = File.expand_path("..", __dir__)
+STORIES = Dir[File.join(ROOT, "docs/user-stories/**/*.md")].sort
+TARGET = /^Target file: `([^`]+)`/
+GHERKIN = /^```gherkin\n(.*?)^```/m
+STATUS = /^- \*\*Status:\*\* (.+)$/
+
+def normalize(text)
+  text.lines.map { |line| line.strip.squeeze(" ") }.reject(&:empty?)
+end
+
+def relative(path)
+  path.delete_prefix("#{ROOT}/")
+end
+
+errors = []
+pending = []
+checked = 0
+
+STORIES.each do |story|
+  text = File.read(story)
+  target = text[TARGET, 1]
+  block = text[GHERKIN, 1]
+  next unless target && block
+
+  feature = File.join(ROOT, target)
+  done = text[STATUS, 1].to_s.strip == "Done"
+
+  unless File.exist?(feature)
+    (done ? errors : pending) << "#{relative(story)}: #{target} does not exist"
+    next
+  end
+
+  checked += 1
+  expected = normalize(block)
+  actual = normalize(File.read(feature))
+  next if expected == actual
+
+  line = expected.zip(actual).index { |left, right| left != right } || [expected.size, actual.size].min
+  errors << "#{relative(story)} differs from #{target} at normalized line #{line + 1}\n" \
+            "    story:   #{expected[line].inspect}\n" \
+            "    feature: #{actual[line].inspect}"
+end
+
+puts "Stories checked against their .feature: #{checked}"
+puts "Pending (no .feature yet): #{pending.size}" unless pending.empty?
+unless errors.empty?
+  warn "\nErrors:"
+  errors.each { |error| warn "  - #{error}" }
+  exit 1
+end
+puts "Stories and features are in sync."

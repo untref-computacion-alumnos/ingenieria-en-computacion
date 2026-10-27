@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+status=0
+
+run() {
+  echo "=> $*"
+  "$@" || status=1
+}
+
+run bin/brakeman --quiet --no-pager --exit-on-warn --exit-on-error
+run bin/bundler-audit check --update
+run bin/importmap audit
+
+exit $status

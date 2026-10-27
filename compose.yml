@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 10
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "8025:8025"
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: sh -c "bundle check || bundle install; bin/rails db:prepare; bin/dev"
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      SMTP_HOST: mailpit
+      BINDING: 0.0.0.0
+    volumes:
+      - .:/rails
+      - bundle:/usr/local/bundle
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  bundle:
