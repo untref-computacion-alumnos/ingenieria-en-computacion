@@ -1,0 +1,42 @@
+pre-commit:
+  parallel: true
+  commands:
+    author-name:
+      run: git config user.name | grep -Eq '^[^ ]+( [^ ]+)+$' || (echo "git user.name must be your full name (first and last name)" && exit 1)
+    rubocop:
+      glob: "*.rb"
+      run: bundle exec rubocop
+    erb_lint:
+      glob: "*.erb"
+      run: bundle exec erb_lint --lint-all
+    markdownlint:
+      glob: "*.md"
+      run: markdownlint-cli2
+    yamllint:
+      glob: "*.{yml,yaml}"
+      run: yamllint .
+    cuke_linter:
+      glob: "*.feature"
+      run: bundle exec cuke_linter -p features
+
+prepare-commit-msg:
+  commands:
+    story-scope:
+      run: |
+        set -- {0}
+        [ $# -gt 1 ] && exit 0
+        branch=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
+        story=$(echo "$branch" | tr 'A-Z' 'a-z' | sed -nE 's/^(us-[0-9]+).*/\1/p')
+        [ -z "$story" ] && exit 0
+        [ -n "$(head -n 1 {1})" ] && exit 0
+        { printf '(%s): \n' "$story"; tail -n +2 {1}; } > {1}.new && mv {1}.new {1}
+
+commit-msg:
+  commands:
+    commitlint:
+      run: commitlint --edit {1}
+
+pre-push:
+  commands:
+    ci:
+      run: bin/ci

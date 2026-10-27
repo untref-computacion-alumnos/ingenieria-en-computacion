@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require "json"
+
+minimum = Float(ENV.fetch("COVERAGE_MIN", "90"))
+percent = JSON.parse(File.read("coverage/.last_run.json")).dig("result", "line")
+
+abort "Coverage #{percent}% is below #{minimum}%" if percent < minimum
+
+puts "Coverage #{percent}% OK"

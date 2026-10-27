@@ -1,0 +1,6 @@
+# Planning docs are free-form prose: no line-length limit.
+config:
+  MD013: false
+  MD024:
+    siblings_only: true
+  MD036: false

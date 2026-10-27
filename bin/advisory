@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bundle exec reek || echo "reek: advisory only"
+bundle exec rails_best_practices . || echo "rails_best_practices: advisory only"
+exit 0

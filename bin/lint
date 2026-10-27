@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+status=0
+
+run() {
+  echo "=> $*"
+  "$@" || status=1
+}
+
+run bundle exec rubocop
+run bundle exec erb_lint --lint-all
+run markdownlint-cli2
+run yamllint .
+run bundle exec cuke_linter -p features
+run bundle exec i18n-tasks health
+run bin/check-stories
+
+exit $status
