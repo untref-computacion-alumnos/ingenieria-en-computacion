@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gem "bootsnap", require: false
 gem "devise"
 gem "devise-i18n"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 2.2"
 gem "importmap-rails"
 gem "pg", "~> 1.1"
 gem "propshaft"
