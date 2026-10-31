@@ -1,0 +1,27 @@
+---
+databases:
+  - name: ingenieria-en-computacion-db
+    plan: free
+    databaseName: ingenieria_en_computacion
+    user: ingenieria_en_computacion
+
+services:
+  - type: web
+    name: ingenieria-en-computacion
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ingenieria-en-computacion-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: APP_HOST
+        sync: false
+      - key: HTTP_PORT
+        value: "10000"
+      - key: SOLID_QUEUE_IN_PUMA
+        value: "true"

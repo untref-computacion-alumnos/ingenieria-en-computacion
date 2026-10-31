@@ -1,2 +1,6 @@
 ---
 es-AR:
+  app:
+    name: MiMalla
+  home:
+    tagline: Seguí tu avance en Ingeniería en Computación.
