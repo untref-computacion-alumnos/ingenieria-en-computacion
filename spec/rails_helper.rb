@@ -20,6 +20,7 @@ Rails.root.glob("spec/support/**/*.rb").sort_by(&:to_s).each { |file| require fi
 
 RSpec.configure do |config|
   config.fixture_paths = [Rails.root.join("spec/fixtures")]
+  config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods

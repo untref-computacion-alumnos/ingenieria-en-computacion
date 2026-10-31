@@ -29,7 +29,7 @@ pending = []
 checked = 0
 
 STORIES.each do |story|
-  text = File.read(story)
+  text = File.read(story, encoding: "UTF-8")
   target = text[TARGET, 1]
   block = text[GHERKIN, 1]
   next unless target && block
@@ -44,7 +44,7 @@ STORIES.each do |story|
 
   checked += 1
   expected = normalize(block)
-  actual = normalize(File.read(feature))
+  actual = normalize(File.read(feature, encoding: "UTF-8"))
   next if expected == actual
 
   line = expected.zip(actual).index { |left, right| left != right } || [expected.size, actual.size].min
