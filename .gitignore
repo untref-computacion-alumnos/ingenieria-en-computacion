@@ -5,6 +5,9 @@
 /.env*
 .env*
 
+# Reference values for the Render dashboard (holds secrets).
+render.env
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
