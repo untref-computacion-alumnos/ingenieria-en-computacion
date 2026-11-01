@@ -2,5 +2,5 @@
 
 class StudyPlan < ApplicationRecord
   belongs_to :career
-  validates :year, presence: true
+  validates :year, presence: true, uniqueness: { scope: :career_id }
 end
