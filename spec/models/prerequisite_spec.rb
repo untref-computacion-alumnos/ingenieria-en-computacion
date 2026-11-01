@@ -27,4 +27,11 @@ RSpec.describe Prerequisite do
     prerequisite.valid?
     expect(prerequisite.errors).to be_of_kind(:required_subject, :different_study_plan)
   end
+
+  it "rejects a direct cycle" do
+    create(:prerequisite, subject: programming, required_subject: algebra)
+    cycle = build(:prerequisite, subject: algebra, required_subject: programming)
+    cycle.valid?
+    expect(cycle.errors).to be_of_kind(:required_subject, :circular)
+  end
 end
