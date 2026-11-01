@@ -2,4 +2,5 @@
 
 class StudyPlan < ApplicationRecord
   belongs_to :career
+  validates :year, presence: true
 end
