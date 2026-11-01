@@ -20,4 +20,11 @@ RSpec.describe Prerequisite do
     create(:prerequisite, subject: programming, required_subject: algebra)
     expect(build(:prerequisite, subject: programming, required_subject: algebra)).not_to be_valid
   end
+
+  it "rejects a requirement from another plan" do
+    other = create(:subject)
+    prerequisite = build(:prerequisite, subject: algebra, required_subject: other)
+    prerequisite.valid?
+    expect(prerequisite.errors).to be_of_kind(:required_subject, :different_study_plan)
+  end
 end

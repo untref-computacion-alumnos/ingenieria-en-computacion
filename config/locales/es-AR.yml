@@ -3,9 +3,10 @@ es-AR:
   activerecord:
     errors:
       models:
-        prerequisites:
+        prerequisite:
           attributes:
             required_subject:
+              different_study_plan: debe pertenecer al mismo plan de estudios
               self_reference: no puede ser la misma materia
   app:
     name: MiMalla
