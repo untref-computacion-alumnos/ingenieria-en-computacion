@@ -1,0 +1,232 @@
+career: Ingeniería en Computación
+year: 2022
+subjects:
+  - code: 1700
+    name: Introducción a la Ingeniería en Computación
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1701
+    name: Algoritmos y Programación I
+    year: 1
+    term: 1
+    hours: 128
+  - code: 592
+    name: Introducción a la Problemática del Mundo Contemporáneo
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1702
+    name: Álgebra I
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1703
+    name: Matemática Discreta
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1704
+    name: Algoritmos y Programación II
+    year: 1
+    term: 2
+    hours: 128
+    prerequisites:
+      - 1701
+  - code: 591
+    name: Problemas de Historia del Siglo XX
+    year: 1
+    term: 2
+    hours: 64
+  - code: 1705
+    name: Álgebra II
+    year: 1
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1702
+  - code: 1706
+    name: Diseño Lógico
+    year: 1
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1700
+      - 1701
+      - 1703
+  - code: 1707
+    name: Programación de Bajo Nivel
+    year: 1
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1700
+  - code: 1708
+    name: Análisis Matemático I
+    prerequisites:
+      - 1702
+  - code: 1710
+    name: Arquitecturas de Computadoras I
+    prerequisites:
+      - 1706
+  - code: 3
+    name: "Cuestiones de Sociología, Economía y Política"
+  - code: 1709
+    name: Estructuras de Datos
+    prerequisites:
+      - 1704
+  - code: 1737
+    name: Inglés Básico
+  - code: 1711
+    name: Análisis Matemático II
+    prerequisites:
+      - 1708
+  - code: 1849
+    name: Arquitecturas Avanzadas
+    prerequisites:
+      - 1710
+  - code: 1739
+    name: Diseño de Páginas Web
+    prerequisites:
+      - 1704
+  - code: 1243
+    name: Fundamentos de Computación
+    prerequisites:
+      - 1703
+  - code: 1850
+    name: Inteligencia Artificial
+  - code: 2
+    name: Cultura Contemporánea
+  - code: 1738
+    name: Inglés Técnico
+    prerequisites:
+      - 1737
+  - code: 1715
+    name: Sistemas Operativos
+    prerequisites:
+      - 1709
+      - 1707
+  - code: 1714
+    name: Taller de Lectoescritura
+  - code: 1717
+    name: Base de Datos
+    prerequisites:
+      - 1709
+      - 1738
+  - code: 1720
+    name: Comunicación de Datos
+    prerequisites:
+      - 1715
+  - code: 1713
+    name: Física I
+    prerequisites:
+      - 1708
+  - code: 1718
+    name: Ingeniería de Software
+    prerequisites:
+      - 1704
+      - 1738
+  - code: 1258
+    name: Ingeniería de Requerimientos
+    prerequisites:
+      - 1718
+  - code: 1741
+    name: Sistemas Operativos Avanzados
+    prerequisites:
+      - 1715
+  - code: 1721
+    name: Diseño y Arquitectura de Sistemas de Computación
+    prerequisites:
+      - 1718
+      - 1715
+  - code: 1719
+    name: Física II
+    prerequisites:
+      - 1711
+      - 1713
+  - code: 1716
+    name: Probabilidad y Estadística
+    prerequisites:
+      - 1711
+  - code: 1724
+    name: Redes de Computadoras
+    prerequisites:
+      - 1720
+  - code: 1712
+    name: Álgebra III
+    prerequisites:
+      - 1705
+  - code: 1723
+    name: Dispositivos Electrónicos
+    prerequisites:
+      - 1719
+  - code: 1726
+    name: Ingeniería de Calidad
+    prerequisites:
+      - 1718
+      - 1716
+  - code: 1722
+    name: Matemáticas Especiales
+  - code: 1725
+    name: Trayecto Formativo Alternativo
+  - code: 1480
+    name: Gestión de los Servicios de Enfermería
+  - code: 700
+    name: Sistemas de Información Geográfica II
+  - code: 1728
+    name: Construcción de Sistemas de Computación
+    prerequisites:
+      - 1721
+      - 1724
+  - code: 1727
+    name: Laboratorio de Electrónica
+    prerequisites:
+      - 1723
+  - code: 1
+    name: Metodología de la Investigación
+  - code: 1729
+    name: Procesamiento de Señales
+    prerequisites:
+      - 1712
+      - 1722
+  - code: 1732
+    name: Control Automático
+    prerequisites:
+      - 1722
+  - code: 1731
+    name: Sistemas Ciberfísicos
+    prerequisites:
+      - 1728
+  - code: 1730
+    name: Sistemas Embebidos
+    prerequisites:
+      - 1723
+      - 1728
+  - code: 1733
+    name: Ética y Legislación
+    prerequisites:
+      - 1726
+  - code: 1734
+    name: Higiene y Seguridad
+    prerequisites:
+      - 1726
+  - code: 1736
+    name: Práctica Profesional Supervisada
+    prerequisites:
+      - 1712
+      - 1717
+      - 1720
+      - 1721
+      - 1723
+      - 1713
+      - 1719
+      - 1726
+      - 1718
+      - 1722
+      - 1716
+      - 1724
+      - 1725
+  - code: 1735
+    name: Trabajo Final Integrador
+    prerequisites:
+      - 1
