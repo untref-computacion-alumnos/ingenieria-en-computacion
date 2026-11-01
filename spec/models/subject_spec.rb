@@ -16,4 +16,18 @@ RSpec.describe Subject do
     duplicate = build(:subject, study_plan: existing.study_plan, code: "01")
     expect(duplicate).not_to be_valid
   end
+
+  describe "#transitively_requires?" do
+    let(:plan) { create(:study_plan) }
+    let(:first) { create(:subject, study_plan: plan) }
+    let(:second) { create(:subject, study_plan: plan) }
+    let(:third) { create(:subject, study_plan: plan) }
+
+    before do
+      create(:prerequisite, subject: second, required_subject: first)
+      create(:prerequisite, subject: third, required_subject: second)
+    end
+
+    it { expect(third).to be_transitively_requires(first) }
+  end
 end
