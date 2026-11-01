@@ -11,4 +11,12 @@ RSpec.describe StudyPlan do
     duplicate = build(:study_plan, career: existing.career, year: 2018)
     expect(duplicate).not_to be_valid
   end
+
+  describe ".current" do
+    it "returns the plan with the latest year" do
+      create(:study_plan, year: 2011)
+      latest = create(:study_plan, year: 2018)
+      expect(described_class.current).to eq(latest)
+    end
+  end
 end
