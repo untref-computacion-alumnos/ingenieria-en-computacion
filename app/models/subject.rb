@@ -6,5 +6,5 @@ class Subject < ApplicationRecord
   validates :code, uniqueness: { scope: :study_plan_id }
   validates :year, inclusion: { in: 1..5 }
   validates :term, inclusion: { in: 1..2 }
-  validates :hours, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  validates :hours, :credits, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 end
