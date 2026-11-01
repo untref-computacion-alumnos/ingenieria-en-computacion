@@ -8,6 +8,7 @@ RSpec.describe Subject do
   it { is_expected.to validate_presence_of(:code) }
   it { is_expected.to validate_inclusion_of(:year).in_array((1..5).to_a) }
   it { is_expected.to validate_inclusion_of(:term).in_array([1, 2]) }
+  it { is_expected.to validate_numericality_of(:hours).only_integer.is_greater_than(0).allow_nil }
 
   it "rejects a repeated code inside the same plan" do
     existing = create(:subject, code: "01")
