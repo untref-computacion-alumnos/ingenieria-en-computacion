@@ -2,6 +2,7 @@
 
 class StudyPlan < ApplicationRecord
   belongs_to :career
+  has_many :subjects, dependent: :destroy
   validates :year, presence: true, uniqueness: { scope: :career_id }
 
   def self.current
