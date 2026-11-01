@@ -29,5 +29,6 @@ RSpec.describe Subject do
     end
 
     it { expect(third).to be_transitively_requires(first) }
+    it { expect(first).not_to be_transitively_requires(third) }
   end
 end
