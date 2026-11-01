@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :career do
-    sequence(:name) { |name| "Career #{name}" }
+    sequence(:name) { |n| "Career #{n}" }
   end
 end

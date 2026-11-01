@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :study_plan do
     career
-    sequence(:year) { |name| 2000 + name }
+    sequence(:year) { |n| 2000 + n }
   end
 end
