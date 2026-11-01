@@ -148,13 +148,14 @@ search:
 
 ## Do not consider these keys missing:
 ignore_missing:
-  - 'devise.*'
-  - 'errors.messages.*'
+  - "devise.*"
+  - "errors.messages.*"
 
 ## Consider these keys used:
 ignore_unused:
-  - 'devise.*'
-  - 'errors.messages.*'
+  - "activerecord.errors.*"
+  - "devise.*"
+  - "errors.messages.*"
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

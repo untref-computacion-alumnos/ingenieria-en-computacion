@@ -1,5 +1,12 @@
 ---
 es-AR:
+  activerecord:
+    errors:
+      models:
+        prerequisites:
+          attributes:
+            required_subject:
+              self_reference: no puede ser la misma materia
   app:
     name: MiMalla
   home:
