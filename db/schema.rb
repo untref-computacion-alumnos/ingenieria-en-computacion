@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_01_211439) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_01_221628) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,6 +18,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_211439) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prerequisites", force: :cascade do |t|
+    t.bigint "subject_id", null: false
+    t.bigint "required_subject_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["required_subject_id"], name: "index_prerequisites_on_required_subject_id"
+    t.index ["subject_id", "required_subject_id"], name: "index_prerequisites_on_subject_id_and_required_subject_id", unique: true
+    t.index ["subject_id"], name: "index_prerequisites_on_subject_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -243,6 +253,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_211439) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "prerequisites", "subjects"
+  add_foreign_key "prerequisites", "subjects", column: "required_subject_id"
   add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade
   add_foreign_key "solid_queue_batch_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
