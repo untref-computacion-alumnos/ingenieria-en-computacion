@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe Prerequisite do
   let(:plan) { create(:study_plan) }
   let(:algebra) { create(:subject, study_plan: plan) }
+  let(:programming) { create(:subject, study_plan: plan) }
 
   it { is_expected.to belong_to(:subject) }
   it { is_expected.to belong_to(:required_subject).class_name("Subject") }
@@ -13,5 +14,10 @@ RSpec.describe Prerequisite do
     prerequisite = build(:prerequisite, subject: algebra, required_subject: algebra)
     prerequisite.valid?
     expect(prerequisite.errors).to be_of_kind(:required_subject, :self_reference)
+  end
+
+  it "rejects the same requirement twice" do
+    create(:prerequisite, subject: programming, required_subject: algebra)
+    expect(build(:prerequisite, subject: programming, required_subject: algebra)).not_to be_valid
   end
 end

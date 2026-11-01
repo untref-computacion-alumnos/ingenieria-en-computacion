@@ -4,6 +4,7 @@ class Prerequisite < ApplicationRecord
   belongs_to :subject
   belongs_to :required_subject, class_name: "Subject"
   validate :not_self_referencing
+  validates :required_subject_id, uniqueness: { scope: :subject_id }
 
   private
 
