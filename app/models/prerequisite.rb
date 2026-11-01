@@ -17,8 +17,7 @@ class Prerequisite < ApplicationRecord
   def not_circular
     return unless subject && required_subject
 
-    reverse = Prerequisite.exists?(subject: required_subject, required_subject: subject)
-    errors.add(:required_subject, :circular) if reverse
+    errors.add(:required_subject, :circular) if required_subject.transitively_requires?(subject)
   end
 
   def same_study_plan

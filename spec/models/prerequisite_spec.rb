@@ -6,6 +6,7 @@ RSpec.describe Prerequisite do
   let(:plan) { create(:study_plan) }
   let(:algebra) { create(:subject, study_plan: plan) }
   let(:programming) { create(:subject, study_plan: plan) }
+  let(:algorithms) { create(:subject, study_plan: plan) }
 
   it { is_expected.to belong_to(:subject) }
   it { is_expected.to belong_to(:required_subject).class_name("Subject") }
@@ -31,6 +32,14 @@ RSpec.describe Prerequisite do
   it "rejects a direct cycle" do
     create(:prerequisite, subject: programming, required_subject: algebra)
     cycle = build(:prerequisite, subject: algebra, required_subject: programming)
+    cycle.valid?
+    expect(cycle.errors).to be_of_kind(:required_subject, :circular)
+  end
+
+  it "rejects an indirect cycle" do
+    create(:prerequisite, subject: programming, required_subject: algebra)
+    create(:prerequisite, subject: algorithms, required_subject: programming)
+    cycle = build(:prerequisite, subject: algebra, required_subject: algorithms)
     cycle.valid?
     expect(cycle.errors).to be_of_kind(:required_subject, :circular)
   end
