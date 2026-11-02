@@ -21,4 +21,9 @@ RSpec.describe Seeds::PlanLoader do
     loader_for("mini").call
     expect(Subject.find_by(code: "03").required_subjects.pluck(:code)).to eq(["02"])
   end
+
+  it "can run twice without duplicating anything" do
+    2.times { loader_for("mini").call }
+    expect([Career.count, StudyPlan.count, Subject.count, Prerequisite.count]).to eq([1, 1, 3, 2])
+  end
 end
