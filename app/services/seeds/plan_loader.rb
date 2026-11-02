@@ -9,11 +9,12 @@ module Seeds
     end
 
     def call
-      career = load_career
-      plan = load_plan(career)
-      subjects = load_subjects(plan)
-
-      load_prerequisites(subjects)
+      ActiveRecord::Base.transaction do
+        career = load_career
+        plan = load_plan(career)
+        subjects = load_subjects(plan)
+        load_prerequisites(subjects)
+      end
     end
 
     private

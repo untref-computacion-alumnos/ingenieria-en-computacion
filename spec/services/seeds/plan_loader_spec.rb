@@ -30,4 +30,12 @@ RSpec.describe Seeds::PlanLoader do
   it "fails when a prerequisite code does not exist" do
     expect { loader_for("unknown_prerequisite").call }.to raise_error(described_class::Error, /Unknown prerequisite 99/)
   end
+
+  it "saves nothing when it fails halfway" do
+    expect do
+      loader_for("unknown_prerequisite").call
+    rescue described_class::Error
+      nil
+    end.not_to change(Subject, :count)
+  end
 end
