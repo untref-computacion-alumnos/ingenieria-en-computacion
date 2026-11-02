@@ -8,7 +8,10 @@ module Seeds
 
     def call
       career = Career.create!(name: @data.fetch("career"))
-      career.study_plans.create!(year: @data.fetch("year"))
+      plan = career.study_plans.create!(year: @data.fetch("year"))
+      @data.fetch("subjects").each do |attributes|
+        plan.subjects.create!(attributes.slice("code", "name", "year", "term", "hours", "credits"))
+      end
     end
   end
 end
