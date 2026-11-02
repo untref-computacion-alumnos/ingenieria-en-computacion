@@ -63,155 +63,268 @@ subjects:
       - 1700
   - code: 1708
     name: Análisis Matemático I
+    year: 2
+    term: 1
+    hours: 128
     prerequisites:
       - 1702
   - code: 1710
     name: Arquitecturas de Computadoras I
+    year: 2
+    term: 1
+    hours: 64
     prerequisites:
       - 1706
   - code: 3
     name: "Cuestiones de Sociología, Economía y Política"
+    year: 2
+    term: 1
+    hours: 64
   - code: 1709
     name: Estructuras de Datos
+    year: 2
+    term: 1
+    hours: 64
     prerequisites:
       - 1704
   - code: 1737
     name: Inglés Básico
+    year: 2
+    term: 1
+    hours: 32
   - code: 1711
     name: Análisis Matemático II
+    year: 2
+    term: 2
+    hours: 128
     prerequisites:
       - 1708
   - code: 1849
     name: Arquitecturas Avanzadas
+    year: 2
+    term: 2
+    hours: 64
     prerequisites:
       - 1710
   - code: 1739
     name: Diseño de Páginas Web
+    year: 2
+    term: 2
+    hours: 64
     prerequisites:
       - 1704
   - code: 1243
     name: Fundamentos de Computación
+    year: 2
+    term: 2
+    hours: 64
     prerequisites:
       - 1703
   - code: 1850
     name: Inteligencia Artificial
+    year: 2
+    term: 2
+    hours: 64
   - code: 2
     name: Cultura Contemporánea
+    year: 2
+    term: 2
+    hours: 64
   - code: 1738
     name: Inglés Técnico
+    year: 2
+    term: 2
+    hours: 32
     prerequisites:
       - 1737
   - code: 1715
     name: Sistemas Operativos
+    year: 2
+    term: 2
+    hours: 64
     prerequisites:
       - 1709
       - 1707
   - code: 1714
     name: Taller de Lectoescritura
+    year: 2
+    term: 2
+    hours: 32
   - code: 1717
     name: Base de Datos
+    year: 3
+    term: 1
+    hours: 64
     prerequisites:
       - 1709
       - 1738
   - code: 1720
     name: Comunicación de Datos
+    year: 3
+    term: 1
+    hours: 128
     prerequisites:
       - 1715
   - code: 1713
     name: Física I
+    year: 3
+    term: 1
+    hours: 128
     prerequisites:
       - 1708
   - code: 1718
     name: Ingeniería de Software
+    year: 3
+    term: 1
+    hours: 64
     prerequisites:
       - 1704
       - 1738
   - code: 1258
     name: Ingeniería de Requerimientos
+    year: 3
+    term: 2
+    hours: 64
     prerequisites:
       - 1718
   - code: 1741
     name: Sistemas Operativos Avanzados
+    year: 3
+    term: 2
+    hours: 64
     prerequisites:
       - 1715
   - code: 1721
     name: Diseño y Arquitectura de Sistemas de Computación
+    year: 3
+    term: 2
+    hours: 64
     prerequisites:
       - 1718
       - 1715
   - code: 1719
     name: Física II
+    year: 3
+    term: 2
+    hours: 128
     prerequisites:
       - 1711
       - 1713
   - code: 1716
     name: Probabilidad y Estadística
+    year: 3
+    term: 2
+    hours: 64
     prerequisites:
       - 1711
   - code: 1724
     name: Redes de Computadoras
+    year: 3
+    term: 2
+    hours: 64
     prerequisites:
       - 1720
   - code: 1712
     name: Álgebra III
+    year: 4
+    term: 1
+    hours: 64
     prerequisites:
       - 1705
   - code: 1723
     name: Dispositivos Electrónicos
+    year: 4
+    term: 1
+    hours: 64
     prerequisites:
       - 1719
   - code: 1726
     name: Ingeniería de Calidad
+    year: 4
+    term: 1
+    hours: 64
     prerequisites:
       - 1718
       - 1716
   - code: 1722
     name: Matemáticas Especiales
+    year: 4
+    term: 1
+    hours: 64
   - code: 1725
     name: Trayecto Formativo Alternativo
-  - code: 1480
-    name: Gestión de los Servicios de Enfermería
-  - code: 700
-    name: Sistemas de Información Geográfica II
+    year: 4
+    term: 1
+    hours: 192
   - code: 1728
     name: Construcción de Sistemas de Computación
+    year: 4
+    term: 2
+    hours: 64
     prerequisites:
       - 1721
       - 1724
   - code: 1727
     name: Laboratorio de Electrónica
+    year: 4
+    term: 2
+    hours: 64
     prerequisites:
       - 1723
   - code: 1
     name: Metodología de la Investigación
+    year: 4
+    term: 2
+    hours: 64
   - code: 1729
     name: Procesamiento de Señales
+    year: 4
+    term: 2
+    hours: 64
     prerequisites:
       - 1712
       - 1722
   - code: 1732
     name: Control Automático
+    year: 5
+    term: 1
+    hours: 64
     prerequisites:
       - 1722
   - code: 1731
     name: Sistemas Ciberfísicos
+    year: 5
+    term: 1
+    hours: 64
     prerequisites:
       - 1728
   - code: 1730
     name: Sistemas Embebidos
+    year: 5
+    term: 1
+    hours: 64
     prerequisites:
       - 1723
       - 1728
   - code: 1733
     name: Ética y Legislación
+    year: 5
+    term: 2
+    hours: 32
     prerequisites:
       - 1726
   - code: 1734
     name: Higiene y Seguridad
+    year: 5
+    term: 2
+    hours: 32
     prerequisites:
       - 1726
   - code: 1736
     name: Práctica Profesional Supervisada
+    year: 5
+    term: 2
+    hours: 128
     prerequisites:
       - 1712
       - 1717
@@ -228,5 +341,39 @@ subjects:
       - 1725
   - code: 1735
     name: Trabajo Final Integrador
+    year: 5
+    term: 2
+    hours: 192
     prerequisites:
       - 1
+  - code: 1935
+    name: Soberanía y Geopolítica Tecnológica
+    year: 2
+    term: 2
+    hours: 64
+  - code: 1874
+    name: Arquitecturas Avanzadas
+    year: 3
+    term: 1
+    hours: 64
+  - code: 1934
+    name: Diseño y Análisis Digital de Objetos y Fenómenos Físicos
+    year: 3
+    term: 2
+    hours: 64
+  - code: 1875
+    name: Ingeniería de Software II
+    year: 3
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1718
+  - code: 1978
+    name: Física Cuántica
+    year: 3
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1713
+      - 1719
+      - 1722
