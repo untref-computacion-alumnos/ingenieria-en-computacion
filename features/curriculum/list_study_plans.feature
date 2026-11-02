@@ -1,4 +1,4 @@
-@curriculum @US-010 @wip
+@curriculum @US-03
 Feature: List study plans
   As a visitor
   I want to see the available study plans of the career
