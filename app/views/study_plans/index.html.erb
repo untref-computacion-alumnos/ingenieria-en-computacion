@@ -4,6 +4,11 @@
     <li>
       <%= t("study_plans.card.title", year: study_plan.year) %>
       <%= t("study_plans.card.subjects", count: study_plan.subjects_count) %>
+      <% if study_plan == @active_plan %>
+        <span class="badge badge-primary">
+          <%= t("study_plans.card.active") %>
+        </span>
+      <% end %>
     </li>
   <% end %>
 </ul>

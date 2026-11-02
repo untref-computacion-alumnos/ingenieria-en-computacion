@@ -4,6 +4,8 @@ require "rails_helper"
 
 RSpec.describe "Study plans" do
   describe "GET /study_plans" do
+    let(:active_label) { I18n.t("study_plans.card.active") }
+
     it "lists the plans newest first" do
       create(:study_plan, year: 2013)
       create(:study_plan, year: 2022)
@@ -17,6 +19,14 @@ RSpec.describe "Study plans" do
       get study_plans_path
       expect(response.body).to include(I18n.t("study_plans.card.subjects",
                                               count: 3)).and include(I18n.t("study_plans.card.subjects", count: 5))
+    end
+
+    it "marks only the newest plan as the active one" do
+      create(:study_plan, year: 2013)
+      create(:study_plan, year: 2022)
+      get study_plans_path
+      assert_select "li", text: /2022.*#{active_label}/m, count: 1
+      assert_select "li", text: /#{active_label}/, count: 1
     end
   end
 end
