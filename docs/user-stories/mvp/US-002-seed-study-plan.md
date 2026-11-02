@@ -26,7 +26,7 @@ As a **student**, I want **the real study plan of my career loaded in the app**,
 Target file: `features/curriculum/seed_study_plan.feature`
 
 ```gherkin
-@curriculum @US-002 @wip
+@curriculum @US-002
 Feature: Seed study plan
   As a student
   I want the real study plan of my career loaded in the app
