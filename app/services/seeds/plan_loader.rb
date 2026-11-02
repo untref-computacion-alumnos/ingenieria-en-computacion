@@ -2,6 +2,8 @@
 
 module Seeds
   class PlanLoader
+    class Error < StandardError; end
+
     def initialize(path)
       @data = YAML.safe_load_file(path)
     end
@@ -36,7 +38,10 @@ module Seeds
       parsed_subjects.each do |attributes|
         subject = subjects.fetch(attributes.fetch("code"))
         attributes.fetch("prerequisites", []).each do |req_code|
-          subject.prerequisites.find_or_create_by!(required_subject: subjects.fetch(req_code))
+          required = subjects.fetch(req_code) do
+            raise Error, "Unknown prerequisite #{req_code} for #{attributes.fetch("code")}"
+          end
+          subject.prerequisites.find_or_create_by!(required_subject: required)
         end
       end
     end

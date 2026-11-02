@@ -26,4 +26,8 @@ RSpec.describe Seeds::PlanLoader do
     2.times { loader_for("mini").call }
     expect([Career.count, StudyPlan.count, Subject.count, Prerequisite.count]).to eq([1, 1, 3, 2])
   end
+
+  it "fails when a prerequisite code does not exist" do
+    expect { loader_for("unknown_prerequisite").call }.to raise_error(described_class::Error, /Unknown prerequisite 99/)
+  end
 end
