@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with: { bundler-cache: true }
-      - run: bin/rails db:prepare
+      - run: bin/rails db:create db:schema:load
       - run: bin/rails tailwindcss:build
       - run: bundle exec rspec
       - run: bundle exec cucumber
