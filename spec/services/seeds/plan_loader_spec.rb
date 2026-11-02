@@ -38,4 +38,8 @@ RSpec.describe Seeds::PlanLoader do
       nil
     end.not_to change(Subject, :count)
   end
+
+  it "fails when the file describes a prerequisite cycle" do
+    expect { loader_for("cyclic").call }.to raise_error(ActiveRecord::RecordInvalid)
+  end
 end
