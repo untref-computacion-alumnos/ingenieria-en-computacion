@@ -20,4 +20,14 @@ RSpec.describe StudyPlan do
       expect(described_class.current).to eq(latest)
     end
   end
+
+  describe ".with_subjects_count" do
+    it "adds the number of subjects of each plan, including plans without subjects" do
+      full = create(:study_plan, year: 2022)
+      create_list(:subject, 2, study_plan: full)
+      empty = create(:study_plan, year: 2013)
+      counts = described_class.with_subjects_count.to_h { |plan| [plan.id, plan.subjects_count] }
+      expect(counts).to eq(full.id => 2, empty.id => 0)
+    end
+  end
 end

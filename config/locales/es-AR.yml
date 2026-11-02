@@ -15,6 +15,9 @@ es-AR:
     tagline: Seguí tu avance en Ingeniería en Computación.
   study_plans:
     card:
+      subjects:
+        one: "%{count} materia"
+        other: "%{count} materias"
       title: Plan %{year}
     index:
       title: Planes de estudio
