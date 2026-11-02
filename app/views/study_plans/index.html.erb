@@ -1,0 +1,6 @@
+<h1 class="text-3xl font-bold py-6"><%= t(".title") %></h1>
+<ul class="space-y-4">
+  <% @study_plans.each do |study_plan| %>
+    <li><%= t("study_plans.card.title", year: study_plan.year) %></li>
+  <% end %>
+</ul>

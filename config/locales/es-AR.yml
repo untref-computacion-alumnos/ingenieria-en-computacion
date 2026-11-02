@@ -13,3 +13,8 @@ es-AR:
     name: MiMalla
   home:
     tagline: Seguí tu avance en Ingeniería en Computación.
+  study_plans:
+    card:
+      title: Plan %{year}
+    index:
+      title: Planes de estudio
