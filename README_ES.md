@@ -111,8 +111,9 @@ bin/dc bin/ci                 # todo lo que corre el CI: linters, seguridad,
 
 Lefthook corre los linters (sobre todo el proyecto) al hacer commit, valida
 el nombre del autor, completa el scope de la historia en el mensaje a partir
-del nombre de la rama, valida el mensaje, y ejecuta `bin/ci` al hacer
-push. Los hooks corren en tu máquina, no en el contenedor. Instalalos una sola
+del nombre de la rama, valida el mensaje, y ejecuta los tests RSpec (`bin/ci-quick`) al hacer
+push. Corré `bin/dc bin/ci` a mano antes del último push de una historia.
+Los hooks corren en tu máquina, no en el contenedor. Instalalos una sola
 vez con `bundle exec lefthook install`.
 
 ## Servicios

@@ -1,0 +1,22 @@
+career: Ingeniería en Computación
+year: 2018
+subjects:
+  - code: "01"
+    name: Álgebra
+    year: 1
+    term: 1
+    hours: 96
+  - code: "02"
+    name: Programación I
+    year: 1
+    term: 2
+    hours: 96
+    prerequisites:
+      - "01"
+  - code: "03"
+    name: Programación II
+    year: 2
+    term: 1
+    hours: 96
+    prerequisites:
+      - "02"

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-RAILS_ENV=test bin/rails db:prepare tailwindcss:build
+RAILS_ENV=test bin/rails db:create db:schema:load tailwindcss:build
 rm -rf coverage
 
 bundle exec rspec

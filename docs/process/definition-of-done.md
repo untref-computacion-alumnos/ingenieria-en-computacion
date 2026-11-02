@@ -19,7 +19,6 @@ A story is **Done** only if all items are true:
 
 - [ ] The `.feature` file for the story exists in `features/` and every scenario passes.
 - [ ] Unit/request/component/policy specs (RSpec) cover the new code (TDD).
-- [ ] The story markdown and the `.feature` file say the same thing.
 
 **Quality gates (enforced by CI)**
 

@@ -1,0 +1,9 @@
+career: Ingeniería en Computación
+year: 2018
+subjects:
+  - code: "01"
+    name: Álgebra
+    year: 1
+    term: 1
+    prerequisites:
+      - "99"
