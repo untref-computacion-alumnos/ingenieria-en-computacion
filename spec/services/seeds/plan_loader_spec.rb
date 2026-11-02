@@ -42,4 +42,9 @@ RSpec.describe Seeds::PlanLoader do
   it "fails when the file describes a prerequisite cycle" do
     expect { loader_for("cyclic").call }.to raise_error(ActiveRecord::RecordInvalid)
   end
+
+  it "accepts numeric codes in the seed file" do
+    loader_for("numeric_codes").call
+    expect(Subject.find_by(code: "2").required_subjects.pluck(:code)).to eq(["1"])
+  end
 end
