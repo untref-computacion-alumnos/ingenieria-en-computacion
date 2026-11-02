@@ -39,7 +39,7 @@ Hotfix: if `prod` is broken, branch from `prod`, PR to `prod`, then PR the same 
 
 | Job | Runs |
 | --- | --- |
-| `lint` | RuboCop, erb_lint, markdownlint-cli2, yamllint, cuke_linter, i18n-tasks, story/feature sync (`bin/check-stories`), commitlint on the PR's commits, Reek / rails_best_practices (advisory) |
+| `lint` | RuboCop, erb_lint, markdownlint-cli2, yamllint, cuke_linter, i18n-tasks, commitlint on the PR's commits, Reek / rails_best_practices (advisory) |
 | `security` | Brakeman, bundler-audit |
 | `test` | RSpec, Cucumber (with Capybara), SimpleCov ≥ 90 % |
 

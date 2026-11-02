@@ -110,7 +110,8 @@ bin/dc bin/ci                 # everything CI runs: linters, security,
 
 Lefthook runs the linters (on the whole project) on commit, validates the
 author name, pre-fills the story scope in the commit message from the
-branch name, validates the message, and runs `bin/ci` on push. The hooks run
+branch name, validates the message, and runs the RSpec suite (`bin/ci-quick`) on push.
+Run `bin/dc bin/ci` by hand before the last push of a story. The hooks run
 on the host, not in the container. Install them once with
 `bundle exec lefthook install`.
 

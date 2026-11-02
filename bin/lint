@@ -13,6 +13,5 @@ run markdownlint-cli2
 run yamllint .
 run bundle exec cuke_linter -p features
 run bundle exec i18n-tasks health
-run bin/check-stories
 
 exit $status

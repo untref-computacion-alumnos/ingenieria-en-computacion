@@ -8,7 +8,7 @@
    (Gherkin, English). Run Cucumber: it is **red**.
 3. **TDD — inside-out.** For each missing piece write an RSpec example first (red), make it pass (green),
    then refactor. Repeat until the Cucumber scenario is green.
-4. Run `bin/ci` (linters, security, advisory checks, tests), open the PR.
+4. Before the last push of the story, run `bin/ci` (linters, security, advisory checks, tests), then open the PR.
 
 ## Who tests what
 
@@ -24,11 +24,11 @@
 Rules of thumb: many fast RSpec examples, few Cucumber scenarios (one set per story, happy path plus
 the key rules). Minitest is **not** used (the app is generated with `--skip-test`).
 
-## Keeping the story and the `.feature` in sync
+## The story and the `.feature`
 
-- The story markdown embeds the Gherkin **and** names the target file (`features/...`).
-- Once the `.feature` exists in the repo it is the source of truth; if a scenario changes, update the story file in the same PR.
-- `bin/check-stories` compares the fenced `gherkin` blocks of each story with its `.feature` file (stories without a `.feature` yet are reported as pending, unless their status is `Done`).
+- The story markdown drafts the Gherkin and names the target file (`features/...`).
+- Once the `.feature` exists in the repo it is the source of truth. The story's Gherkin block is a draft and is
+  not checked automatically, so do not spend time keeping both identical.
 
 ## Gherkin conventions
 

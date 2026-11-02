@@ -1,0 +1,13 @@
+career: Ingeniería en Computación
+year: 2018
+subjects:
+  - code: 1
+    name: Álgebra
+    year: 1
+    term: 1
+  - code: 2
+    name: Programación I
+    year: 1
+    term: 2
+    prerequisites:
+      - 1
