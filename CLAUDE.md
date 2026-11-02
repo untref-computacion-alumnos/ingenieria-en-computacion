@@ -83,5 +83,6 @@ Skeleton setup guide: [docs/skeleton.md](docs/skeleton.md).
 - Write/adjust the `.feature` first, then specs, then code; run linters before proposing a commit.
 - Do not add a gem that is not listed in `docs/tools/now.md` without asking; move deferred ones from
   `later.md` only when their trigger story starts.
-- Run `bin/ci` before proposing a commit (it runs `bin/lint`, `bin/security`, `bin/advisory` and `bin/test`).
+- Commits are guarded by Lefthook (linters) and pushes by `bin/ci-quick` (RSpec only). Run the full `bin/ci`
+  (`bin/lint`, `bin/security`, `bin/advisory`, `bin/test`) before the last push of a story / before opening the PR.
 - Never commit to `main`/`test`/`prod` directly; never skip hooks.

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Fast gate for `git push` (see lefthook.yml): only the RSpec suite.
+# Linters already run on commit; security, advisory, Cucumber and coverage run in `bin/ci`,
+# which you run by hand before the last push of a story, and in GitHub Actions on every PR.
+
+set -euo pipefail
+
+exec bundle exec rspec

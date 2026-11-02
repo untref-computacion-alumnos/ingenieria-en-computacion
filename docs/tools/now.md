@@ -59,7 +59,7 @@ Versions: use the latest stable at install time and let Bundler pin them.
 | Bullet | N+1 queries | Raises in test, warns in dev |
 | Reek + rails_best_practices | Code smells | Advisory at first (non-blocking); make blocking when the code base is clean |
 | commitlint (`@commitlint/cli`) | Commit message format | Rules in `.commitlintrc.yml`; run by Lefthook `commit-msg` and by CI on pull requests; installed with npm |
-| Lefthook | Git hooks (run on the host) | pre-commit: author name + linters on the whole project; prepare-commit-msg: pre-fills `(us-NN):` from the branch; commit-msg: commitlint; pre-push: `bin/ci` |
+| Lefthook | Git hooks (run on the host) | pre-commit: author name + linters on the whole project; prepare-commit-msg: pre-fills `(us-NN):` from the branch; commit-msg: commitlint; pre-push: `bin/ci-quick` (RSpec only; run `bin/ci` by hand before the last push of a story) |
 | Dependabot | Dependency updates | `.github/dependabot.yml` for bundler, GitHub Actions and npm |
 
 ## Development environment

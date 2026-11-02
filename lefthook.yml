@@ -38,5 +38,5 @@ commit-msg:
 
 pre-push:
   commands:
-    ci:
-      run: bin/ci
+    quick-tests:
+      run: bin/ci-quick

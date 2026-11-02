@@ -316,13 +316,13 @@ commit-msg:
       run: commitlint --edit {1}
 pre-push:
   commands:
-    ci:
-      run: bin/ci
+    quick-tests:
+      run: bin/ci-quick
 ```
 
 Install hooks: `bundle exec lefthook install` (run on the host so the hooks live in `.git/`; they run locally, not in the container).
 
-`bin/ci` runs the same set as CI through four scripts that can also be run alone: `bin/lint` (RuboCop, erb_lint,
+`bin/ci-quick` (RSpec only) is what the pre-push hook runs, to keep pushes fast. `bin/ci` runs the same set as CI through four scripts that can also be run alone: `bin/lint` (RuboCop, erb_lint,
 markdownlint, yamllint, cuke_linter, i18n-tasks), `bin/security` (Brakeman, bundler-audit, importmap audit),
 `bin/advisory` (Reek, rails_best_practices; never fail) and `bin/test` (RSpec, Cucumber, coverage gate).
 `config/ci.rb` lists the steps:
