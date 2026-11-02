@@ -16,4 +16,9 @@ RSpec.describe Seeds::PlanLoader do
     loader_for("mini").call
     expect(Subject.find_by(code: "02")).to have_attributes(name: "Programación I", year: 1, term: 2, hours: 96)
   end
+
+  it "creates the prerequisites" do
+    loader_for("mini").call
+    expect(Subject.find_by(code: "03").required_subjects.pluck(:code)).to eq(["02"])
+  end
 end
