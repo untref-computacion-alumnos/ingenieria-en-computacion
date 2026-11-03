@@ -1,4 +1,4 @@
-@foundation @US-001
+@foundation @US-01
 Feature: Home page
   As a visitor
   I want to see the application name and tagline on the home page

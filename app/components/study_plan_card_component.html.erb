@@ -1,0 +1,15 @@
+<article class="card bg-base-100 shadow">
+  <div class="card-body">
+    <h2 class="card-title">
+      <%= t("study_plans.card.title", year: year) %>
+    </h2>
+    <p>
+      <%= t("study_plans.card.subjects", count: subjects_count) %>
+    </p>
+    <% if active %>
+      <span class="badge badge-primary">
+        <%= t("study_plans.card.active") %>
+      </span>
+    <% end %>
+  </div>
+</article>

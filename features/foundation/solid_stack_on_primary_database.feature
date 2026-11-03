@@ -1,4 +1,4 @@
-@foundation @US-001.5
+@foundation @US-01.5
 Feature: Solid stack on primary database
   As a developer
   I want Solid Queue, Solid Cache and Solid Cable to use the primary database

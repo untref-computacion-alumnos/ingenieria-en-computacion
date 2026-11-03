@@ -1,4 +1,4 @@
-@curriculum @US-002
+@curriculum @US-02
 Feature: Seed study plan
   As a student
   I want the real study plan of my career loaded in the app
