@@ -43,5 +43,10 @@ RSpec.describe "Study plans" do
       get study_plan_path(create(:study_plan, year: 2022))
       expect(response.body).not_to include("Old subject")
     end
+
+    it "responds with not found for an unknown plan" do
+      get study_plan_path(id: 0)
+      expect(response).to have_http_status(:not_found)
+    end
   end
 end
