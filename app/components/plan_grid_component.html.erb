@@ -1,0 +1,14 @@
+<div class="overflow-x-auto">
+  <div class="flex gap-4">
+    <% subjects_by_term.each do |(year, term), subjects| %>
+      <section class="min-w-56 space-y-2">
+        <h2 class="font-semibold">
+          <%= t("study_plans.grid.term", year: year, term: term) %>
+        </h2>
+        <% subjects.each do |subject| %>
+          <%= render SubjectCardComponent.new(name: subject.name) %>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>
