@@ -1,14 +1,10 @@
-<h1 class="text-3xl font-bold py-6"><%= t(".title") %></h1>
+<h1 class="text-3xl font-bold py-6">
+  <%= t(".title") %>
+</h1>
 <ul class="space-y-4">
   <% @study_plans.each do |study_plan| %>
     <li>
-      <%= t("study_plans.card.title", year: study_plan.year) %>
-      <%= t("study_plans.card.subjects", count: study_plan.subjects_count) %>
-      <% if study_plan == @active_plan %>
-        <span class="badge badge-primary">
-          <%= t("study_plans.card.active") %>
-        </span>
-      <% end %>
+      <%= render StudyPlanCardComponent.new(year: study_plan.year, subjects_count: study_plan.subjects_count, active: study_plan == @active_plan) %>
     </li>
   <% end %>
 </ul>
