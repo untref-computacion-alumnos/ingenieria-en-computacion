@@ -22,3 +22,5 @@ es-AR:
       title: Plan %{year}
     index:
       title: Planes de estudio
+    show:
+      title: Plan de estudios %{year}

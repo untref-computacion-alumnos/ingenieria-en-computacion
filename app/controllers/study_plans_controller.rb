@@ -5,4 +5,8 @@ class StudyPlansController < ApplicationController
     @study_plans = StudyPlan.with_subjects_count.order(year: :desc)
     @active_plan = StudyPlan.current
   end
+
+  def show
+    @study_plan = StudyPlan.find(params.expect(:id))
+  end
 end

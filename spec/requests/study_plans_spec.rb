@@ -29,4 +29,19 @@ RSpec.describe "Study plans" do
       assert_select "li", text: /#{active_label}/, count: 1
     end
   end
+
+  describe "GET /study_plans/:id" do
+    it "shows the plan year and its subjects" do
+      plan = create(:study_plan, year: 2022)
+      create(:subject, study_plan: plan, name: "Álgebra I")
+      get study_plan_path(plan)
+      expect(response.body).to include("Álgebra I").and include(I18n.t("study_plans.show.title", year: 2022))
+    end
+
+    it "does not show the subjects of other plans" do
+      create(:subject, study_plan: create(:study_plan, year: 2013), name: "Old subject")
+      get study_plan_path(create(:study_plan, year: 2022))
+      expect(response.body).not_to include("Old subject")
+    end
+  end
 end

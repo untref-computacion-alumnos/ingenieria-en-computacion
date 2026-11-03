@@ -1,0 +1,10 @@
+<h1 class="text-3xl font-bold py-6">
+  <%= t(".title", year: @study_plan.year) %>
+</h1>
+<ul>
+  <% @study_plan.subjects.each do |subject| %>
+    <li>
+      <%= subject.name %>
+    </li>
+  <% end %>
+</ul>
