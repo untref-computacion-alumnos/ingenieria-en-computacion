@@ -8,5 +8,7 @@ class StudyPlansController < ApplicationController
 
   def show
     @study_plan = StudyPlan.find(params.expect(:id))
+    subjects = @study_plan.subjects.order(:year, :term, :name)
+    @subjects_by_term = subjects.group_by { |subject| [subject.year, subject.term] }
   end
 end

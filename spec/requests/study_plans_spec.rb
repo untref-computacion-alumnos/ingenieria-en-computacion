@@ -31,6 +31,10 @@ RSpec.describe "Study plans" do
   end
 
   describe "GET /study_plans/:id" do
+    def term_heading(year, term)
+      I18n.t("study_plans.grid.term", year: year, term: term)
+    end
+
     it "shows the plan year and its subjects" do
       plan = create(:study_plan, year: 2022)
       create(:subject, study_plan: plan, name: "Álgebra I")
@@ -47,6 +51,24 @@ RSpec.describe "Study plans" do
     it "responds with not found for an unknown plan" do
       get study_plan_path(id: 0)
       expect(response).to have_http_status(:not_found)
+    end
+
+    context "with subjects in several terms" do
+      let(:plan) { create(:study_plan, year: 2022) }
+      let(:expected_order) do
+        [term_heading(1, 1), "Álgebra I", term_heading(1, 2), "Álgebra II", term_heading(2, 1), "Física I"]
+      end
+
+      before do
+        create(:subject, study_plan: plan, name: "Física I", year: 2, term: 1)
+        create(:subject, study_plan: plan, name: "Álgebra II", year: 1, term: 2)
+        create(:subject, study_plan: plan, name: "Álgebra I", year: 1, term: 1)
+      end
+
+      it "groups the subjects by year and term, in order" do
+        get study_plan_path(plan)
+        expect(response.body).to match(Regexp.new(expected_order.join(".*"), Regexp::MULTILINE))
+      end
     end
   end
 end

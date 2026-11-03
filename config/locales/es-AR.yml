@@ -20,6 +20,8 @@ es-AR:
         one: "%{count} materia"
         other: "%{count} materias"
       title: Plan %{year}
+    grid:
+      term: Año %{year} - Cuatrimestre %{term}
     index:
       title: Planes de estudio
     show:
