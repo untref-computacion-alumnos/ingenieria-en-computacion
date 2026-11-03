@@ -1,6 +1,6 @@
 parserPreset:
   parserOpts:
-    headerPattern: '^(\w+)\((us-\d+(?:\.\d+)?)\): (.+)$'
+    headerPattern: '^(\w+)\((us-\d+(?:\.\d+)?|deps(?:-dev)?)\): (.+)$'
     headerCorrespondence: [type, scope, subject]
 
 rules:
