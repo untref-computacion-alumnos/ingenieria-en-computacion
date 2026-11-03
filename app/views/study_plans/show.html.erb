@@ -6,12 +6,8 @@
     <h2>
       <%= t("study_plans.grid.term", year: year, term: term) %>
     </h2>
-    <ul>
-      <% subjects.each do |subject| %>
-        <li>
-          <%= subject.name %>
-        </li>
-      <% end %>
-    </ul>
+    <% subjects.each do |subject| %>
+      <%= render SubjectCardComponent.new(name: subject.name) %>
+    <% end %>
   </section>
 <% end %>
