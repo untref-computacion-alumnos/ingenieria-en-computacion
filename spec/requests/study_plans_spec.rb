@@ -28,6 +28,12 @@ RSpec.describe "Study plans" do
       assert_select "li", text: /2022.*#{active_label}/m, count: 1
       assert_select "li", text: /#{active_label}/, count: 1
     end
+
+    it "links each plan to its grid" do
+      plan = create(:study_plan, year: 2022)
+      get study_plans_path
+      assert_select "li a[href=?]", study_plan_path(plan)
+    end
   end
 
   describe "GET /study_plans/:id" do
