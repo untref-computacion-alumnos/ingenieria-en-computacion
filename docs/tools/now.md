@@ -20,6 +20,7 @@ Versions: use the latest stable at install time and let Bundler pin them.
 | tailwindcss-rails | Tailwind without Node. |
 | daisyUI | Ready-made Tailwind components and themes (cards, modals, progress, badges). |
 | ViewComponent | Testable UI pieces (subject card, grid, progress bar). |
+| Inter (font) | Self-hosted variable font (SIL OFL) in `app/assets/fonts/`; no third-party requests. See [style guide](../design/style-guide.md). |
 
 ## Accounts and authorization
 

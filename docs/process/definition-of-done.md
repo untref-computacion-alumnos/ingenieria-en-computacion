@@ -27,6 +27,12 @@ A story is **Done** only if all items are true:
 - [ ] Bullet reports no N+1 queries in the tests that exercise the feature.
 - [ ] Total coverage is at least **90 %** (SimpleCov).
 
+**UI (only if the story touches views or components)**
+
+- [ ] Follows the [style guide](../design/style-guide.md): theme tokens and daisyUI, no color literals
+  (`spec/style/no_hard_coded_colors_spec.rb` is green).
+- [ ] Checked in the light and the dark theme, with the keyboard only, and on a narrow screen (WCAG 2.2 AA).
+
 **Review and delivery**
 
 - [ ] PR approved by at least one other team member; all comments resolved.
@@ -45,5 +51,6 @@ Story: US-___ (link)
 - [ ] Linters clean (`bin/ci`)
 - [ ] Coverage ≥ 90 %, Brakeman and bundler-audit clean
 - [ ] No hard-coded UI text (I18n)
+- [ ] UI stories: style guide followed (tokens, both themes, keyboard, narrow screen)
 - [ ] Docs updated
 ```
