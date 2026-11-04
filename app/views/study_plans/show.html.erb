@@ -1,0 +1,4 @@
+<h1 class="text-3xl font-bold py-6">
+  <%= t(".title", year: @study_plan.year) %>
+</h1>
+<%= render PlanGridComponent.new(subjects_by_term: @subjects_by_term) %>

@@ -4,7 +4,9 @@
 <ul class="space-y-4">
   <% @study_plans.each do |study_plan| %>
     <li>
-      <%= render StudyPlanCardComponent.new(year: study_plan.year, subjects_count: study_plan.subjects_count, active: study_plan == @active_plan) %>
+      <%= link_to study_plan_path(study_plan), class: "block" do %>
+        <%= render StudyPlanCardComponent.new(year: study_plan.year, subjects_count: study_plan.subjects_count, active: study_plan == @active_plan) %>
+      <% end %>
     </li>
   <% end %>
 </ul>
