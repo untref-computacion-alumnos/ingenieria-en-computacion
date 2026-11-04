@@ -14,5 +14,10 @@ RSpec.describe "Subjects" do
       expect(response.body).to include("Álgebra II", "AL2", "96", "6")
         .and include(I18n.t("subjects.detail.position", year: 2, term: 1))
     end
+
+    it "responds with not found for an unknown subject" do
+      get subject_path(id: 0)
+      expect(response).to have_http_status(:not_found)
+    end
   end
 end
