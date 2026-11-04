@@ -1,0 +1,14 @@
+<h1 class="text-2xl font-semibold py-6"><%= @subject.name %></h1>
+<p><%= t("subjects.detail.position", year: @subject.year, term: @subject.term) %></p>
+<dl>
+  <dt><%= t("subjects.detail.code") %></dt>
+  <dd><%= @subject.code %></dd>
+  <% if @subject.hours %>
+    <dt><%= t("subjects.detail.hours") %></dt>
+    <dd><%= @subject.hours %></dd>
+  <% end %>
+  <% if @subject.credits %>
+    <dt><%= t("subjects.detail.credits") %></dt>
+    <dd><%= @subject.credits %></dd>
+  <% end %>
+</dl>

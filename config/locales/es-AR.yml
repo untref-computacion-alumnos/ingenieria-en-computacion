@@ -26,3 +26,9 @@ es-AR:
       title: Planes de estudio
     show:
       title: Plan de estudios %{year}
+  subjects:
+    detail:
+      code: Código
+      credits: Créditos
+      hours: Horas
+      position: Año %{year} - Cuatrimestre %{term}

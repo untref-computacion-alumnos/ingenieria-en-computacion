@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   root "home#index"
   resources :study_plans, only: %i[index show]
+  resources :subjects, only: :show
 end
