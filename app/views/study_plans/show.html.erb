@@ -1,4 +1,9 @@
 <h1 class="text-3xl font-bold py-6">
   <%= t(".title", year: @study_plan.year) %>
 </h1>
-<%= render PlanGridComponent.new(subjects_by_term: @subjects_by_term) %>
+<div class="lg:flex lg:items-start lg:gap-6">
+  <div class="min-w-0 flex-1">
+    <%= render PlanGridComponent.new(subjects_by_term: @subjects_by_term) %>
+  </div>
+  <turbo-frame id="subject_detail" class="block empty:hidden lg:w-80 lg:shrink-0"></turbo-frame>
+</div>

@@ -59,6 +59,11 @@ RSpec.describe "Study plans" do
       expect(response).to have_http_status(:not_found)
     end
 
+    it "has an empty side panel where the subject detail opens" do
+      get study_plan_path(create(:study_plan, year: 2022))
+      assert_select "turbo-frame#subject_detail:empty"
+    end
+
     context "with subjects in several terms" do
       let(:plan) { create(:study_plan, year: 2022) }
       let(:expected_order) do

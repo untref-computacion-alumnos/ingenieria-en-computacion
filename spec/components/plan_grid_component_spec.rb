@@ -18,6 +18,10 @@ RSpec.describe PlanGridComponent, type: :component do
     expect(page).to have_css("section", text: term1).and have_css("section", text: term2)
   end
 
+  it "gives every subject a card that links to its detail" do
+    expect(page).to have_css("a[data-turbo-frame='subject_detail']", count: 2)
+  end
+
   it "scrolls horizontally on narrow screens" do
     expect(page).to have_css("div.overflow-x-auto")
   end

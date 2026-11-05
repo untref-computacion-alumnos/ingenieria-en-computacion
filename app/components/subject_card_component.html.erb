@@ -1,5 +1,8 @@
-<article class="card bg-base-100 shadow" tabindex="0">
-  <div class="card-body p-3">
-    <%= name %>
-  </div>
-</article>
+<%= link_to subject_path(subject), data: { turbo_frame: "subject_detail" }, class: "block" do %>
+  <span class="block">
+    <%= subject.name %>
+  </span>
+  <span class="block">
+    <%= subject.code %>
+  </span>
+<% end %>

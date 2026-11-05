@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class SubjectCardComponent < ViewComponent::Base
-  def initialize(name:)
+  def initialize(subject:)
     super()
-    @name = name
+    @subject = subject
   end
 
   private
 
-  attr_reader :name
+  attr_reader :subject
 end
