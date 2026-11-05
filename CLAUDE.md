@@ -67,6 +67,20 @@ Process docs: [agile](docs/process/agile.md) · [git workflow](docs/process/git-
 [testing](docs/process/testing-strategy.md).
 Skeleton setup guide: [docs/skeleton.md](docs/skeleton.md).
 
+## UI and styles (decided)
+
+Full guide: [docs/design/style-guide.md](docs/design/style-guide.md). Read it before touching any view or component.
+
+- Look: UNTREF blue family shifted to a tech tone (primary `#1D5A9E`), UNTREF magenta only as a rare accent, compact
+  and sober (no shadows, small radius), Inter font self-hosted. Two daisyUI themes, `untref-light` and `untref-dark`,
+  chosen from the OS setting.
+- Colors come from **tokens** (`bg-primary`, `text-base-content`, `bg-status-approved`…). Never write hex/rgb or Tailwind
+  palette colors outside `app/assets/tailwind/application.css`; `spec/style/no_hard_coded_colors_spec.rb` enforces it.
+- Subject statuses have their own tokens and are never shown by color alone.
+- Accessibility: WCAG 2.2 AA in both themes, keyboard only, visible focus, `motion-safe:` animations.
+- Subject detail opens in a side panel (Turbo Frame `subject_detail`) and also has its own URL.
+- Check the "UI checklist" at the end of the style guide in every story that touches views.
+
 ## Conventions
 
 - Code, comments, commits, docs, `.feature` files: **English**. User-visible text: **Spanish (es-AR)** via I18n.
@@ -74,6 +88,7 @@ Skeleton setup guide: [docs/skeleton.md](docs/skeleton.md).
 - Domain terms Spanish → English are fixed in the glossary ([domain.md](docs/product/domain.md)).
 - Branch names `us-<id>-<slug>`; commit messages are `type(us-NN): description`,
   e.g. `feat(us-011): render grid by term` (Lefthook enforces it).
+- UI work follows the [style guide](docs/design/style-guide.md); change the guide in the same PR as a new pattern.
 - Do not use Minitest; the app is generated with `--skip-test`.
 - Prefer boring Rails conventions over cleverness; the team is learning.
 

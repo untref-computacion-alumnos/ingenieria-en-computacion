@@ -22,6 +22,15 @@ RSpec.describe "Home" do
       expect(response.body).to include('lang="es-AR"')
     end
 
+    it "lets keyboard users skip to the main content" do
+      assert_select "a[href='#main']", text: I18n.t("app.skip_to_content")
+      assert_select "main#main"
+    end
+
+    it "supports the light and the dark color scheme" do
+      assert_select "meta[name='color-scheme'][content='light dark']"
+    end
+
     it "uses the application name as the page title" do
       expect(response.body).to include("<title>#{I18n.t("app.name")}</title>")
     end

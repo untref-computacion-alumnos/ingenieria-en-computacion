@@ -2,4 +2,137 @@
 
 @source not "./daisyui{,*}.mjs";
 
-@plugin "./daisyui.mjs";
+/*
+ * Design tokens for MiMalla. This file is the ONLY place where color values are written.
+ * Everything else in the app uses the tokens (bg-primary, text-base-content, bg-status-approved…).
+ * Rules and rationale: docs/design/style-guide.md
+ */
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("inter-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+@plugin "./daisyui.mjs" {
+  themes: false;
+}
+
+@plugin "./daisyui-theme.mjs" {
+  name: "untref-light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f2f4f7;
+  --color-base-300: #dde2e8;
+  --color-base-content: #1b2430;
+  --color-primary: #1d5a9e;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0a78ab;
+  --color-secondary-content: #ffffff;
+  --color-accent: #c8164f;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1b2430;
+  --color-neutral-content: #f2f4f7;
+  --color-info: #0e6fa8;
+  --color-info-content: #ffffff;
+  --color-success: #1b7f3b;
+  --color-success-content: #ffffff;
+  --color-warning: #9a5b00;
+  --color-warning-content: #ffffff;
+  --color-error: #b42318;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --status-pending: #5b6677;
+  --status-in-progress: #0e6fa8;
+  --status-regular: #8a5a00;
+  --status-approved: #1b7f3b;
+  --status-promoted: #0f766e;
+  --status-free: #6d4aa8;
+  --status-retaking: #b45309;
+  --status-dropped: #b42318;
+  --status-content: #ffffff;
+}
+
+@plugin "./daisyui-theme.mjs" {
+  name: "untref-dark";
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #0f1722;
+  --color-base-200: #162131;
+  --color-base-300: #22304a;
+  --color-base-content: #e6ecf3;
+  --color-primary: #7db4ee;
+  --color-primary-content: #0b1b2e;
+  --color-secondary: #5cc4ee;
+  --color-secondary-content: #08202e;
+  --color-accent: #ff6b97;
+  --color-accent-content: #2b0612;
+  --color-neutral: #243247;
+  --color-neutral-content: #e6ecf3;
+  --color-info: #5cc4ee;
+  --color-info-content: #08202e;
+  --color-success: #5bd58a;
+  --color-success-content: #06210f;
+  --color-warning: #f5b73b;
+  --color-warning-content: #2b1d00;
+  --color-error: #ff7a70;
+  --color-error-content: #330a06;
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+  --status-pending: #9aa7b8;
+  --status-in-progress: #5cc4ee;
+  --status-regular: #e8b04b;
+  --status-approved: #5bd58a;
+  --status-promoted: #4dd0c4;
+  --status-free: #b9a2f0;
+  --status-retaking: #f0944d;
+  --status-dropped: #ff7a70;
+  --status-content: #0f1722;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-status-pending: var(--status-pending);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-regular: var(--status-regular);
+  --color-status-approved: var(--status-approved);
+  --color-status-promoted: var(--status-promoted);
+  --color-status-free: var(--status-free);
+  --color-status-retaking: var(--status-retaking);
+  --color-status-dropped: var(--status-dropped);
+  --color-status-content: var(--status-content);
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

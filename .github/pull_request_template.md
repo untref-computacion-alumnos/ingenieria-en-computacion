@@ -30,6 +30,7 @@ Story: US-___ (link to the issue)
 - [ ] Linters clean (`bin/dc bin/ci`)
 - [ ] Coverage ≥ 90 %, Brakeman and bundler-audit clean
 - [ ] No hard-coded UI text (I18n)
+- [ ] UI changes follow `docs/design/style-guide.md` (tokens, light and dark theme, keyboard, narrow screen)
 - [ ] Docs updated
 
 ## Notes for the reviewer

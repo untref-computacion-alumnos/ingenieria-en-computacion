@@ -3,6 +3,7 @@
   <head>
     <title><%= content_for(:title) || t("app.name") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="<%= t("app.name") %>">
     <meta name="mobile-web-app-capable" content="yes">
@@ -15,8 +16,11 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <main class="container mx-auto px-5">
+  <body class="font-sans">
+    <a href="#main" class="btn btn-primary btn-sm sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-30">
+      <%= t("app.skip_to_content") %>
+    </a>
+    <main id="main" class="container mx-auto px-5">
       <%= yield %>
     </main>
   </body>

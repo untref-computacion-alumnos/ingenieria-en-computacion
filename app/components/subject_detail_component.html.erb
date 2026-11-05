@@ -1,0 +1,39 @@
+<article class="space-y-4">
+  <header class="space-y-1">
+    <h2 class="text-xl font-semibold" tabindex="-1" autofocus>
+      <%= subject.name %>
+    </h2>
+    <p class="text-sm text-base-content/70">
+      <%= t("subjects.detail.position", year: subject.year, term: subject.term) %>
+    </p>
+  </header>
+  <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+    <% facts.each do |key, value| %>
+      <dt class="text-base-content/70">
+        <%= t("subjects.detail.#{key}") %>
+      </dt>
+      <dd class="font-medium">
+        <%= value %>
+      </dd>
+    <% end %>
+  </dl>
+  <section class="space-y-2">
+    <h3 class="font-semibold">
+      <%= t("subjects.detail.prerequisites") %>
+    </h3>
+    <% if prerequisites.any? %>
+      <ul class="space-y-1 text-sm">
+        <% prerequisites.each do |required| %>
+          <li>
+            <%= link_to required.name, subject_path(required), class: "link link-primary" %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-sm text-base-content/70">
+        <%= t("subjects.detail.no_prerequisites") %>
+      </p>
+    <% end %>
+  </section>
+  <%= link_to t("subjects.detail.back", year: subject.study_plan.year), study_plan_path(subject.study_plan), class: "btn btn-sm btn-ghost", data: { turbo_frame: "_top" } %>
+</article>

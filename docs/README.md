@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | Product | [product/vision.md](product/vision.md) | Why, who, principles, roadmap of modules |
 | Product | [product/domain.md](product/domain.md) | Glossary (ES→EN) and first domain model |
+| Design | [design/style-guide.md](design/style-guide.md) | Colors, typography, shape, UI behavior and accessibility rules |
 | Process | [process/agile.md](process/agile.md) | Scrumban rules, roles, ceremonies, board |
 | Process | [process/git-workflow.md](process/git-workflow.md) | Branches, protections, PRs, environments, CI/CD |
 | Process | [process/definition-of-done.md](process/definition-of-done.md) | Definition of Ready and Done |

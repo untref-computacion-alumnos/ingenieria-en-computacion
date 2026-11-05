@@ -11,6 +11,7 @@ es-AR:
               self_reference: no puede ser la misma materia
   app:
     name: MiMalla
+    skip_to_content: Saltar al contenido
   home:
     tagline: Seguí tu avance en Ingeniería en Computación.
   study_plans:
@@ -26,3 +27,12 @@ es-AR:
       title: Planes de estudio
     show:
       title: Plan de estudios %{year}
+  subjects:
+    detail:
+      back: Volver al plan %{year}
+      code: Código
+      credits: Créditos
+      hours: Horas
+      no_prerequisites: No tiene correlativas
+      position: Año %{year} - Cuatrimestre %{term}
+      prerequisites: Correlativas
