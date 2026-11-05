@@ -1,4 +1,4 @@
-@curriculum @US-04
+@curriculum @US-05
 Feature: Subject detail
   As a visitor
   I want to open a subject and see its details and prerequisites
