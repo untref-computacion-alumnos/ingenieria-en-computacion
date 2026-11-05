@@ -11,6 +11,7 @@ es-AR:
               self_reference: no puede ser la misma materia
   app:
     name: MiMalla
+    skip_to_content: Saltar al contenido
   home:
     tagline: Seguí tu avance en Ingeniería en Computación.
   study_plans:
