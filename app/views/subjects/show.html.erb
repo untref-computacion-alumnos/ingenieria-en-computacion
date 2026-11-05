@@ -12,3 +12,19 @@
     <dd><%= @subject.credits %></dd>
   <% end %>
 </dl>
+<h3>
+  <%= t("subjects.detail.prerequisites") %>
+</h3>
+<% if @subject.required_subjects.any? %>
+  <ul>
+    <% @subject.required_subjects.sort_by(&:name).each do |required| %>
+      <li>
+        <%= link_to required.name, subject_path(required) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>
+    <%= t("subjects.detail.no_prerequisites") %>
+  </p>
+<% end %>

@@ -31,4 +31,6 @@ es-AR:
       code: Código
       credits: Créditos
       hours: Horas
+      no_prerequisites: No tiene correlativas
       position: Año %{year} - Cuatrimestre %{term}
+      prerequisites: Correlativas

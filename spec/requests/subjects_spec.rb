@@ -19,5 +19,18 @@ RSpec.describe "Subjects" do
       get subject_path(id: 0)
       expect(response).to have_http_status(:not_found)
     end
+
+    it "lists the prerequisites as links to their own detail" do
+      required = create(:subject, study_plan: plan, name: "Álgebra I")
+      create(:prerequisite, subject: subject_record, required_subject: required)
+      get subject_path(subject_record)
+      assert_select "h3", text: I18n.t("subjects.detail.prerequisites")
+      assert_select "li a[href=?]", subject_path(required), text: "Álgebra I"
+    end
+
+    it "says so when the subject has no prerequisites" do
+      get subject_path(subject_record)
+      expect(response.body).to include(I18n.t("subjects.detail.no_prerequisites"))
+    end
   end
 end
