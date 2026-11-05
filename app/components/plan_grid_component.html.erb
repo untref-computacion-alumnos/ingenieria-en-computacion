@@ -1,8 +1,8 @@
 <div class="overflow-x-auto">
-  <div class="flex gap-4">
+  <div class="flex gap-3">
     <% subjects_by_term.each do |(year, term), subjects| %>
-      <section class="min-w-56 space-y-2">
-        <h2 class="font-semibold">
+      <section class="min-w-48 space-y-2">
+        <h2 class="text-sm font-semibold">
           <%= t("study_plans.grid.term", year: year, term: term) %>
         </h2>
         <% subjects.each do |subject| %>

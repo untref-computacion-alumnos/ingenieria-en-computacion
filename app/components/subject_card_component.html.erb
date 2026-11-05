@@ -1,8 +1,8 @@
-<%= link_to subject_path(subject), data: { turbo_frame: "subject_detail" }, class: "block" do %>
-  <span class="block">
+<%= link_to subject_path(subject), data: { turbo_frame: "subject_detail" }, class: "block rounded-box border border-base-300 bg-base-100 px-3 py-2 text-sm motion-safe:transition-colors hover:border-primary hover:bg-base-200" do %>
+  <span class="block font-medium">
     <%= subject.name %>
   </span>
-  <span class="block">
+  <span class="block text-xs text-base-content/70">
     <%= subject.code %>
   </span>
 <% end %>
