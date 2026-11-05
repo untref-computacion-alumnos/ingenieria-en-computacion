@@ -28,6 +28,7 @@ es-AR:
       title: Plan de estudios %{year}
   subjects:
     detail:
+      back: Volver al plan %{year}
       code: Código
       credits: Créditos
       hours: Horas

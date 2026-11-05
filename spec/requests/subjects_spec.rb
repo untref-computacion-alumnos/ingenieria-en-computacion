@@ -32,5 +32,15 @@ RSpec.describe "Subjects" do
       get subject_path(subject_record)
       expect(response.body).to include(I18n.t("subjects.detail.no_prerequisites"))
     end
+
+    it "is wrapped in the subject_detail Turbo Frame so it can open in the side panel" do
+      get subject_path(subject_record)
+      assert_select "turbo-frame#subject_detail"
+    end
+
+    it "links back to the plan out of the frame" do
+      get subject_path(subject_record)
+      assert_select "a[href=?][data-turbo-frame=_top]", study_plan_path(plan)
+    end
   end
 end
