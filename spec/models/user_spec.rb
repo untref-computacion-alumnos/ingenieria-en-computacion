@@ -31,4 +31,20 @@ RSpec.describe User do
       expect(build(:user, password: "1234567890")).to be_valid
     end
   end
+
+  describe "roles" do
+    it "gives every new user the student role" do
+      expect(create(:user)).to have_role(:student)
+    end
+
+    it "does not give a second student role when the user is saved again" do
+      user = create(:user)
+      expect { user.update!(email: "other@example.com") }.not_to change(user.roles, :count)
+    end
+
+    it "does not make the user a teacher or an admin" do
+      user = create(:user)
+      expect(user.roles.pluck(:name)).to eq(["student"])
+    end
+  end
 end
