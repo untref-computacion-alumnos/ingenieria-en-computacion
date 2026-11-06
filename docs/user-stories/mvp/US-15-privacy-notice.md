@@ -1,8 +1,8 @@
-# US-040 — Privacy notice and terms
+# US-15 — Privacy notice and terms
 
 - **Epic:** Privacy
 - **Size:** S
-- **Depends on:** US-020
+- **Depends on:** US-07
 - **Status:** Backlog
 
 ## Story
@@ -25,7 +25,7 @@ As a **visitor or student**, I want **to read what data is stored and how it is 
 Target file: `features/privacy/privacy_notice.feature`
 
 ```gherkin
-@privacy @US-040
+@privacy @US-15
 Feature: Privacy notice and terms
   Scenario: Anyone can read the notice and terms
     When I visit the privacy page

@@ -1,8 +1,8 @@
-# US-022 — Reset my password
+# US-09 — Reset my password
 
 - **Epic:** Accounts
 - **Size:** S
-- **Depends on:** US-021
+- **Depends on:** US-08
 - **Status:** Backlog
 
 ## Story
@@ -23,7 +23,7 @@ As a **student**, I want **to reset my password by email**, so that **I can reco
 Target file: `features/accounts/reset_password.feature`
 
 ```gherkin
-@accounts @US-022
+@accounts @US-09
 Feature: Reset password
   Scenario: A student asks for a reset link
     Given a registered student

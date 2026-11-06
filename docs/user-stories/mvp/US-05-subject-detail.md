@@ -1,8 +1,8 @@
-# US-012 — See a subject's detail
+# US-05 — See a subject's detail
 
 - **Epic:** Curriculum
 - **Size:** S
-- **Depends on:** US-011
+- **Depends on:** US-04
 - **Status:** In progress
 
 ## Story
@@ -22,14 +22,14 @@ As a **visitor**, I want **to open a subject and see its details and prerequisit
 ## Out of scope
 
 - Syllabus, teachers, reviews.
-- Subject status colors in the UI (the tokens exist; US-030 uses them), manual dark-mode switch.
+- Subject status colors in the UI (the tokens exist; US-11 uses them), manual dark-mode switch.
 
 ## Acceptance criteria
 
 Target file: `features/curriculum/subject_detail.feature`
 
 ```gherkin
-@curriculum @US-012
+@curriculum @US-05
 Feature: Subject detail
   Scenario: A visitor opens a subject from the grid
     Given the subject "Algebra II" requires "Algebra I"

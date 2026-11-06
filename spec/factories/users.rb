@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    pass
+    sequence(:email) { |n| "student#{n}@example.com" }
+    password { "a-long-password" }
   end
 end

@@ -1,8 +1,8 @@
-# US-013 — Highlight prerequisites on interaction
+# US-06 — Highlight prerequisites on interaction
 
 - **Epic:** Curriculum
 - **Size:** M
-- **Depends on:** US-011
+- **Depends on:** US-04
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **visitor**, I want **related subjects highlighted when I hover or select a
 Target file: `features/curriculum/highlight_prerequisites.feature`
 
 ```gherkin
-@curriculum @javascript @US-013
+@curriculum @javascript @US-06
 Feature: Highlight prerequisites
   Scenario: Selecting a subject highlights what it needs and unlocks
     Given the subject "Algebra II" requires "Algebra I" and unlocks "Analysis II"

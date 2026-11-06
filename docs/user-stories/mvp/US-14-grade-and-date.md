@@ -1,8 +1,8 @@
-# US-033 — Record grade and approval date
+# US-14 — Record grade and approval date
 
 - **Epic:** Progress
 - **Size:** S
-- **Depends on:** US-030
+- **Depends on:** US-11
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **student**, I want **to save the grade and date when I approve or promote 
 Target file: `features/progress/grade_and_date.feature`
 
 ```gherkin
-@progress @US-033
+@progress @US-14
 Feature: Grade and approval date
   Background:
     Given I am signed in as a student following the plan "2018"

@@ -1,8 +1,8 @@
-# US-002 — Seed the current study plan
+# US-02 — Seed the current study plan
 
 - **Epic:** Curriculum
 - **Size:** M
-- **Depends on:** US-001
+- **Depends on:** US-01
 - **Status:** Backlog
 
 ## Story
@@ -26,7 +26,7 @@ As a **student**, I want **the real study plan of my career loaded in the app**,
 Target file: `features/curriculum/seed_study_plan.feature`
 
 ```gherkin
-@curriculum @US-002
+@curriculum @US-02
 Feature: Seed study plan
   As a student
   I want the real study plan of my career loaded in the app

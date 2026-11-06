@@ -87,7 +87,7 @@ Full guide: [docs/design/style-guide.md](docs/design/style-guide.md). Read it be
   Never put literal UI copy in `.feature` files; steps resolve I18n keys.
 - Domain terms Spanish → English are fixed in the glossary ([domain.md](docs/product/domain.md)).
 - Branch names `us-<id>-<slug>`; commit messages are `type(us-NN): description`,
-  e.g. `feat(us-011): render grid by term` (Lefthook enforces it).
+  e.g. `feat(us-04): render grid by term` (Lefthook enforces it).
 - UI work follows the [style guide](docs/design/style-guide.md); change the guide in the same PR as a new pattern.
 - Do not use Minitest; the app is generated with `--skip-test`.
 - Prefer boring Rails conventions over cleverness; the team is learning.

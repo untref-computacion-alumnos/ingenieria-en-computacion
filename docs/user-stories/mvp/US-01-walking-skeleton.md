@@ -1,4 +1,4 @@
-# US-001 — Walking skeleton deployed to test
+# US-01 — Walking skeleton deployed to test
 
 - **Epic:** Foundation
 - **Size:** M
@@ -26,7 +26,7 @@ so that **every later story ships the same way from day one**.
 Target file: `features/foundation/home_page.feature`
 
 ```gherkin
-@foundation @US-001
+@foundation @US-01
 Feature: Home page
   As a visitor
   I want to see the application name and tagline on the home page

@@ -1,8 +1,8 @@
-# US-011 — View a plan as a grid by year and term
+# US-04 — View a plan as a grid by year and term
 
 - **Epic:** Curriculum
 - **Size:** M
-- **Depends on:** US-010
+- **Depends on:** US-03
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **visitor**, I want **to see a study plan as a grid of subjects by year and
 Target file: `features/curriculum/view_plan_grid.feature`
 
 ```gherkin
-@curriculum @US-011
+@curriculum @US-04
 Feature: View a plan grid
   Scenario: Subjects are grouped by year and term
     Given the study plan "2018" has subjects in year 1 term 1 and year 1 term 2
