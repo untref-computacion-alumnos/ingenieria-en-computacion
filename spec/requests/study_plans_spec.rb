@@ -64,6 +64,21 @@ RSpec.describe "Study plans" do
       assert_select "turbo-frame#subject_detail:empty"
     end
 
+    context "with subjects that have prerequisites" do
+      let(:plan) { create(:study_plan) }
+      let(:required) { create(:subject, study_plan: plan) }
+      let(:dependents) { create_list(:subject, 2, study_plan: plan, year: 2) }
+
+      before do
+        dependents.each { |subject| create(:prerequisite, subject: subject, required_subject: required) }
+      end
+
+      it "carries the prerequisite ids of every card, without N+1 queries" do
+        get study_plan_path(plan)
+        assert_select "a[data-subject-id=?][data-required-ids=?]", dependents.first.id.to_s, required.id.to_s
+      end
+    end
+
     context "with subjects in several terms" do
       let(:plan) { create(:study_plan, year: 2022) }
       let(:expected_order) do

@@ -9,4 +9,8 @@ class SubjectCardComponent < ViewComponent::Base
   private
 
   attr_reader :subject
+
+  def required_ids
+    subject.prerequisites.map(&:required_subject_id)
+  end
 end

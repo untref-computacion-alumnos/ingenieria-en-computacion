@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+<div class="overflow-x-auto" data-controller="grid-highlight" data-action="turbo:before-cache@document->grid-highlight#clear">
   <div class="flex gap-3">
     <% subjects_by_term.each do |(year, term), subjects| %>
       <section class="min-w-48 space-y-2">

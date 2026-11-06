@@ -1,4 +1,4 @@
-@curriculum @US-04 @wip
+@curriculum @US-04
 Feature: View plan grid
   As a visitor
   I want to see a study plan as a grid of subjects by year and term

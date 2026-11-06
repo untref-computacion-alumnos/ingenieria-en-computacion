@@ -25,4 +25,8 @@ RSpec.describe PlanGridComponent, type: :component do
   it "scrolls horizontally on narrow screens" do
     expect(page).to have_css("div.overflow-x-auto")
   end
+
+  it "is controlled by the grid-highlight controller" do
+    expect(page).to have_css("div.overflow-x-auto[data-controller='grid-highlight']")
+  end
 end
