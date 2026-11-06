@@ -50,5 +50,10 @@ RSpec.describe SubjectCardComponent, type: :component do
       render_card(record)
       expect(page).to have_css("a[data-required-ids='']")
     end
+
+    it "is a target of the controller and toggles the highlight on click" do
+      render_card(record)
+      expect(page).to have_css("a[data-grid-highlight-target='card'][data-action='click->grid-highlight#toggle']")
+    end
   end
 end
