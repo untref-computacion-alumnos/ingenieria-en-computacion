@@ -1,8 +1,8 @@
-# US-021 — Log in and log out
+# US-08 — Log in and log out
 
 - **Epic:** Accounts
 - **Size:** S
-- **Depends on:** US-020
+- **Depends on:** US-07
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **student**, I want **to log in and out**, so that **only I can see and cha
 Target file: `features/accounts/log_in_out.feature`
 
 ```gherkin
-@accounts @US-021
+@accounts @US-08
 Feature: Log in and out
   Scenario: A student logs in
     Given a registered student

@@ -1,7 +1,7 @@
 # Skeleton setup guide
 
 Goal: from this empty repository to a working Rails app with Docker, tests, linters, CI and protected
-branches, ready to start [US-001](user-stories/mvp/US-001-walking-skeleton.md). Do these steps in one
+branches, ready to start [US-01](user-stories/mvp/US-01-walking-skeleton.md). Do these steps in one
 sitting, pairing if possible. Commands assume Linux/macOS (or WSL2 on Windows).
 
 Versions below are placeholders (`3.4`, `17`); use the latest stable at the time and keep `.ruby-version`,
@@ -437,7 +437,7 @@ jobs:
 ## 9. GitHub: branches, protection and board
 
 ```bash
-git add -A && git commit -m "chore(us-001): Rails skeleton, tooling and docs"
+git add -A && git commit -m "chore(us-01): Rails skeleton, tooling and docs"
 git branch test && git branch prod
 git push -u origin main test prod
 
@@ -459,7 +459,7 @@ in the listed order. Set the WIP rule: only one issue in `In progress`.
 
 ## 10. Hosting options (free first)
 
-Pick one for `test` and `prod` while doing US-001. These facts are from memory and **change often**; verify current free-tier
+Pick one for `test` and `prod` while doing US-01. These facts are from memory and **change often**; verify current free-tier
 limits before committing.
 
 | Option | Idea | Trade-off |
@@ -486,7 +486,7 @@ Suggested path: `test` on the free option (sleeping is fine), `prod` on the same
 - [ ] `main`, `test`, `prod` exist, are protected, and merge commits are the only allowed method.
 - [ ] A throwaway PR proves: direct push is rejected, CI is required, one approval is required.
 - [ ] Lefthook is installed and blocks a bad commit message and a lint failure.
-- [ ] The board contains the MVP stories, in order, with US-001 in `Ready`.
+- [ ] The board contains the MVP stories, in order, with US-01 in `Ready`.
 - [ ] Every teammate ran the app locally and read `CLAUDE.md` and `docs/process/`.
 
-Next step: start [US-001](user-stories/mvp/US-001-walking-skeleton.md).
+Next step: start [US-01](user-stories/mvp/US-01-walking-skeleton.md).

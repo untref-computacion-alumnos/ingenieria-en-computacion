@@ -1,8 +1,8 @@
-# US-010 — List study plans
+# US-03 — List study plans
 
 - **Epic:** Curriculum
 - **Size:** S
-- **Depends on:** US-002
+- **Depends on:** US-02
 - **Status:** Backlog
 
 ## Story
@@ -23,7 +23,7 @@ As a **visitor**, I want **to see the available study plans of the career**, so 
 Target file: `features/curriculum/list_study_plans.feature`
 
 ```gherkin
-@curriculum @US-010
+@curriculum @US-03
 Feature: List study plans
   Scenario: A visitor sees the available plans
     Given the study plans "2011" and "2018" exist

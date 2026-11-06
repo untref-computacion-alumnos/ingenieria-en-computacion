@@ -1,8 +1,8 @@
-# US-031 — See which subjects I can take
+# US-12 — See which subjects I can take
 
 - **Epic:** Progress
 - **Size:** M
-- **Depends on:** US-030
+- **Depends on:** US-11
 - **Status:** Backlog
 
 ## Story
@@ -25,7 +25,7 @@ As a **student**, I want **each subject marked as available or blocked according
 Target file: `features/progress/subject_availability.feature`
 
 ```gherkin
-@progress @US-031
+@progress @US-12
 Feature: Subject availability
   Background:
     Given I am signed in as a student following the plan "2018"

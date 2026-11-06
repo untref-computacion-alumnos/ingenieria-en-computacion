@@ -1,8 +1,8 @@
-# US-023 — Select my study plan
+# US-10 — Select my study plan
 
 - **Epic:** Accounts
 - **Size:** S
-- **Depends on:** US-021, US-010
+- **Depends on:** US-08, US-03
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **student**, I want **to choose which study plan I follow**, so that **I se
 Target file: `features/accounts/select_plan.feature`
 
 ```gherkin
-@accounts @US-023
+@accounts @US-10
 Feature: Select my study plan
   Scenario: A student without a plan is asked to choose one
     Given I am signed in as a student without a plan

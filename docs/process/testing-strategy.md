@@ -36,7 +36,7 @@ the key rules). Minitest is **not** used (the app is generated with `--skip-test
 - One `Feature` per file, named after the story; use `Background` for shared setup.
 - **No literal UI copy.** Steps resolve I18n keys (for example "I should see the sign-in success message");
   quoted values are domain data only (subject names, years).
-- Tag by epic and story: `@curriculum @US-011`; use `@javascript` only when Turbo/Stimulus behavior needs a real browser.
+- Tag by epic and story: `@curriculum @US-04`; use `@javascript` only when Turbo/Stimulus behavior needs a real browser.
 - `cuke_linter` enforces scenario naming, no duplicated steps, and Given/When/Then order.
 
 ## Test data

@@ -2,7 +2,7 @@
 
 The single source of truth for how MiMalla looks and behaves. Every user story that touches the UI follows it.
 The tokens live in `app/assets/tailwind/application.css` (the only file allowed to contain color values).
-The decisions below were taken when US-012 was built; change them here and in that file, in the same PR.
+The decisions below were taken when US-05 was built; change them here and in that file, in the same PR.
 
 ## Principles
 
@@ -33,7 +33,7 @@ for links, not `text-secondary` (secondary only reaches AA on white).
 
 ### Subject status colors
 
-Used from US-030 on. Never rely on color alone: show the status name (or an icon with a text alternative) next to it.
+Used from US-11 on. Never rely on color alone: show the status name (or an icon with a text alternative) next to it.
 
 | Status | Token | Meaning |
 | --- | --- | --- |

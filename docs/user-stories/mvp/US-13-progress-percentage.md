@@ -1,8 +1,8 @@
-# US-032 — See my progress percentage
+# US-13 — See my progress percentage
 
 - **Epic:** Progress
 - **Size:** S
-- **Depends on:** US-030
+- **Depends on:** US-11
 - **Status:** Backlog
 
 ## Story
@@ -24,7 +24,7 @@ As a **student**, I want **to see how much of my degree I have completed**, so t
 Target file: `features/progress/progress_percentage.feature`
 
 ```gherkin
-@progress @US-032
+@progress @US-13
 Feature: Progress percentage
   Scenario: A student sees their progress
     Given I am signed in as a student following a plan with 40 subjects

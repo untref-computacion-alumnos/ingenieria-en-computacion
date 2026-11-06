@@ -1,8 +1,8 @@
-# US-030 — Mark a subject's status
+# US-11 — Mark a subject's status
 
 - **Epic:** Progress
 - **Size:** M
-- **Depends on:** US-023, US-012
+- **Depends on:** US-10, US-05
 - **Status:** Backlog
 
 ## Story
@@ -14,18 +14,18 @@ As a **student**, I want **to set the status of each subject (pending, in progre
 - Status changes inline through Turbo (no full reload); the card colour reflects the status.
 - Default is `pending`; only the owner can change their own progress (Pundit).
 - Visitors see the plain grid; trying to mark asks to sign in.
-- Whether a requirement allows the change (prerequisites) is enforced in US-031.
+- Whether a requirement allows the change (prerequisites) is enforced in US-12.
 
 ## Out of scope
 
-- Grade and date (US-033), free / retaking / dropped statuses, attempt history.
+- Grade and date (US-14), free / retaking / dropped statuses, attempt history.
 
 ## Acceptance criteria
 
 Target file: `features/progress/mark_subject_status.feature`
 
 ```gherkin
-@progress @US-030
+@progress @US-11
 Feature: Mark a subject's status
   Background:
     Given I am signed in as a student following the plan "2018"

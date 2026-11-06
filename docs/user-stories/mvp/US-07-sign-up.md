@@ -1,8 +1,8 @@
-# US-020 — Sign up with email and password
+# US-07 — Sign up with email and password
 
 - **Epic:** Accounts
 - **Size:** S
-- **Depends on:** US-001
+- **Depends on:** US-01
 - **Status:** Backlog
 
 ## Story
@@ -25,7 +25,7 @@ As a **visitor**, I want **to create an account with my email and a password**, 
 Target file: `features/accounts/sign_up.feature`
 
 ```gherkin
-@accounts @US-020
+@accounts @US-07
 Feature: Sign up
   Scenario: A visitor creates an account
     When I sign up with a valid email and password

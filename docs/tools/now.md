@@ -88,6 +88,6 @@ These were accepted; the trigger story installs them. Descriptions in [later.md]
 | Rack::Attack | US-208 / US-412 |
 | roo, pdf-reader, Nokogiri, Faraday, WebMock | US-105 CSV/Excel import; US-601 SIU file import; first HTTP integration |
 | icalendar, web-push, telegram-bot-ruby | US-307, US-309, US-608 |
-| Sentry (free plan) + Lograge | First deploy to `prod` (US-001 for `test` if desired) |
+| Sentry (free plan) + Lograge | First deploy to `prod` (US-01 for `test` if desired) |
 | Mission Control Jobs | First background job in production |
 | OmniAuth Google | US-206 |
