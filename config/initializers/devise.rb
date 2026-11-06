@@ -31,7 +31,7 @@ Devise.setup do |config|
   config.expire_all_remember_me_on_sign_out = true
   # config.extend_remember_period = false
   # config.rememberable_options = {}
-  config.password_length = 6..128
+  config.password_length = 10..128
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   # config.timeout_in = 30.minutes
   # config.lock_strategy = :failed_attempts
