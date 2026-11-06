@@ -12,6 +12,16 @@ es-AR:
   app:
     name: MiMalla
     skip_to_content: Saltar al contenido
+  devise:
+    shared:
+      minimum_password_length:
+        one: "(%{count} carácter como mínimo)"
+        other: "(%{count} caracteres como mínimo)"
+  errors:
+    messages:
+      not_saved:
+        one: 'No se pudo guardar el %{resource}: hay 1 error.'
+        other: 'No se pudo guardar el %{resource}: hay %{count} errores.'
   home:
     tagline: Seguí tu avance en Ingeniería en Computación.
   study_plans:
