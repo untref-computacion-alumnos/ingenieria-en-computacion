@@ -75,6 +75,12 @@ Use as `bg-status-approved text-status-content` (filled) or `text-status-approve
 - When the panel opens, focus moves to its heading (`autofocus` + `tabindex="-1"`). Closing is a link back to the
   plan, so it works without JavaScript.
 - Grid scrolls horizontally on narrow screens; cards are links, so they are keyboard focusable for free.
+- **Forms**: one column (`max-w-md`), built with `form_with(model:, scope:, url:)`. Each field is a `fieldset` with a
+  real `<label class="fieldset-legend">` and an `input w-full`, plus a hint (`<p class="label">`) tied to the input with
+  `aria-describedby` when useful. Errors go in an `alert alert-error alert-soft` with `role="alert"` that lists the
+  sentences; an error is never only a color. Set `autocomplete` on every field that has a standard value.
+- **Account links** live in the `<header>` of the layout: "Crear cuenta" when signed out; the email and a
+  "Cerrar sesión" button (not a link, sign out is `DELETE`) when signed in.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 
