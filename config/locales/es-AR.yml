@@ -24,6 +24,11 @@ es-AR:
         other: 'No se pudo guardar el %{resource}: hay %{count} errores.'
   home:
     tagline: Seguí tu avance en Ingeniería en Computación.
+  layouts:
+    account:
+      label: Navegación principal
+      sign_out: Cerrar sesión
+      sign_up: Crear cuenta
   study_plans:
     card:
       active: Vigente
