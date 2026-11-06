@@ -55,5 +55,11 @@ RSpec.describe SubjectCardComponent, type: :component do
       render_card(record)
       expect(page).to have_css("a[data-grid-highlight-target='card'][data-action='click->grid-highlight#toggle']")
     end
+
+    it "has a text label for each relation, so color is never the only cue" do
+      render_card(record)
+      expect(page).to have_text(I18n.t("study_plans.grid.relation.requires"))
+        .and have_text(I18n.t("study_plans.grid.relation.unlocks"))
+    end
   end
 end

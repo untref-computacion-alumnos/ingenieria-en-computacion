@@ -22,6 +22,9 @@ es-AR:
         other: "%{count} materias"
       title: Plan %{year}
     grid:
+      relation:
+        requires: Correlativa
+        unlocks: Habilita
       term: Año %{year} - Cuatrimestre %{term}
     index:
       title: Planes de estudio
