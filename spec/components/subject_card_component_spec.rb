@@ -51,9 +51,21 @@ RSpec.describe SubjectCardComponent, type: :component do
       expect(page).to have_css("a[data-required-ids='']")
     end
 
-    it "is a target of the controller and toggles the highlight on click" do
-      render_card(record)
-      expect(page).to have_css("a[data-grid-highlight-target='card'][data-action='click->grid-highlight#toggle']")
+    context "when wired to the grid-highlight controller" do
+      before { render_card(record) }
+
+      it "is a target of the controller" do
+        expect(page).to have_css("a[data-grid-highlight-target='card']")
+      end
+
+      it "toggles the highlight on click" do
+        expect(page).to have_css("a[data-action*='click->grid-highlight#toggle']")
+      end
+
+      it "previews the highlight on focus and ends it on blur" do
+        expect(page).to have_css("a[data-action*='focusin->grid-highlight#preview']" \
+                                 "[data-action*='focusout->grid-highlight#endPreview']")
+      end
     end
 
     it "has a text label for each relation, so color is never the only cue" do

@@ -33,6 +33,12 @@ When("I select the subject {string} in the grid") do |name|
   select_in_grid(name)
 end
 
+When("I focus the subject {string} in the grid") do |name|
+  path = study_plan_path(@subjects.fetch(name).study_plan)
+  visit path unless page.current_path == path
+  page.execute_script("arguments[0].focus()", grid_card(name))
+end
+
 Then("{string} should be highlighted as a prerequisite") do |name|
   card = "a[data-subject-id='#{@subjects.fetch(name).id}'][data-highlight='requires']"
   expect(page).to have_css(card)

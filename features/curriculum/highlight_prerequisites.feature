@@ -1,4 +1,4 @@
-@curriculum @javascript @US-06 @wip
+@curriculum @javascript @US-06
 Feature: Highlight prerequisites
   As a visitor
   I want related subjects highlighted when I select a subject
@@ -16,3 +16,7 @@ Feature: Highlight prerequisites
     Given I selected the subject "Álgebra II" in the grid
     When I select the subject "Álgebra II" in the grid
     Then no subject should be highlighted
+
+  Scenario: Focusing a subject with the keyboard highlights it
+    When I focus the subject "Álgebra II" in the grid
+    Then "Álgebra I" should be highlighted as a prerequisite

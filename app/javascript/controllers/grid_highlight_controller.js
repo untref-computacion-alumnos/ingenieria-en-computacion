@@ -20,38 +20,56 @@ export default class extends Controller {
 
   toggle({ currentTarget }) {
     this.#updatePinnedCard(currentTarget);
-    this.#render();
+    this.#render(this.#pinnedCard);
+  }
+
+  preview({ currentTarget }) {
+    if (this.#hasPinnedCard()) {
+      return;
+    }
+    this.#render(currentTarget);
+  }
+
+  endPreview() {
+    if (this.#hasPinnedCard()) {
+      return;
+    }
+    this.#render(null);
   }
 
   #updatePinnedCard(card) {
     this.#pinnedCard = this.#isPinned(card) ? null : card;
   }
 
+  #hasPinnedCard() {
+    return this.#pinnedCard !== null;
+  }
+
   #isPinned(card) {
     return this.#pinnedCard === card;
   }
 
-  #render() {
-    this.cardTargets.forEach((card) => this.#updateCardView(card));
+  #render(activeCard) {
+    this.cardTargets.forEach((card) => this.#updateCardView(card, activeCard));
   }
 
-  #updateCardView(card) {
-    const relation = this.#relationToPinned(card);
+  #updateCardView(card, activeCard) {
+    const relation = this.#relationToPinned(card, activeCard);
     this.#updateHighlight(card, relation);
-    this.#updateAriaCurrent(card, this.#isPinned(card));
+    this.#updateAriaCurrent(card, card === activeCard);
   }
 
-  #relationToPinned(card) {
-    if (!this.#pinnedCard) {
+  #relationToPinned(card, activeCard) {
+    if (!activeCard) {
       return null;
     }
-    if (this.#isPinned(card)) {
+    if (card === activeCard) {
       return this.constructor.RELATIONS.SELECTED;
     }
-    if (this.#dependsOn(this.#pinnedCard, card)) {
+    if (this.#dependsOn(activeCard, card)) {
       return this.constructor.RELATIONS.REQUIRES;
     }
-    if (this.#dependsOn(card, this.#pinnedCard)) {
+    if (this.#dependsOn(card, activeCard)) {
       return this.constructor.RELATIONS.UNLOCKS;
     }
     return null;
