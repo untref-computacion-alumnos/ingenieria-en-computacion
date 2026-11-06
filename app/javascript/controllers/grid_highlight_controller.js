@@ -37,8 +37,17 @@ export default class extends Controller {
     this.#render(null);
   }
 
+  clear() {
+    this.#clearPinnedCard();
+    this.#render();
+  }
+
   #updatePinnedCard(card) {
     this.#pinnedCard = this.#isPinned(card) ? null : card;
+  }
+
+  #clearPinnedCard() {
+    this.#pinnedCard = null;
   }
 
   #hasPinnedCard() {
@@ -49,7 +58,7 @@ export default class extends Controller {
     return this.#pinnedCard === card;
   }
 
-  #render(activeCard) {
+  #render(activeCard = this.#pinnedCard) {
     this.cardTargets.forEach((card) => this.#updateCardView(card, activeCard));
   }
 
