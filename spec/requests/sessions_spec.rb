@@ -65,4 +65,39 @@ RSpec.describe "Sessions" do
       end
     end
   end
+
+  describe "messages" do
+    let!(:user) { create(:user, email: "ana@example.com") }
+    let(:invalid_message) do
+      I18n.t("devise.failure.invalid", authentication_keys: User.human_attribute_name(:email))
+    end
+
+    it "explains a wrong password in an alert" do
+      post user_session_path, params: { user: { email: user.email, password: "not-the-password" } }
+      assert_select "[role='alert']", text: invalid_message
+    end
+
+    it "gives the same message for an email nobody registered" do
+      post user_session_path, params: { user: { email: "nobody@example.com", password: "a-long-password" } }
+      assert_select "[role='alert']", text: invalid_message
+    end
+
+    it "keeps the email the user typed after a failed login" do
+      post user_session_path, params: { user: { email: user.email, password: "not-the-password" } }
+      assert_select "input[name='user[email]'][value='#{user.email}']"
+    end
+
+    it "says that the user is signed in" do
+      post user_session_path, params: { user: { email: user.email, password: user.password } }
+      follow_redirect!
+      assert_select "[role='status']", text: I18n.t("devise.sessions.signed_in")
+    end
+
+    it "says that the user is signed out" do
+      sign_in user
+      delete destroy_user_session_path
+      follow_redirect!
+      assert_select "[role='status']", text: I18n.t("devise.sessions.signed_out")
+    end
+  end
 end
