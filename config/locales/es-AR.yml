@@ -27,6 +27,7 @@ es-AR:
   layouts:
     account:
       label: Navegación principal
+      sign_in: Iniciar sesión
       sign_out: Cerrar sesión
       sign_up: Crear cuenta
   study_plans:
