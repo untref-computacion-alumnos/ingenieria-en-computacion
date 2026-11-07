@@ -42,6 +42,10 @@ RSpec.describe "Sessions" do
         follow_redirect!
         assert_select "form[action='#{destroy_user_session_path}']"
       end
+
+      it "goes to the plans list" do
+        expect(response).to redirect_to(study_plans_path)
+      end
     end
 
     context "with a wrong password" do
