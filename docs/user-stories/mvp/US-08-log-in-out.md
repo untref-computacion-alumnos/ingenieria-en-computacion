@@ -21,7 +21,7 @@ As a **student**, I want **to log in and out**, so that **only I can see and cha
 
 ## Acceptance criteria
 
-Target file: `features/accounts/log_in_out.feature`
+Target file: `features/accounts/log_in_and_out.feature`
 
 ```gherkin
 @accounts @US-08
