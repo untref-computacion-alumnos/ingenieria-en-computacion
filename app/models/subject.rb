@@ -11,14 +11,15 @@ class Subject < ApplicationRecord
   validates :hours, :credits, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 
   def transitively_requires?(other)
-    visited = Set.new
-    pending = required_subjects.to_a
-    until pending.empty?
-      current = pending.pop
-      return true if current == other
+    all_required_subjects.include?(other)
+  end
 
-      pending.concat(current.required_subjects) if visited.add?(current)
+  protected
+
+  def all_required_subjects(visited = Set.new)
+    required_subjects.each do |required|
+      required.all_required_subjects(visited) if visited.add?(required)
     end
-    false
+    visited
   end
 end
