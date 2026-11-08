@@ -18,15 +18,15 @@ The decisions below were taken when US-05 was built; change them here and in tha
 Two daisyUI themes, `untref-light` (default) and `untref-dark`, chosen automatically from the operating system
 (`prefers-color-scheme`). There is no manual switch yet.
 
-| Token (Tailwind / daisyUI) | Light | Dark | Use |
-| --- | --- | --- | --- |
-| `primary` | `#1D5A9E` | `#7DB4EE` | Main actions, links, focus ring, active/selected |
-| `secondary` | `#0A78AB` | `#5CC4EE` | Secondary actions and highlights (UNTREF light blue family) |
-| `accent` | `#C8164F` | `#FF6B97` | Rare emphasis only (news, "new"). Never for subject statuses |
-| `neutral` | `#1B2430` | `#243247` | Dark surfaces (toasts, tooltips) |
-| `base-100` / `base-200` / `base-300` | `#FFFFFF` / `#F2F4F7` / `#DDE2E8` | `#0F1722` / `#162131` / `#22304A` | Page, panels, borders |
-| `base-content` | `#1B2430` | `#E6ECF3` | Text. Use `text-base-content/70` for secondary text, never lighter |
-| `info` `success` `warning` `error` | see the CSS file | see the CSS file | Feedback messages and alerts |
+| Token (Tailwind / daisyUI)           | Light                             | Dark                              | Use                                                                |
+| ------------------------------------ | --------------------------------- | --------------------------------- | ------------------------------------------------------------------ |
+| `primary`                            | `#1D5A9E`                         | `#7DB4EE`                         | Main actions, links, focus ring, active/selected                   |
+| `secondary`                          | `#0A78AB`                         | `#5CC4EE`                         | Secondary actions and highlights (UNTREF light blue family)        |
+| `accent`                             | `#C8164F`                         | `#FF6B97`                         | Rare emphasis only (news, "new"). Never for subject statuses       |
+| `neutral`                            | `#1B2430`                         | `#243247`                         | Dark surfaces (toasts, tooltips)                                   |
+| `base-100` / `base-200` / `base-300` | `#FFFFFF` / `#F2F4F7` / `#DDE2E8` | `#0F1722` / `#162131` / `#22304A` | Page, panels, borders                                              |
+| `base-content`                       | `#1B2430`                         | `#E6ECF3`                         | Text. Use `text-base-content/70` for secondary text, never lighter |
+| `info` `success` `warning` `error`   | see the CSS file                  | see the CSS file                  | Feedback messages and alerts                                       |
 
 Always pair a color with its `-content` token (`bg-primary text-primary-content`). On `base-200` use `text-primary`
 for links, not `text-secondary` (secondary only reaches AA on white).
@@ -35,16 +35,16 @@ for links, not `text-secondary` (secondary only reaches AA on white).
 
 Used from US-11 on. Never rely on color alone: show the status name (or an icon with a text alternative) next to it.
 
-| Status | Token | Meaning |
-| --- | --- | --- |
-| Pending | `status-pending` | Not started (neutral gray-blue) |
-| In progress | `status-in-progress` | Being taken now (blue) |
-| Regular | `status-regular` | Course passed, final pending (amber) |
-| Approved | `status-approved` | Passed (green) |
-| Promoted | `status-promoted` | Passed without final exam (teal) |
-| Free | `status-free` | Free student (violet) |
-| Retaking | `status-retaking` | Taking it again (orange) |
-| Dropped | `status-dropped` | Abandoned (red) |
+| Status      | Token                | Meaning                              |
+| ----------- | -------------------- | ------------------------------------ |
+| Pending     | `status-pending`     | Not started (neutral gray-blue)      |
+| In progress | `status-in-progress` | Being taken now (blue)               |
+| Regular     | `status-regular`     | Course passed, final pending (amber) |
+| Approved    | `status-approved`    | Passed (green)                       |
+| Promoted    | `status-promoted`    | Passed without final exam (teal)     |
+| Free        | `status-free`        | Free student (violet)                |
+| Retaking    | `status-retaking`    | Taking it again (orange)             |
+| Dropped     | `status-dropped`     | Abandoned (red)                      |
 
 Use as `bg-status-approved text-status-content` (filled) or `text-status-approved` / `border-status-approved`.
 
@@ -79,6 +79,9 @@ Use as `bg-status-approved text-status-content` (filled) or `text-status-approve
   real `<label class="fieldset-legend">` and an `input w-full`, plus a hint (`<p class="label">`) tied to the input with
   `aria-describedby` when useful. Errors go in an `alert alert-error alert-soft` with `role="alert"` that lists the
   sentences; an error is never only a color. Set `autocomplete` on every field that has a standard value.
+- **Acount recovery**: the login page has one quiet text link, "¿Ha olvidado su contraseña?" (`link` class), below
+  the form. The two recovery pages follow the _Forms_ rules. Whatever email is typed, the answer is the same
+  sentence in the green flash box (the app never says whether an account exists).
 - **Account links** live in the `<header>` of the layout: "Crear cuenta" when signed out; the email and a
   "Cerrar sesión" button (not a link, sign out is `DELETE`) when signed in.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
