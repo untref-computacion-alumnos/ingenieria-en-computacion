@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # config.secret_key = '8f9e1958b101b163bba4f31bcefe518871afc1dcb43d00bd09380a479124c84425a0b2a33f49b30c49107bac61c571c38f332cf7e037ffc127288b278b720edf'
   # config.parent_controller = 'DeviseController'
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = ENV.fetch("MAILER_SENDER", "no-reply@example.com")
   # config.mailer = 'Devise::Mailer'
   # config.parent_mailer = 'ActionMailer::Base'
   require "devise/orm/active_record"
@@ -15,7 +15,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
   # config.http_authenticatable_on_xhr = true
   # config.http_authentication_realm = 'Application'
-  # config.paranoid = true
+  config.paranoid = true
   config.skip_session_storage = [:http_auth]
   # config.clean_up_csrf_token_on_authentication = true
   # config.reload_routes = true
