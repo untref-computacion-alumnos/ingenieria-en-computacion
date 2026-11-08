@@ -13,6 +13,10 @@ RSpec.describe "Account navigation" do
     it "does not offer to sign out" do
       assert_select "form[action='#{destroy_user_session_path}']", count: 0
     end
+
+    it "offers to log in" do
+      assert_select "header nav a[href='#{new_user_session_path}']", text: I18n.t("layouts.account.sign_in")
+    end
   end
 
   context "when a user is signed in" do
@@ -36,6 +40,10 @@ RSpec.describe "Account navigation" do
 
     it "does not offer to create an account" do
       assert_select "a[href='#{new_user_registration_path}']", count: 0
+    end
+
+    it "does not offer to log in" do
+      assert_select "a[href='#{new_user_session_path}']", count: 0
     end
   end
 end

@@ -1,0 +1,10 @@
+<% if flash[:notice].present? %>
+  <div role="status" class="alert alert-success alert-soft mt-4" data-turbo-temporary>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<% if flash[:alert].present? %>
+  <div role="alert" class="alert alert-error alert-soft mt-4" data-turbo-temporary>
+    <%= flash[:alert] %>
+  </div>
+<% end %>

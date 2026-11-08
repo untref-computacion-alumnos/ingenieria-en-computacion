@@ -1,0 +1,22 @@
+<div class="mx-auto max-w-md py-6">
+  <h1 class="text-3xl font-bold pb-4">
+    <%= t(".sign_in") %>
+  </h1>
+  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name), class: "space-y-4") do |f| %>
+    <fieldset class="fieldset">
+      <%= f.label :email, class: "fieldset-legend" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "input w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= f.label :password, class: "fieldset-legend" %>
+      <%= f.password_field :password, autocomplete: "current-password", required: true, class: "input w-full" %>
+    </fieldset>
+    <% if devise_mapping.rememberable? %>
+      <div class="flex items-center gap-2">
+        <%= f.check_box :remember_me, class: "checkbox" %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    <%= f.submit t(".sign_in"), class: "btn btn-primary w-full" %>
+  <% end %>
+</div>

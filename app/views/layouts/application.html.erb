@@ -29,11 +29,15 @@
             <%= button_to t("layouts.account.sign_out"), destroy_user_session_path, method: :delete, class: "btn btn-ghost btn-sm" %>
           </div>
         <% else %>
-          <%= link_to t("layouts.account.sign_up"), new_user_registration_path, class: "btn btn-primary btn-sm" %>
+          <div class="flex items-center gap-2">
+            <%= link_to t("layouts.account.sign_in"), new_user_session_path, class: "btn btn-ghost btn-sm" %>
+            <%= link_to t("layouts.account.sign_up"), new_user_registration_path, class: "btn btn-primary btn-sm" %>
+          </div>
         <% end %>
       </nav>
     </header>
     <main id="main" class="container mx-auto px-5">
+      <%= render "layouts/flash" %>
       <%= yield %>
     </main>
   </body>
