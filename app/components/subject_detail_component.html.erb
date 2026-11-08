@@ -35,5 +35,5 @@
       </p>
     <% end %>
   </section>
-  <%= link_to t("subjects.detail.back", year: subject.study_plan.year), study_plan_path(subject.study_plan), class: "btn btn-sm btn-ghost", data: { turbo_frame: "_top" } %>
+  <%= link_to t("subjects.detail.back", year: study_plan.year), study_plan_path(study_plan), class: "btn btn-sm btn-ghost", data: { turbo_frame: "_top" } %>
 </article>

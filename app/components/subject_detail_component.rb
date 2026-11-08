@@ -10,6 +10,8 @@ class SubjectDetailComponent < ViewComponent::Base
 
   attr_reader :subject
 
+  delegate :study_plan, to: :subject
+
   def prerequisites
     subject.required_subjects.sort_by(&:name)
   end

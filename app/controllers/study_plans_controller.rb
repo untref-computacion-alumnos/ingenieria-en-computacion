@@ -7,8 +7,9 @@ class StudyPlansController < ApplicationController
   end
 
   def show
-    @study_plan = StudyPlan.find(params.expect(:id))
-    subjects = @study_plan.subjects.includes(:prerequisites).order(:year, :term, :name)
+    study_plan = StudyPlan.find(params.expect(:id))
+    subjects = study_plan.subjects.includes(:prerequisites).order(:year, :term, :name)
+    @study_plan = study_plan
     @subjects_by_term = subjects.group_by { |subject| [subject.year, subject.term] }
   end
 end

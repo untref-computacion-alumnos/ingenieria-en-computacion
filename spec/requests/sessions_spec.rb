@@ -26,6 +26,10 @@ RSpec.describe "Sessions" do
     it "uses a titled page in Spanish" do
       assert_select "h1", text: I18n.t("devise.sessions.new.sign_in")
     end
+
+    it "links to the password reset" do
+      assert_select "a[href='#{new_user_password_path}']", text: I18n.t("devise.shared.links.forgot_your_password")
+    end
   end
 
   describe "POST /users/sign_in" do
