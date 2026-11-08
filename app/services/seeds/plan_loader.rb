@@ -4,6 +4,12 @@ module Seeds
   class PlanLoader
     class Error < StandardError; end
 
+    SUBJECT_ATTRIBUTES = %w[name year term hours credits].freeze
+
+    def self.code_of(attributes)
+      attributes.fetch("code").to_s
+    end
+
     def initialize(path)
       @data = YAML.safe_load_file(path)
     end
@@ -29,30 +35,23 @@ module Seeds
 
     def load_subjects(plan)
       parsed_subjects.to_h do |attributes|
-        subject = plan.subjects.find_or_initialize_by(code: normalize_code(attributes.fetch("code")))
-        subject.update!(subject_attributes(attributes))
+        subject = plan.subjects.find_or_initialize_by(code: self.class.code_of(attributes))
+        subject.update!(attributes.slice(*SUBJECT_ATTRIBUTES))
         [subject.code, subject]
       end
     end
 
     def load_prerequisites(subjects)
-      parsed_subjects.each do |attributes|
-        subject = subjects.fetch(normalize_code(attributes.fetch("code")))
-        attributes.fetch("prerequisites", []).each do |req_code|
-          required = subjects.fetch(normalize_code(req_code)) do
-            raise Error, "Unknown prerequisite #{req_code} for #{attributes.fetch("code")}"
-          end
-          subject.prerequisites.find_or_create_by!(required_subject: required)
-        end
+      prerequisite_pairs.each do |code, required_code|
+        required = subjects[required_code] || raise(Error, "Unknown prerequisite #{required_code} for #{code}")
+        subjects.fetch(code).prerequisites.find_or_create_by!(required_subject: required)
       end
     end
 
-    def normalize_code(code)
-      code.to_s
-    end
-
-    def subject_attributes(attributes)
-      attributes.slice("name", "year", "term", "hours", "credits")
+    def prerequisite_pairs
+      parsed_subjects.flat_map do |attributes|
+        [self.class.code_of(attributes)].product(attributes.fetch("prerequisites", []).map(&:to_s))
+      end
     end
 
     def parsed_subjects
