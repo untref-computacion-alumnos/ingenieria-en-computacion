@@ -8,14 +8,11 @@ def ask_for_a_reset(email)
   click_button I18n.t("devise.passwords.new.send_me_reset_password_instructions")
 end
 
-def last_mail
-  ActionMailer::Base.deliveries.last
-end
-
 Given("a registered student with a reset link") do
   @student = create(:user, email: "ana@example.com")
   @student.send_reset_password_instructions
-  @reset_path = URI(last_mail.body.decoded[/href="([^"]+)"/, 1]).request_uri
+  mail = ActionMailer::Base.deliveries.last
+  @reset_path = URI(mail.body.decoded[/href="([^"]+)"/, 1]).request_uri
 end
 
 When("I request a password reset for their email") do
@@ -35,7 +32,7 @@ end
 
 Then("a reset email should be sent to them") do
   expect(ActionMailer::Base.deliveries.size).to eq(1)
-  expect(last_mail.to).to eq([@student.email])
+  expect(ActionMailer::Base.deliveries.last.to).to eq([@student.email])
 end
 
 Then("I should be able to log in with the new password") do
