@@ -33,6 +33,57 @@ RSpec.describe "Passwords" do
     end
   end
 
+  describe "GET /users/password/edit" do
+    context "with a token" do
+      before { get edit_user_password_path(reset_password_token: "the-token") }
+
+      it "responds successfully" do
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "submits the form with the method and the token" do
+        assert_select "form[action='#{user_password_path}']" do
+          assert_select "input[type='hidden'][name='_method'][value='put']"
+          assert_select "input[type='hidden'][name='user[reset_password_token]'][value='the-token']"
+        end
+      end
+
+      it "renders the new password and its confirmation" do
+        assert_select "form[action='#{user_password_path}']" do
+          assert_select "input[type='password'][name='user[password]'][autocomplete='new-password']"
+          assert_select "input[type='password'][name='user[password_confirmation]'][autocomplete='new-password']"
+        end
+      end
+
+      it "labels every field" do
+        assert_select "label[for='user_password']", text: I18n.t("devise.passwords.edit.new_password")
+        assert_select "label[for='user_password_confirmation']",
+                      text: I18n.t("devise.passwords.edit.confirm_new_password")
+      end
+
+      it "says how long the password must be" do
+        assert_select "#password_hint", text: /#{User.password_length.min}/
+      end
+
+      it "uses a titled page in Spanish" do
+        assert_select "h1", text: I18n.t("devise.passwords.edit.change_your_password")
+      end
+    end
+
+    context "without a token" do
+      before { get edit_user_password_path }
+
+      it "goes back to the login page" do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+
+      it "explains why in an alert" do
+        follow_redirect!
+        assert_select "[role='alert']", text: I18n.t("devise.passwords.no_token")
+      end
+    end
+  end
+
   describe "POST /users/password" do
     let!(:user) { create(:user, email: "ana@example.com") }
     let(:confirmation) { I18n.t("devise.passwords.send_paranoid_instructions") }
