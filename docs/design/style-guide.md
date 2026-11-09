@@ -82,8 +82,12 @@ Use as `bg-status-approved text-status-content` (filled) or `text-status-approve
 - **Acount recovery**: the login page has one quiet text link, "¿Ha olvidado su contraseña?" (`link` class), below
   the form. The two recovery pages follow the _Forms_ rules. Whatever email is typed, the answer is the same
   sentence in the green flash box (the app never says whether an account exists).
-- **Account links** live in the `<header>` of the layout: "Crear cuenta" when signed out; the email and a
-  "Cerrar sesión" button (not a link, sign out is `DELETE`) when signed in.
+- **Account links** live in the `<header>` of the layout: "Crear cuenta" when signed out; a quiet "Mi plan" text link
+  (`link` class), the email and a "Cerrar sesión" button (not a link, sign out is `DELETE`) when signed in.
+- **Plan picker**: one column (`max-w-md`) with a `fieldset` whose legend is "Plan de estudios" and one daisyUI
+  `radio` per plan (the same "Plan 2018" text as the plan card), newest first, nothing preselected for a new
+  account. A signed-in user without a plan is sent to the picker after signing in, after signing up and when opening
+  the home page.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 

@@ -32,6 +32,28 @@ RSpec.describe User do
     end
   end
 
+  describe "study plan" do
+    it { is_expected.to belong_to(:study_plan).optional }
+
+    it "is valid without a study plan, like a brand new account" do
+      expect(build(:user, study_plan: nil)).to be_valid
+    end
+
+    it "is valid with a study plan" do
+      expect(build(:user, :with_study_plan)).to be_valid
+    end
+
+    it "requires a study plan when it is being chosen" do
+      user = build(:user, study_plan: nil)
+      user.validate(:plan_selection)
+      expect(user.errors).to be_of_kind(:study_plan, :blank)
+    end
+
+    it "accepts a study plan when it is being chosen" do
+      expect(build(:user, :with_study_plan).valid?(:plan_selection)).to be(true)
+    end
+  end
+
   describe "roles" do
     it "gives every new user the student role" do
       expect(create(:user)).to have_role(:student)

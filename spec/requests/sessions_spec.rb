@@ -36,6 +36,8 @@ RSpec.describe "Sessions" do
     let!(:user) { create(:user, email: "ana@example.com") }
 
     context "with the right credentials" do
+      let!(:user) { create(:user, :with_study_plan, email: "ana@example.com") }
+
       before { post user_session_path, params: { user: { email: user.email, password: user.password } } }
 
       it "redirects after the login" do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_01_221628) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_09_174150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -241,8 +241,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_221628) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "study_plan_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["study_plan_id"], name: "index_users_on_study_plan_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -265,4 +267,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_01_221628) do
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "study_plans", "careers"
   add_foreign_key "subjects", "study_plans"
+  add_foreign_key "users", "study_plans"
 end

@@ -34,5 +34,24 @@ RSpec.describe "Home" do
     it "uses the application name as the page title" do
       expect(response.body).to include("<title>#{I18n.t("app.name")}</title>")
     end
+
+    describe "GET / for a signed-in user" do
+      it "sends a user without a study plan to the picker" do
+        sign_in create(:user)
+        get root_path
+        expect(response).to redirect_to(edit_users_study_plan_path)
+      end
+
+      it "shows the home page to a user who follows a plan" do
+        sign_in create(:user, :with_study_plan)
+        get root_path
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "shows the home page to a visitor" do
+        get root_path
+        expect(response).to have_http_status(:ok)
+      end
+    end
   end
 end

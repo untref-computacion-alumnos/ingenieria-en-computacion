@@ -3,7 +3,7 @@
 - **Epic:** Accounts
 - **Size:** S
 - **Depends on:** US-08, US-03
-- **Status:** Backlog
+- **Status:** Done
 
 ## Story
 

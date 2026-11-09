@@ -17,10 +17,14 @@ RSpec.describe "Account navigation" do
     it "offers to log in" do
       assert_select "header nav a[href='#{new_user_session_path}']", text: I18n.t("layouts.account.sign_in")
     end
+
+    it "does not offer the plan picker" do
+      assert_select "header nav a[href='#{edit_users_study_plan_path}']", count: 0
+    end
   end
 
   context "when a user is signed in" do
-    let(:user) { create(:user, email: "ana@example.com") }
+    let(:user) { create(:user, :with_study_plan, email: "ana@example.com") }
 
     before do
       sign_in user
@@ -44,6 +48,10 @@ RSpec.describe "Account navigation" do
 
     it "does not offer to log in" do
       assert_select "a[href='#{new_user_session_path}']", count: 0
+    end
+
+    it "links to the plan picker" do
+      assert_select "header nav a[href='#{edit_users_study_plan_path}']", text: I18n.t("layouts.account.my_plan")
     end
   end
 end

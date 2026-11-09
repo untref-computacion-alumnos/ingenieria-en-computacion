@@ -87,7 +87,7 @@ RSpec.describe "Passwords" do
   end
 
   describe "PUT /users/password" do
-    let!(:user) { create(:user, email: "ana@example.com") }
+    let!(:user) { create(:user, :with_study_plan, email: "ana@example.com") }
     let(:token) { user.send_reset_password_instructions }
     let(:new_password) { "another-long-password" }
 
