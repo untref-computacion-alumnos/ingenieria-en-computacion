@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     wanted_path = stored_location_for(resource)
-    return edit_users_study_plan_path if resource.study_plan.nil?
+    return edit_users_study_plan_path unless resource.study_plan
 
     wanted_path || study_plans_path
   end
 
   def require_study_plan
-    redirect_to edit_users_study_plan_path if user_signed_in? && current_user.study_plan.nil?
+    redirect_to edit_users_study_plan_path if user_signed_in? && !current_user.study_plan
   end
 end

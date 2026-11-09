@@ -5,8 +5,8 @@
   <p class="pb-4">
     <%= t(".intro") %>
   </p>
-  <%= form_with(model: @user, scope: :user, url: users_study_plan_path, method: :patch, class: "space-y-4") do |f| %>
-    <%= render "devise/shared/error_messages", resource: @user %>
+  <%= form_with(model: current_user, scope: :user, url: users_study_plan_path, method: :patch, class: "space-y-4") do |f| %>
+    <%= render "devise/shared/error_messages", resource: current_user %>
     <fieldset class="fieldset">
       <legend class="fieldset-legend">
         <%= User.human_attribute_name(:study_plan) %>
