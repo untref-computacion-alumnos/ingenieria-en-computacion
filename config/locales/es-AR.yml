@@ -30,6 +30,7 @@ es-AR:
   layouts:
     account:
       label: Navegación principal
+      my_plan: Mi plan
       sign_in: Iniciar sesión
       sign_out: Cerrar sesión
       sign_up: Crear cuenta
