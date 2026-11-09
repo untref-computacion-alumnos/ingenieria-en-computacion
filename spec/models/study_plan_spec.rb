@@ -6,6 +6,7 @@ RSpec.describe StudyPlan do
   it { is_expected.to belong_to(:career) }
   it { is_expected.to validate_presence_of(:year) }
   it { is_expected.to have_many(:subjects).dependent(:destroy) }
+  it { is_expected.to have_many(:users).dependent(:nullify) }
 
   it "rejects a second plan with the same year in the same career" do
     existing = create(:study_plan, year: 2018)
