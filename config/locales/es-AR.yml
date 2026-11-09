@@ -64,3 +64,5 @@ es-AR:
         intro: Mostramos tu malla y tu avance según el plan que cursás
         submit: Guardar plan
         title: Elegí tu plan de estudios
+      update:
+        success: Listo, seguís el plan %{year}
