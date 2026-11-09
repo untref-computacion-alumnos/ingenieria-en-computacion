@@ -20,7 +20,7 @@ RSpec.describe "Account navigation" do
   end
 
   context "when a user is signed in" do
-    let(:user) { create(:user, email: "ana@example.com") }
+    let(:user) { create(:user, :with_study_plan, email: "ana@example.com") }
 
     before do
       sign_in user

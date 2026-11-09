@@ -46,7 +46,7 @@ RSpec.describe "Registrations" do
 
       it "signs the user in and goes to the plans list" do
         post user_registration_path, params: valid_params
-        expect(response).to redirect_to(study_plans_path)
+        expect(response).to redirect_to(edit_users_study_plan_path)
       end
 
       it "gives the new user the student role" do
