@@ -1,0 +1,23 @@
+<div class="mx-auto max-w-md py-6">
+  <h1 class="text-3xl font-bold pb-4">
+    <%= t(".title") %>
+  </h1>
+  <p class="pb-4">
+    <%= t(".intro") %>
+  </p>
+  <%= form_with(model: @user, scope: :user, url: users_study_plan_path, method: :patch, class: "space-y-4") do |f| %>
+    <%= render "devise/shared/error_messages", resource: @user %>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">
+        <%= User.human_attribute_name(:study_plan) %>
+      </legend>
+      <% @study_plans.each do |study_plan| %>
+        <label class="label cursor-pointer justify-start gap-3 text-base-content">
+          <%= f.radio_button :study_plan_id, study_plan.id, required: true, class: "radio radio-primary" %>
+          <%= t("study_plans.card.title", year: study_plan.year) %>
+        </label>
+      <% end %>
+    </fieldset>
+    <%= f.submit t(".submit"), class: "btn btn-primary w-full" %>
+  <% end %>
+</div>

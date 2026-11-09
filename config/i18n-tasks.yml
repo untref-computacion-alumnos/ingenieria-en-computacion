@@ -156,7 +156,7 @@ ignore_unused:
   - "activerecord.errors.*"
   - "devise.*"
   - "errors.messages.*"
-# - 'activerecord.attributes.*'
+  - "activerecord.attributes.*"
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

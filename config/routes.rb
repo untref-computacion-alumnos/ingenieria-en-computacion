@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :study_plans, only: %i[index show]
   resources :subjects, only: :show
+  namespace :users do
+    resource :study_plan, only: %i[edit update]
+  end
 end

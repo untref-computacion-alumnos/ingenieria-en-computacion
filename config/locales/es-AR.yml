@@ -1,6 +1,9 @@
 ---
 es-AR:
   activerecord:
+    attributes:
+      user:
+        study_plan: Plan de estudios
     errors:
       models:
         prerequisite:
@@ -55,3 +58,9 @@ es-AR:
       no_prerequisites: No tiene correlativas
       position: Año %{year} - Cuatrimestre %{term}
       prerequisites: Correlativas
+  users:
+    study_plans:
+      edit:
+        intro: Mostramos tu malla y tu avance según el plan que cursás
+        submit: Guardar plan
+        title: Elegí tu plan de estudios
