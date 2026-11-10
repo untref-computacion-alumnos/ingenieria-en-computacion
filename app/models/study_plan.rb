@@ -12,4 +12,8 @@ class StudyPlan < ApplicationRecord
   def self.current
     order(:year).last
   end
+
+  def subjects_by_term
+    subjects.includes(:prerequisites).order(:year, :term, :name).group_by { |subject| [subject.year, subject.term] }
+  end
 end
