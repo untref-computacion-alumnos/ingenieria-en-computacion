@@ -9,7 +9,10 @@ class SubjectProgressesController < ApplicationController
     @progress = SubjectProgress.find_or_initialize_by(user: current_user, subject: @subject)
     authorize @progress
     if @progress.update(status: status_param)
-      redirect_to subject_path(@subject), status: :see_other
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to subject_path(@subject), status: :see_other }
+      end
     else
       head :unprocessable_content
     end

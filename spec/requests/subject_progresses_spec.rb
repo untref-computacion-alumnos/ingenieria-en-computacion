@@ -116,5 +116,54 @@ RSpec.describe "SubjectProgresses" do
         expect(response).to have_http_status(:not_found)
       end
     end
+
+    context "when Turbo asks for a stream" do
+      let(:turbo_headers) { { "Accept" => "text/vnd.turbo-stream.html" } }
+
+      def mark_with_turbo(status)
+        patch subject_progress_path(subject_record), params: { status: status }, headers: turbo_headers
+      end
+
+      before { sign_in user }
+
+      it "answers 200, not a redirect" do
+        mark_with_turbo("approved")
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "answers with the Turbo Stream media type" do
+        mark_with_turbo("approved")
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+      end
+
+      it "still stores the status" do
+        expect { mark_with_turbo("approved") }.to change { user.status_for(subject_record) }.to("approved")
+      end
+
+      it "replaces the badge of the card" do
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[action='replace'][target='status_subject_#{subject_record.id}']"
+        expect(response.body).to include("data-status=\"approved\"")
+      end
+
+      it "replaces the picker of the panel" do
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[action='replace'][target='status_picker_subject_#{subject_record.id}']"
+        expect(response.body).to include("aria-pressed=\"true\"")
+      end
+
+      it "answers 422 for a status that cannot be stored" do
+        mark_with_turbo("free")
+        expect(response).to have_http_status(:unprocessable_content)
+      end
+    end
+
+    context "when a visitor asks for a stream" do
+      it "still redirects to the login page" do
+        patch subject_progress_path(subject_record), params: { status: "approved" },
+                                                     headers: { "Accept" => "text/vnd.turbo-stream.html" }
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end
