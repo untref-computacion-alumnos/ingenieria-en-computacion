@@ -33,7 +33,9 @@ for links, not `text-secondary` (secondary only reaches AA on white).
 
 ### Subject status colors
 
-Used from US-11 on. Never rely on color alone: show the status name (or an icon with a text alternative) next to it.
+Used by the status badge and the left border of the grid cards, and by the status picker in the side panel (US-11).
+Never rely on color alone: show the status name (or an icon with a text alternative) next to it.
+Free, retaking and dropped have a token but no UI yet.
 
 | Status      | Token                | Meaning                              |
 | ----------- | -------------------- | ------------------------------------ |
@@ -88,6 +90,10 @@ Use as `bg-status-approved text-status-content` (filled) or `text-status-approve
   `radio` per plan (the same "Plan 2018" text as the plan card), newest first, nothing preselected for a new
   account. A signed-in user without a plan is sent to the picker after signing in, after signing up and when opening
   the home page.
+- **Subject status**: for a signed-in student every card shows a small badge with the status name (filled with its
+  `status-*` token and `text-status-content`) and a 4 px left border of the same color; visitors see the plain grid.
+  The side panel has a group of five toggle buttons (`aria-pressed`, a "✓" on the current one) that change the
+  status with Turbo, without reloading. The status is never conveyed by color alone.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 
