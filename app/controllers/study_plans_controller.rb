@@ -11,5 +11,6 @@ class StudyPlansController < ApplicationController
     subjects = study_plan.subjects.includes(:prerequisites).order(:year, :term, :name)
     @study_plan = study_plan
     @subjects_by_term = subjects.group_by { |subject| [subject.year, subject.term] }
+    @statuses = current_user.progress_statuses if user_signed_in?
   end
 end

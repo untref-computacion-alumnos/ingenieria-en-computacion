@@ -29,4 +29,25 @@ RSpec.describe PlanGridComponent, type: :component do
   it "is controlled by the grid-highlight controller" do
     expect(page).to have_css("div.overflow-x-auto[data-controller='grid-highlight']")
   end
+
+  describe "statuses" do
+    let(:subject_record) { create(:subject, year: 1, term: 1) }
+    let(:subjects_by_term) { { [1, 1] => [subject_record] } }
+
+    it "shows the status of each subject for a signed-in user" do
+      statuses = Hash.new("pending").merge(subject_record.id => "approved")
+      render_inline(described_class.new(subjects_by_term: subjects_by_term, statuses: statuses))
+      expect(page).to have_css("[data-status='approved']")
+    end
+
+    it "shows pending for a subject the user never marked" do
+      render_inline(described_class.new(subjects_by_term: subjects_by_term, statuses: Hash.new("pending")))
+      expect(page).to have_css("[data-status='pending']")
+    end
+
+    it "shows no status at all for a visitor" do
+      render_inline(described_class.new(subjects_by_term: subjects_by_term))
+      expect(page).to have_no_css("[data-status]")
+    end
+  end
 end

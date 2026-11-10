@@ -74,4 +74,21 @@ RSpec.describe SubjectCardComponent, type: :component do
         .and have_text(I18n.t("study_plans.grid.relation.unlocks"))
     end
   end
+
+  describe "status" do
+    it "shows no badge when there is no status, like for a visitor" do
+      render_card
+      expect(page).to have_no_css("[data-status]")
+    end
+
+    it "shows the badge with the status when there is one" do
+      render_inline(described_class.new(subject: subject_record, status: "regular"))
+      expect(page).to have_css("a [data-status='regular']", text: I18n.t("subject_progresses.statuses.regular"))
+    end
+
+    it "paints the left border of the card with the color of the status" do
+      render_inline(described_class.new(subject: subject_record, status: "approved"))
+      expect(page).to have_css("a.border-l-4.has-\\[\\[data-status\\=approved\\]\\]\\:border-l-status-approved")
+    end
+  end
 end
