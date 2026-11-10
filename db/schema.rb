@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_09_174150) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_09_234653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -219,6 +219,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_09_174150) do
     t.index ["career_id"], name: "index_study_plans_on_career_id"
   end
 
+  create_table "subject_progresses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subject_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_subject_progresses_on_subject_id"
+    t.index ["user_id", "subject_id"], name: "index_subject_progresses_on_user_id_and_subject_id", unique: true
+    t.index ["user_id"], name: "index_subject_progresses_on_user_id"
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.bigint "study_plan_id", null: false
     t.string "code", null: false
@@ -266,6 +277,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_09_174150) do
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "study_plans", "careers"
+  add_foreign_key "subject_progresses", "subjects"
+  add_foreign_key "subject_progresses", "users"
   add_foreign_key "subjects", "study_plans"
   add_foreign_key "users", "study_plans"
 end

@@ -69,4 +69,38 @@ RSpec.describe User do
       expect(user.roles.pluck(:name)).to eq(["student"])
     end
   end
+
+  describe "subject progress" do
+    let(:user) { create(:user) }
+    let(:subject_record) { create(:subject) }
+
+    it { is_expected.to have_many(:subject_progresses).dependent(:destroy) }
+
+    describe "#status_for" do
+      it "is pending when the user never marked the subject" do
+        expect(user.status_for(subject_record)).to eq("pending")
+      end
+
+      it "returns the status the user marked" do
+        create(:subject_progress, user: user, subject: subject_record, status: :regular)
+        expect(user.status_for(subject_record)).to eq("regular")
+      end
+
+      it "ignores what other users marked" do
+        create(:subject_progress, subject: subject_record, status: :approved)
+        expect(user.status_for(subject_record)).to eq("pending")
+      end
+    end
+
+    describe "#progress_statuses" do
+      it "maps the id of each marked subject to its status" do
+        create(:subject_progress, user: user, subject: subject_record, status: :approved)
+        expect(user.progress_statuses[subject_record.id]).to eq("approved")
+      end
+
+      it "answers pending for a subject that was never marked" do
+        expect(user.progress_statuses[subject_record.id]).to eq("pending")
+      end
+    end
+  end
 end

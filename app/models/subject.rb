@@ -3,6 +3,7 @@
 class Subject < ApplicationRecord
   belongs_to :study_plan
   has_many :prerequisites, dependent: :destroy
+  has_many :subject_progresses, dependent: :destroy
   has_many :required_subjects, through: :prerequisites
   validates :name, :code, presence: true
   validates :code, uniqueness: { scope: :study_plan_id }
