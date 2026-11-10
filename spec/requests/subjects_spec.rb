@@ -42,5 +42,27 @@ RSpec.describe "Subjects" do
       get subject_path(subject_record)
       assert_select "a[href=?][data-turbo-frame=_top]", study_plan_path(plan)
     end
+
+    describe "status picker" do
+      it "is shown to a visitor, with nothing pressed" do
+        get subject_path(subject_record)
+        assert_select "section#status_picker_subject_#{subject_record.id}"
+        assert_select "button[aria-pressed='true']", count: 0
+      end
+
+      it "shows the status the signed-in student marked as pressed" do
+        user = create(:user, :with_study_plan)
+        create(:subject_progress, user: user, subject: subject_record, status: :approved)
+        sign_in user
+        get subject_path(subject_record)
+        assert_select "button[aria-pressed='true']", text: /#{I18n.t("subject_progresses.statuses.approved")}/
+      end
+
+      it "shows pending to a student who never marked the subject" do
+        sign_in create(:user, :with_study_plan)
+        get subject_path(subject_record)
+        assert_select "button[aria-pressed='true']", text: /#{I18n.t("subject_progresses.statuses.pending")}/
+      end
+    end
   end
 end

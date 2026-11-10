@@ -1,0 +1,17 @@
+<section id="<%= dom_id %>" class="space-y-2">
+  <h3 class="font-semibold">
+    <%= t("subject_progresses.picker.title") %>
+  </h3>
+  <div role="group" aria-label="<%= t("subject_progresses.picker.label") %>" class="flex flex-wrap gap-2">
+    <% statuses.each do |candidate| %>
+      <%= button_to subject_progress_path(subject), method: :patch, params: { status: candidate }, form: { class: "contents" }, class: button_class(candidate), aria: { pressed: pressed?(candidate) } do %>
+        <% if pressed?(candidate) %>
+          <span aria-hidden="true">
+            ✓
+          </span>
+        <% end %>
+        <%= t("subject_progresses.statuses.#{candidate}") %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

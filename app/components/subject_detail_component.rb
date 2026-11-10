@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class SubjectDetailComponent < ViewComponent::Base
-  def initialize(subject:)
+  def initialize(subject:, status: nil)
     super()
     @subject = subject
+    @status = status
   end
 
   private
 
-  attr_reader :subject
+  attr_reader :subject, :status
 
   delegate :study_plan, to: :subject
 
