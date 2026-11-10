@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :reek:UtilityFunction
 def status_label(status)
   I18n.t("subject_progresses.statuses.#{status}")
 end
