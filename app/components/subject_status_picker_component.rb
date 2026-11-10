@@ -15,10 +15,6 @@ class SubjectStatusPickerComponent < ViewComponent::Base
     ActionView::RecordIdentifier.dom_id(subject, :status_picker)
   end
 
-  def statuses
-    SubjectProgress.statuses.keys
-  end
-
   def pressed?(candidate)
     candidate == status
   end

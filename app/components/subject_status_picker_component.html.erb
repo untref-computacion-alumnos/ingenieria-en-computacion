@@ -3,7 +3,7 @@
     <%= t("subject_progresses.picker.title") %>
   </h3>
   <div role="group" aria-label="<%= t("subject_progresses.picker.label") %>" class="flex flex-wrap gap-2">
-    <% statuses.each do |candidate| %>
+    <% SubjectProgress.statuses.each_key do |candidate| %>
       <%= button_to subject_progress_path(subject), method: :patch, params: { status: candidate }, form: { class: "contents" }, class: button_class(candidate), aria: { pressed: pressed?(candidate) } do %>
         <% if pressed?(candidate) %>
           <span aria-hidden="true">
