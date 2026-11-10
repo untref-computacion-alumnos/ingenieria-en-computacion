@@ -22,6 +22,25 @@ RSpec.describe StudyPlan do
     end
   end
 
+  describe "#subjects_by_term" do
+    let(:plan) { create(:study_plan) }
+
+    before do
+      create(:subject, study_plan: plan, year: 2, term: 1, name: "Redes")
+      create(:subject, study_plan: plan, year: 1, term: 2, name: "Física")
+      create(:subject, study_plan: plan, year: 1, term: 1, name: "Álgebra")
+      create(:subject, study_plan: plan, year: 1, term: 1, name: "Análisis")
+    end
+
+    it "groups the subjects by year and term" do
+      expect(plan.subjects_by_term.keys).to contain_exactly([1, 1], [1, 2], [2, 1])
+    end
+
+    it "sorts the subjects of a term by name" do
+      expect(plan.subjects_by_term[[1, 1]].map(&:name)).to eq(%w[Álgebra Análisis])
+    end
+  end
+
   describe ".with_subjects_count" do
     it "adds the number of subjects of each plan, including plans without subjects" do
       full = create(:study_plan, year: 2022)

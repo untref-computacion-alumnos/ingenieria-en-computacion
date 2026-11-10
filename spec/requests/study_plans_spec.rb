@@ -96,5 +96,43 @@ RSpec.describe "Study plans" do
         expect(response.body).to match(Regexp.new(expected_order.join(".*"), Regexp::MULTILINE))
       end
     end
+
+    context "when a visitor looks at the subject statuses" do
+      let(:plan) { create(:study_plan, year: 2022) }
+
+      before { create(:subject, study_plan: plan, name: "Álgebra I") }
+
+      it "shows no statuses" do
+        get study_plan_path(plan)
+        assert_select "[data-status]", count: 0
+      end
+    end
+
+    context "when a student is signed in" do
+      let(:plan) { create(:study_plan, year: 2022) }
+      let!(:algebra) { create(:subject, study_plan: plan, name: "Álgebra I") }
+      let!(:analysis) { create(:subject, study_plan: plan, name: "Análisis I") }
+      let(:user) { create(:user, study_plan: plan) }
+
+      before do
+        create(:subject_progress, user: user, subject: algebra, status: :approved)
+        sign_in user
+        get study_plan_path(plan)
+      end
+
+      it "shows what the student marked" do
+        assert_select "[data-status='approved']", count: 1
+      end
+
+      it "shows pending for the rest" do
+        assert_select "[data-status='pending']", count: 1
+      end
+
+      it "does not show what another student marked" do
+        create(:subject_progress, subject: analysis, status: :promoted)
+        get study_plan_path(plan)
+        assert_select "[data-status='promoted']", count: 0
+      end
+    end
   end
 end

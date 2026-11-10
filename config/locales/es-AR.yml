@@ -50,6 +50,16 @@ es-AR:
       title: Planes de estudio
     show:
       title: Plan de estudios %{year}
+  subject_progresses:
+    picker:
+      label: Estado de la materia
+      title: Mi estado
+    statuses:
+      approved: Aprobada
+      in_progress: Cursando
+      pending: Pendiente
+      promoted: Promocionada
+      regular: Regular
   subjects:
     detail:
       back: Volver al plan %{year}

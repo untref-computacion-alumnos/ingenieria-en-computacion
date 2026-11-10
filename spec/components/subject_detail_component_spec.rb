@@ -24,4 +24,9 @@ RSpec.describe SubjectDetailComponent, type: :component do
   it "links each prerequisite to its detail inside the same frame" do
     expect(page).to have_css("li a[href='/subjects/#{required.id}']", text: "Álgebra I")
   end
+
+  it "includes the status picker" do
+    render_inline(described_class.new(subject: subject_record, status: "regular"))
+    expect(page).to have_css("section#status_picker_subject_#{subject_record.id}")
+  end
 end

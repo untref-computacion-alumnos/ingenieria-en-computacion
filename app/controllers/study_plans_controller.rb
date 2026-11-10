@@ -7,9 +7,7 @@ class StudyPlansController < ApplicationController
   end
 
   def show
-    study_plan = StudyPlan.find(params.expect(:id))
-    subjects = study_plan.subjects.includes(:prerequisites).order(:year, :term, :name)
-    @study_plan = study_plan
-    @subjects_by_term = subjects.group_by { |subject| [subject.year, subject.term] }
+    @study_plan = StudyPlan.find(params.expect(:id))
+    @statuses = current_user.progress_statuses if user_signed_in?
   end
 end

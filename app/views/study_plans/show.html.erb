@@ -3,7 +3,7 @@
 </h1>
 <div class="lg:flex lg:items-start lg:gap-6">
   <div class="min-w-0 flex-1">
-    <%= render PlanGridComponent.new(subjects_by_term: @subjects_by_term) %>
+    <%= render PlanGridComponent.new(subjects_by_term: @study_plan.subjects_by_term, statuses: @statuses || {}) %>
   </div>
   <turbo-frame id="subject_detail" class="block empty:hidden max-lg:fixed max-lg:inset-0 max-lg:z-20 max-lg:overflow-y-auto max-lg:bg-base-100 max-lg:p-4 lg:sticky lg:top-4 lg:w-80 lg:shrink-0 lg:rounded-box lg:border lg:border-base-300 lg:bg-base-100 lg:p-4"></turbo-frame>
 </div>

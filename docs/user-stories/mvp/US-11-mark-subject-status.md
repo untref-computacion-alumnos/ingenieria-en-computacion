@@ -3,7 +3,7 @@
 - **Epic:** Progress
 - **Size:** M
 - **Depends on:** US-10, US-05
-- **Status:** Backlog
+- **Status:** Done
 
 ## Story
 

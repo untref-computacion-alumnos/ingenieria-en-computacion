@@ -1,0 +1,2 @@
+<%= turbo_stream.replace ActionView::RecordIdentifier.dom_id(subject, :status), SubjectStatusBadgeComponent.new(subject: subject, status: status) %>
+<%= turbo_stream.replace ActionView::RecordIdentifier.dom_id(subject, :status_picker), SubjectStatusPickerComponent.new(subject: subject, status: status) %>
