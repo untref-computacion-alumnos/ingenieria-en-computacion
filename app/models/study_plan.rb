@@ -14,6 +14,6 @@ class StudyPlan < ApplicationRecord
   end
 
   def subjects_by_term
-    subjects.includes(:prerequisites).order(:year, :term, :name).group_by { |subject| [subject.year, subject.term] }
+    subjects.includes(:prerequisites).order(:year, :term, :name).group_by { |subject| subject.values_at(:year, :term) }
   end
 end
