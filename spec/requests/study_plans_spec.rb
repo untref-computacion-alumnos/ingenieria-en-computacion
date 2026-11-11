@@ -124,14 +124,21 @@ RSpec.describe "Study plans" do
         assert_select "[data-status='approved']", count: 1
       end
 
-      it "shows pending for the rest" do
-        assert_select "[data-status='pending']", count: 1
+      it "shows available for the subjects that can be taken" do
+        assert_select "[data-status='available']", count: 1
       end
 
       it "does not show what another student marked" do
         create(:subject_progress, subject: analysis, status: :promoted)
         get study_plan_path(plan)
         assert_select "[data-status='promoted']", count: 0
+      end
+
+      it "shows blocked for a subject whose prerequisite is not met" do
+        networks = create(:subject, study_plan: plan, name: "Redes")
+        create(:prerequisite, subject: networks, required_subject: analysis)
+        get study_plan_path(plan)
+        assert_select "[data-status='blocked']", count: 1
       end
     end
   end

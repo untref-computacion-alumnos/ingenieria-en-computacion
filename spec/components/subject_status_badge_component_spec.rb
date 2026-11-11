@@ -31,4 +31,16 @@ RSpec.describe SubjectStatusBadgeComponent, type: :component do
     render_badge("approved")
     expect(page).to have_css("span#status_subject_#{subject_record.id}")
   end
+
+  describe "availability" do
+    it "shows an available subject with the label and the available status" do
+      render_inline(described_class.new(subject: subject_record, status: "available"))
+      expect(page).to have_css("[data-status='available']", text: I18n.t("subject_progresses.statuses.available"))
+    end
+
+    it "shows a blocked subject with its label, not only with a color" do
+      render_inline(described_class.new(subject: subject_record, status: "blocked"))
+      expect(page).to have_css("[data-status='blocked']", text: I18n.t("subject_progresses.statuses.blocked"))
+    end
+  end
 end
