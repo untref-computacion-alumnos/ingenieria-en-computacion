@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 class SubjectStatusPickerComponent < ViewComponent::Base
-  def initialize(subject:, status:, missing: [])
+  def initialize(subject:, status:, missing: [], rejected: false)
     super()
     @subject = subject
     @status = status
     @missing = missing
+    @rejected = rejected
   end
 
   private
 
-  attr_reader :subject, :status, :missing
+  attr_reader :subject, :status, :missing, :rejected
 
   def dom_id
     ActionView::RecordIdentifier.dom_id(subject, :status_picker)
@@ -25,6 +26,6 @@ class SubjectStatusPickerComponent < ViewComponent::Base
   end
 
   def show_missing?
-    missing.any? && status == "pending"
+    missing.any? && (status == "pending" || rejected)
   end
 end

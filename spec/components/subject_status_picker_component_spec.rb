@@ -80,5 +80,11 @@ RSpec.describe SubjectStatusPickerComponent, type: :component do
       render_with(status: "regular", missing: [required])
       expect(page).to have_no_css("[role='note']")
     end
+
+    it "announces the missing prerequisites as an alert when the change was rejected" do
+      render_inline(described_class.new(subject: subject_record, status: "regular", missing: [required],
+                                        rejected: true))
+      expect(page).to have_css("[role='alert']", text: "Álgebra")
+    end
   end
 end

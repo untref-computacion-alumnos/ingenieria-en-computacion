@@ -15,7 +15,7 @@
     <% end %>
   </div>
   <% if show_missing? %>
-    <div class="alert alert-warning alert-soft flex-col items-start gap-1 text-sm" role="note">
+    <div class="alert alert-warning alert-soft flex-col items-start gap-1 text-sm" role="<%= rejected ? "alert" : "note" %>">
       <p>
         <%= t("subject_progresses.picker.missing") %>
       </p>

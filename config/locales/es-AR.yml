@@ -12,6 +12,10 @@ es-AR:
               circular: crea una correlatividad circular
               different_study_plan: debe pertenecer al mismo plan de estudios
               self_reference: no puede ser la misma materia
+        subject_progress:
+          attributes:
+            status:
+              blocked: 'no se puede empezar a cursar: faltan correlativas'
   app:
     name: MiMalla
     skip_to_content: Saltar al contenido
@@ -63,6 +67,8 @@ es-AR:
       pending: Pendiente
       promoted: Promocionada
       regular: Regular
+    update:
+      blocked: No podés empezar a cursar esta materia hasta cumplir sus correlativas.
   subjects:
     detail:
       back: Volver al plan %{year}

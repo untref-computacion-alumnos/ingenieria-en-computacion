@@ -158,6 +158,50 @@ RSpec.describe "SubjectProgresses" do
       end
     end
 
+    context "when a prerequisite is missing" do
+      let(:required) { create(:subject, study_plan: subject_record.study_plan) }
+      let(:turbo_headers) { { "Accept" => "text/vnd.turbo-stream.html" } }
+
+      before do
+        create(:prerequisite, subject: subject_record, required_subject: required)
+        sign_in user
+      end
+
+      it "does not store the status" do
+        expect { mark("in_progress") }.not_to change(SubjectProgress, :count)
+      end
+
+      it "sends the user back to the subject" do
+        mark("in_progress")
+        expect(response).to redirect_to(subject_path(subject_record))
+      end
+
+      it "tells why with a flash alert" do
+        mark("in_progress")
+        expect(flash[:alert]).to eq(I18n.t("subject_progresses.update.blocked"))
+      end
+
+      it "answers 422 to a Turbo request" do
+        patch subject_progress_path(subject_record), params: { status: "in_progress" }, headers: turbo_headers
+        expect(response).to have_http_status(:unprocessable_content)
+      end
+
+      it "replaces the picker, with the missing prerequisites as an alert, for a Turbo request" do
+        patch subject_progress_path(subject_record), params: { status: "in_progress" }, headers: turbo_headers
+        assert_select "turbo-stream[action='replace'][target='status_picker_subject_#{subject_record.id}'] " \
+                      "[role='alert'] a", text: required.name
+      end
+
+      it "still lets the user mark another status" do
+        expect { mark("regular") }.to change(SubjectProgress, :count).by(1)
+      end
+
+      it "lets the user start it once the prerequisite is passed" do
+        create(:subject_progress, user: user, subject: required, status: :regular)
+        expect { mark("in_progress") }.to change { user.status_for(subject_record) }.from("pending").to("in_progress")
+      end
+    end
+
     context "when a visitor asks for a stream" do
       it "still redirects to the login page" do
         patch subject_progress_path(subject_record), params: { status: "approved" },

@@ -5,6 +5,9 @@ class Subject < ApplicationRecord
   has_many :prerequisites, dependent: :destroy
   has_many :subject_progresses, dependent: :destroy
   has_many :required_subjects, through: :prerequisites
+  has_many :inverse_prerequisites, class_name: "Prerequisite", foreign_key: :required_subject_id,
+                                   inverse_of: :required_subject, dependent: :destroy
+  has_many :dependent_subjects, through: :inverse_prerequisites, source: :subject
   validates :name, :code, presence: true
   validates :code, uniqueness: { scope: :study_plan_id }
   validates :year, inclusion: { in: 1..5 }
