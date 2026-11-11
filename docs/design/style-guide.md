@@ -50,6 +50,10 @@ Free, retaking and dropped have a token but no UI yet.
 
 Use as `bg-status-approved text-status-content` (filled) or `text-status-approved` / `border-status-approved`.
 
+Two display states are derived, never stored (US-12): **Available** (a pending subject whose prerequisites are
+met) uses the `status-pending` look, and **Blocked** (some prerequisite is missing) is a quiet badge with
+`bg-base-200`, `text-base-content/70` and a `border-base-300` border. Both always carry their name.
+
 ## Typography
 
 - **Inter** (variable, latin subset), self-hosted in `app/assets/fonts/` and declared in the Tailwind CSS. No request to
@@ -94,6 +98,10 @@ Use as `bg-status-approved text-status-content` (filled) or `text-status-approve
   `status-*` token and `text-status-content`) and a 4 px left border of the same color; visitors see the plain grid.
   The side panel has a group of five toggle buttons (`aria-pressed`, a "✓" on the current one) that change the
   status with Turbo, without reloading. The status is never conveyed by color alone.
+- **Availability**: a subject the student has not marked shows "Disponible" or "Bloqueada" instead of
+  "Pendiente". The panel of a blocked subject lists the missing prerequisites as links (`role="note"`). Starting
+  a blocked subject is rejected by the server and the panel explains why (`role="alert"`); the button is not
+  disabled, so keyboard and screen-reader users can reach the explanation.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 
