@@ -64,5 +64,32 @@ RSpec.describe "Subjects" do
         assert_select "button[aria-pressed='true']", text: /#{I18n.t("subject_progresses.statuses.pending")}/
       end
     end
+
+    context "when a prerequisite is missing" do
+      let(:plan) { create(:study_plan) }
+      let(:required) { create(:subject, study_plan: plan, name: "Álgebra") }
+      let(:geometry) { create(:subject, study_plan: plan, name: "Geometría") }
+
+      before { create(:prerequisite, subject: geometry, required_subject: required) }
+
+      it "lists it to a student who has not passed it" do
+        sign_in create(:user, study_plan: plan)
+        get subject_path(geometry)
+        assert_select "[role='note'] a", text: "Álgebra"
+      end
+
+      it "does not list it once the student passed it" do
+        user = create(:user, study_plan: plan)
+        create(:subject_progress, user: user, subject: required, status: :regular)
+        sign_in user
+        get subject_path(geometry)
+        assert_select "[role='note']", count: 0
+      end
+
+      it "does not list it to a visitor" do
+        get subject_path(geometry)
+        assert_select "[role='note']", count: 0
+      end
+    end
   end
 end

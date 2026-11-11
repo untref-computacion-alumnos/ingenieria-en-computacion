@@ -7,7 +7,8 @@ class StudyPlansController < ApplicationController
   end
 
   def show
-    @study_plan = StudyPlan.find(params.expect(:id))
-    @statuses = current_user.progress_statuses if user_signed_in?
+    study_plan = StudyPlan.find(params.expect(:id))
+    @study_plan = study_plan
+    @statuses = Curriculum::Availability.for(current_user, study_plan).statuses if user_signed_in?
   end
 end

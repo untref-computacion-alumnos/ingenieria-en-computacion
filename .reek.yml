@@ -1,6 +1,12 @@
 detectors:
   IrresponsibleModule:
     enabled: false
+  FeatureEnvy:
+    exclude:
+      - SubjectProgressesController#stream_locals
+  BooleanParameter:
+    exclude:
+      - SubjectStatusPickerComponent#initialize
 
 exclude_paths:
   - db/

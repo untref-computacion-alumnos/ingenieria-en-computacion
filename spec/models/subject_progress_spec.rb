@@ -37,4 +37,42 @@ RSpec.describe SubjectProgress do
     other = build(:subject_progress, subject: existing.subject)
     expect(other).to be_valid
   end
+
+  describe "prerequisites" do
+    let(:plan) { create(:study_plan) }
+    let(:user) { create(:user, study_plan: plan) }
+    let(:algebra) { create(:subject, study_plan: plan) }
+    let(:geometry) { create(:subject, study_plan: plan) }
+
+    before { create(:prerequisite, subject: geometry, required_subject: algebra) }
+
+    it "does not let a user start a subject whose prerequisite is missing" do
+      progress = build(:subject_progress, user: user, subject: geometry, status: :in_progress)
+      expect(progress).not_to be_valid
+    end
+
+    it "reports the problem on the status" do
+      progress = build(:subject_progress, user: user, subject: geometry, status: :in_progress)
+      progress.valid?
+      expect(progress.errors).to be_of_kind(:status, :blocked)
+    end
+
+    it "lets the user start it once the prerequisite is regular" do
+      create(:subject_progress, user: user, subject: algebra, status: :regular)
+      progress = build(:subject_progress, user: user, subject: geometry, status: :in_progress)
+      expect(progress).to be_valid
+    end
+
+    it "only blocks in progress, any other status is accepted" do
+      progress = build(:subject_progress, user: user, subject: geometry, status: :regular)
+      expect(progress).to be_valid
+    end
+
+    it "does not check again a subject that was already in progress" do
+      create(:subject_progress, user: user, subject: algebra, status: :regular)
+      progress = create(:subject_progress, user: user, subject: geometry, status: :in_progress)
+      described_class.find_by!(user: user, subject: algebra).update!(status: :pending)
+      expect(progress.reload).to be_valid
+    end
+  end
 end

@@ -53,4 +53,38 @@ RSpec.describe SubjectStatusPickerComponent, type: :component do
     render_picker(nil)
     expect(page).to have_no_css("button[aria-pressed='true']")
   end
+
+  describe "missing prerequisites" do
+    let(:required) { build_stubbed(:subject, name: "Álgebra") }
+
+    def render_with(status:, missing:)
+      render_inline(described_class.new(subject: subject_record, status: status, missing: missing))
+    end
+
+    it "lists the missing prerequisites as links when the subject has no status yet" do
+      render_with(status: "pending", missing: [required])
+      expect(page).to have_css("[role='note'] a[href='/subjects/#{required.id}']", text: "Álgebra")
+    end
+
+    it "explains what is needed" do
+      render_with(status: "pending", missing: [required])
+      expect(page).to have_text(I18n.t("subject_progresses.picker.missing"))
+    end
+
+    it "says nothing when no prerequisite is missing" do
+      render_with(status: "pending", missing: [])
+      expect(page).to have_no_css("[role='note']")
+    end
+
+    it "says nothing once the subject has a status of its own" do
+      render_with(status: "regular", missing: [required])
+      expect(page).to have_no_css("[role='note']")
+    end
+
+    it "announces the missing prerequisites as an alert when the change was rejected" do
+      render_inline(described_class.new(subject: subject_record, status: "regular", missing: [required],
+                                        rejected: true))
+      expect(page).to have_css("[role='alert']", text: "Álgebra")
+    end
+  end
 end
