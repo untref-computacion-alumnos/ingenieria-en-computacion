@@ -532,9 +532,10 @@ GEM
     uniform_notifier (1.18.1)
     uri (1.1.2)
     useragent (0.16.11)
-    view_component (4.19.0)
+    view_component (4.23.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
+      prism (>= 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.3.0)
@@ -804,7 +805,7 @@ CHECKSUMS
   uniform_notifier (1.18.1) sha256=3745b83a6ed88daa5cf08c662f5b8786a8c438c21e103466519f1c6e641fd204
   uri (1.1.2) sha256=89292e98eabbef6248b0a0ed5e7e398e152f83f17560023a6d94a7f492b169fb
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
-  view_component (4.19.0) sha256=e75d3d5cf1f56c47118752436173e0d417d31ce79412919bc4232060257fe615
+  view_component (4.23.0) sha256=2bcb6fe6251edaec534d4aefc5f735096a8393c3b9b627f6de59fbc859858a01
   warden (1.2.9) sha256=46684f885d35a69dbb883deabf85a222c8e427a957804719e143005df7a1efd0
   web-console (4.3.0) sha256=e13b71301cdfc2093f155b5aa3a622db80b4672d1f2f713119cc7ec7ac6a6da4
   websocket-driver (0.8.2) sha256=97c556b019bf3410b4961002ac501621e9322d3f8a7bc02161a09301cc4c4146
