@@ -29,4 +29,10 @@ RSpec.describe SubjectDetailComponent, type: :component do
     render_inline(described_class.new(subject: subject_record, status: "regular"))
     expect(page).to have_css("section#status_picker_subject_#{subject_record.id}")
   end
+
+  it "passes the missing prerequisites to the status picker" do
+    required = build_stubbed(:subject, name: "Álgebra")
+    render_inline(described_class.new(subject: subject_record, status: "pending", missing: [required]))
+    expect(page).to have_css("[role='note']", text: "Álgebra")
+  end
 end

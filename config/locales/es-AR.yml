@@ -53,6 +53,7 @@ es-AR:
   subject_progresses:
     picker:
       label: Estado de la materia
+      missing: Para empezar a cursarla necesitás Regular, Aprobada o Promocionada en
       title: Mi estado
     statuses:
       approved: Aprobada

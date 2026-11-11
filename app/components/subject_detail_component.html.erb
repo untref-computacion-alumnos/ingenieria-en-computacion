@@ -17,7 +17,7 @@
       </dd>
     <% end %>
   </dl>
-  <%= render SubjectStatusPickerComponent.new(subject: subject, status: status) %>
+  <%= render SubjectStatusPickerComponent.new(subject: subject, status: status, missing: missing) %>
   <section class="space-y-2">
     <h3 class="font-semibold">
       <%= t("subjects.detail.prerequisites") %>

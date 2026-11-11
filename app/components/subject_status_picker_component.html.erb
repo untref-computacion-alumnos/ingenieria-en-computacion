@@ -14,4 +14,18 @@
       <% end %>
     <% end %>
   </div>
+  <% if show_missing? %>
+    <div class="alert alert-warning alert-soft flex-col items-start gap-1 text-sm" role="note">
+      <p>
+        <%= t("subject_progresses.picker.missing") %>
+      </p>
+      <ul class="list-disc pl-5">
+        <% missing.each do |required| %>
+          <li>
+            <%= link_to required.name, subject_path(required), class: "link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </section>

@@ -2,9 +2,11 @@
 
 class SubjectsController < ApplicationController
   def show
-    # @subject = Subject.includes(:study_plan, :required_subjects).find(params.expect(:id))
     subject = Subject.find(params.expect(:id))
     @subject = subject
-    @status = current_user.status_for(subject) if user_signed_in?
+    return unless user_signed_in?
+
+    @status = current_user.status_for(subject)
+    @missing = Curriculum::Availability.for(current_user, subject.study_plan).missing_subjects(subject.id)
   end
 end
