@@ -156,6 +156,25 @@ RSpec.describe "SubjectProgresses" do
         mark_with_turbo("free")
         expect(response).to have_http_status(:unprocessable_content)
       end
+
+      it "replaces the badge of a subject that this one unlocks" do
+        unlocked = create(:subject, study_plan: subject_record.study_plan)
+        create(:prerequisite, subject: unlocked, required_subject: subject_record)
+        mark_with_turbo("regular")
+        assert_select "turbo-stream[action='replace'][target='status_subject_#{unlocked.id}'] [data-status='available']"
+      end
+
+      it "shows a subject that goes back to pending as available when nothing blocks it" do
+        create(:subject_progress, user: user, subject: subject_record, status: :approved)
+        mark_with_turbo("pending")
+        assert_select "turbo-stream[target='status_subject_#{subject_record.id}'] [data-status='available']"
+      end
+
+      it "does not touch the badges of unrelated subjects" do
+        other = create(:subject, study_plan: subject_record.study_plan)
+        mark_with_turbo("regular")
+        assert_select "turbo-stream[target='status_subject_#{other.id}']", count: 0
+      end
     end
 
     context "when a prerequisite is missing" do
