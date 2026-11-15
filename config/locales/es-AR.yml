@@ -19,6 +19,11 @@ es-AR:
   app:
     name: MiMalla
     skip_to_content: Saltar al contenido
+  curriculum:
+    progress:
+      counts: "%{completed} / %{total}"
+      percent: "%{percent} %"
+      title: Mi avance
   devise:
     shared:
       minimum_password_length:

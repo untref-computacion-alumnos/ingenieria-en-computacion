@@ -175,6 +175,34 @@ RSpec.describe "SubjectProgresses" do
         mark_with_turbo("regular")
         assert_select "turbo-stream[target='status_subject_#{other.id}']", count: 0
       end
+
+      it "replaces the progress bar" do
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[action='replace'][target='progress_bar']"
+      end
+
+      it "counts the subject that was just approved" do
+        create(:subject, study_plan: subject_record.study_plan)
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[target='progress_bar'] progress[value='50']"
+      end
+
+      it "counts a promoted subject too" do
+        create(:subject, study_plan: subject_record.study_plan)
+        mark_with_turbo("promoted")
+        assert_select "turbo-stream[target='progress_bar'] progress[value='50']"
+      end
+
+      it "does not count a regular subject" do
+        mark_with_turbo("regular")
+        assert_select "turbo-stream[target='progress_bar'] progress[value='0']"
+      end
+
+      it "takes the progress down when an approved subject goes back to pending" do
+        create(:subject_progress, user: user, subject: subject_record, status: :approved)
+        mark_with_turbo("pending")
+        assert_select "turbo-stream[target='progress_bar'] progress[value='0']"
+      end
     end
 
     context "when a prerequisite is missing" do
@@ -218,6 +246,11 @@ RSpec.describe "SubjectProgresses" do
       it "lets the user start it once the prerequisite is passed" do
         create(:subject_progress, user: user, subject: required, status: :regular)
         expect { mark("in_progress") }.to change { user.status_for(subject_record) }.from("pending").to("in_progress")
+      end
+
+      it "does not replace the progress bar when the change is rejected" do
+        patch subject_progress_path(subject_record), params: { status: "in_progress" }, headers: turbo_headers
+        assert_select "turbo-stream[target='progress_bar']", count: 0
       end
     end
 

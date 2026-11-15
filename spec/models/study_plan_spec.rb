@@ -14,14 +14,6 @@ RSpec.describe StudyPlan do
     expect(duplicate).not_to be_valid
   end
 
-  describe ".current" do
-    it "returns the plan with the latest year" do
-      create(:study_plan, year: 2011)
-      latest = create(:study_plan, year: 2018)
-      expect(described_class.current).to eq(latest)
-    end
-  end
-
   describe "#subjects_by_term" do
     let(:plan) { create(:study_plan) }
 

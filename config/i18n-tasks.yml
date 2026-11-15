@@ -157,6 +157,9 @@ ignore_unused:
   - "devise.*"
   - "errors.messages.*"
   - "activerecord.attributes.*"
+  # Used through interpolation, e.g. t("subject_progresses.statuses.#{status}")
+  - "subject_progresses.statuses.*"
+  - "subjects.detail.*"
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
 # - 'simple_form.{placeholders,hints,labels}.*'

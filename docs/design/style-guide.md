@@ -102,6 +102,12 @@ met) uses the `status-pending` look, and **Blocked** (some prerequisite is missi
   "Pendiente". The panel of a blocked subject lists the missing prerequisites as links (`role="note"`). Starting
   a blocked subject is rejected by the server and the panel explains why (`role="alert"`); the button is not
   disabled, so keyboard and screen-reader users can reach the explanation.
+- **Progress bar**: a signed-in student who follows the plan being viewed sees a `section#progress_bar` between the
+  page title and the grid (`ProgressBarComponent`). It has a `font-semibold` `h2` ("Mi avance"), the text
+  "12 / 40 . 30 %" and a daisyUI `progress progress-primary w-full` labelled by the `h2`. The numbers are
+  always written as text, so the bar is never the only way to read the progress. Only approved and promoted subjects
+  count. Visitors, and students viewing a plan they do not follow, do not see it. When a status changes, the Turbo
+  Stream response replaces the whole section by its id, so the bar updates without reloading.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 

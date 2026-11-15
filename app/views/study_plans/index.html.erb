@@ -1,11 +1,12 @@
 <h1 class="text-3xl font-bold py-6">
   <%= t(".title") %>
 </h1>
+<% active_plan = @study_plans.first %>
 <ul class="space-y-4">
   <% @study_plans.each do |study_plan| %>
     <li>
       <%= link_to study_plan_path(study_plan), class: "block" do %>
-        <%= render StudyPlanCardComponent.new(year: study_plan.year, subjects_count: study_plan.subjects_count, active: study_plan == @active_plan) %>
+        <%= render StudyPlanCardComponent.new(year: study_plan.year, subjects_count: study_plan.subjects_count, active: study_plan == active_plan) %>
       <% end %>
     </li>
   <% end %>

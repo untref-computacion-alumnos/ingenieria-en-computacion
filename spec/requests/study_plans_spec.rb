@@ -141,5 +141,49 @@ RSpec.describe "Study plans" do
         assert_select "[data-status='blocked']", count: 1
       end
     end
+
+    context "with the progress of the student" do
+      let(:plan) { create(:study_plan, year: 2022) }
+      let(:user) { create(:user, study_plan: plan) }
+      let!(:subjects) { create_list(:subject, 4, study_plan: plan) }
+
+      it "shows the progress bar above the grid to a student following the plan" do
+        sign_in user
+        get study_plan_path(plan)
+        assert_select "#progress_bar"
+      end
+
+      it "counts the approved and promoted subjects of that student" do
+        create(:subject_progress, user: user, subject: subjects.first, status: :approved)
+        create(:subject_progress, user: user, subject: subjects.last, status: :promoted)
+        sign_in user
+        get study_plan_path(plan)
+        assert_select "#progress_bar progress[value='50']"
+      end
+
+      it "does not count what another student marked" do
+        create(:subject_progress, subject: subjects.first, status: :approved)
+        sign_in user
+        get study_plan_path(plan)
+        assert_select "#progress_bar progress[value='0']"
+      end
+
+      it "does not show the bar to a visitor" do
+        get study_plan_path(plan)
+        assert_select "#progress_bar", count: 0
+      end
+
+      it "does not show the bar to a student who follows another plan" do
+        sign_in create(:user, study_plan: create(:study_plan, year: 2011))
+        get study_plan_path(plan)
+        assert_select "#progress_bar", count: 0
+      end
+
+      it "does not show the bar to a student who has not chosen a plan yet" do
+        sign_in create(:user)
+        get study_plan_path(plan)
+        assert_select "#progress_bar", count: 0
+      end
+    end
   end
 end
