@@ -9,7 +9,7 @@ When("the seed data is loaded twice") do
 end
 
 Then("the career has a study plan for the current year") do
-  expect(StudyPlan.current.career).to be_present
+  expect(StudyPlan.order(:year).last.career).to be_present
 end
 
 Then("every subject belongs to a year and a term") do
