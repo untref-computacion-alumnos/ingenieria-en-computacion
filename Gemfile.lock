@@ -147,9 +147,9 @@ GEM
       cuke_modeler (>= 1.5, < 4.0)
     cuke_modeler (3.31.0)
       cucumber-gherkin (< 43.0)
-    cuprite (0.19)
+    cuprite (0.20.1)
       capybara (~> 3.0)
-      ferrum (~> 0.19.1)
+      ferrum (~> 0.20.1)
     database_cleaner-active_record (2.2.2)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0)
@@ -217,7 +217,7 @@ GEM
       railties (>= 6.1.0)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
-    ferrum (0.19.1)
+    ferrum (0.20.1)
       addressable (~> 2.5)
       base64 (~> 0.2)
       concurrent-ruby (~> 1.1)
@@ -653,7 +653,7 @@ CHECKSUMS
   cucumber-tag-expressions (8.1.0) sha256=9bd8c4b6654f8e5bf2a9c99329b6f32136a75e50cd39d4cfb3927d0fa9f52e21
   cuke_linter (1.4.0) sha256=b146d5e363b1db439a9f5b6cb3844a23516ea56bf3e0c3ccdbbba9ccad528f49
   cuke_modeler (3.31.0) sha256=3ef25609ab8a3cb4bccb4b6db3f1697c8805b7d1b1ddd3645358009ee5c498c3
-  cuprite (0.19) sha256=e56d59db56693bdfbffd533f715df366f03285ea4435e4c31603e146e0e02518
+  cuprite (0.20.1) sha256=98694e0ca7be79f066db4dcdb46fada42fb058c2c38aafd9c1d1567bc4b08994
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
   database_cleaner-core (2.1.0) sha256=b2875266d9b26b716e8b669c883e01c5250839f6f2ec56422b5e79aa97fb6927
   date (3.6.0) sha256=18ac945c4e24ebd93534f8eab8c2fd8c5604b3e977105b3798d62a1e8d27b580
@@ -677,7 +677,7 @@ CHECKSUMS
   factory_bot (6.6.0) sha256=1fc1b3b5620ec980a6a27aec1b6ec8c250ca82962e970e8a40f93e8d388d4b89
   factory_bot_rails (6.5.1) sha256=d3cc4851eae4dea8a665ec4a4516895045e710554d2b5ac9e68b94d351bc6d68
   faker (3.8.0) sha256=c147b308df73a90f27a4fc84f18d4c22ef0ad9c2a64b2b61c86fd0ca71753efc
-  ferrum (0.19.1) sha256=2e9ab588d24e08b6765a5a349bc5d367e5c09d3bead26270f1f2279ad7a4bc25
+  ferrum (0.20.1) sha256=3a33d27f3e48ec66a36f7eaffa29180a9f1f4ff32694e8f2bc43d249f47612dc
   ffi (1.17.4-aarch64-linux-gnu) sha256=b208f06f91ffd8f5e1193da3cae3d2ccfc27fc36fba577baf698d26d91c080df
   ffi (1.17.4-aarch64-linux-musl) sha256=9286b7a615f2676245283aef0a0a3b475ae3aae2bb5448baace630bb77b91f39
   ffi (1.17.4-arm-linux-gnu) sha256=d6dbddf7cb77bf955411af5f187a65b8cd378cb003c15c05697f5feee1cb1564
