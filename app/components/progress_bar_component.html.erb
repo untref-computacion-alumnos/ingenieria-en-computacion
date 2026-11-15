@@ -1,0 +1,13 @@
+<section id="progress_bar" aria-labelledby="progress_bar_title" class="mb-4 space-y-1">
+  <div class="flex items-baseline justify-between gap-2 text-sm">
+    <h2 id="progress_bar_title" class="font-semibold">
+      <%= t("curriculum.progress.title") %>
+    </h2>
+    <p>
+      <%= t("curriculum.progress.counts", completed: progress.completed, total: progress.total) %>
+      .
+      <%= t("curriculum.progress.percent", percent: progress.percent) %>
+    </p>
+  </div>
+  <progress class="progress progress-primary w-full" value="<%= progress.percent %>" max="100" aria-labelledby="progress_bar_title"></progress>
+</section>
