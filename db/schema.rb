@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_09_234653) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_15_225739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -225,6 +225,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_09_234653) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "grade", precision: 3, scale: 1
+    t.date "approved_on"
+    t.boolean "final_exam_taken", default: false, null: false
     t.index ["subject_id"], name: "index_subject_progresses_on_subject_id"
     t.index ["user_id", "subject_id"], name: "index_subject_progresses_on_user_id_and_subject_id", unique: true
     t.index ["user_id"], name: "index_subject_progresses_on_user_id"

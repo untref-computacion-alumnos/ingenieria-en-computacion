@@ -75,4 +75,82 @@ RSpec.describe SubjectProgress do
       expect(progress.reload).to be_valid
     end
   end
+
+  describe "grade, approval date and final exam" do
+    subject { build(:subject_progress, status: :approved) }
+
+    it { is_expected.to allow_value(nil).for(:grade) }
+    it { is_expected.to allow_value(1).for(:grade) }
+    it { is_expected.to allow_value(8).for(:grade) }
+    it { is_expected.to allow_value(7.5).for(:grade) }
+    it { is_expected.to allow_value(10).for(:grade) }
+    it { is_expected.not_to allow_value(0).for(:grade) }
+    it { is_expected.not_to allow_value(0.9).for(:grade) }
+    it { is_expected.not_to allow_value(11).for(:grade) }
+    it { is_expected.not_to allow_value(-3).for(:grade) }
+    it { is_expected.to allow_value(nil).for(:approved_on) }
+    it { is_expected.to allow_value(Date.current).for(:approved_on) }
+    it { is_expected.to allow_value(Date.new(2024, 12, 10)).for(:approved_on) }
+    it { is_expected.not_to allow_value(Date.current.next_day).for(:approved_on) }
+
+    it "starts without grade or date, and without a final exam" do
+      progress = described_class.new
+      expect([progress.grade, progress.approved_on, progress.final_exam_taken]).to eq([nil, nil, false])
+    end
+
+    it "does not require a grade or a date to be approved" do
+      expect(build(:subject_progress, status: :approved)).to be_valid
+    end
+
+    it "reports a bad grade on the grade" do
+      progress = build(:subject_progress, status: :approved, grade: 11)
+      progress.valid?
+      message = I18n.t("activerecord.errors.models.subject_progress.attributes.grade.invalid_grade")
+      expect(progress.errors[:grade]).to eq([message])
+    end
+
+    it "reports a future date on the date" do
+      progress = build(:subject_progress, status: :approved, approved_on: Date.current.next_day)
+      progress.valid?
+      expect(progress.errors).to be_of_kind(:approved_on, :future)
+    end
+  end
+
+  describe "when the subject is not completed" do
+    def saved_with(status, **attributes)
+      progress = create(:subject_progress, status: :approved, **attributes)
+      progress.update!(status: status)
+      progress.reload
+    end
+
+    let(:record) { { grade: 8, approved_on: Date.new(2024, 12, 10), final_exam_taken: true } }
+
+    it "keeps the grade and the date while it is approved" do
+      progress = saved_with(:approved, **record)
+      expect([progress.grade.to_i, progress.approved_on]).to eq([8, Date.new(2024, 12, 10)])
+    end
+
+    it "keeps the grade and the date while it is promoted" do
+      progress = saved_with(:promoted, **record)
+      expect([progress.grade.to_i, progress.approved_on]).to eq([8, Date.new(2024, 12, 10)])
+    end
+
+    %i[pending in_progress regular].each do |status|
+      it "forgets the grade and the date when it goes back to #{status}" do
+        progress = saved_with(status, **record)
+        expect([progress.grade, progress.approved_on]).to eq([nil, nil])
+      end
+    end
+
+    it "keeps the final exam flag for a promoted subject" do
+      progress = create(:subject_progress, status: :promoted, final_exam_taken: true)
+      expect(progress.reload.final_exam_taken).to be(true)
+    end
+
+    it "forgets the final exam flag when a promoted subject becomes approved" do
+      progress = create(:subject_progress, status: :promoted, final_exam_taken: true)
+      progress.update!(status: :approved)
+      expect(progress.reload.final_exam_taken).to be(false)
+    end
+  end
 end
