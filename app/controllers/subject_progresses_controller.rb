@@ -45,7 +45,8 @@ class SubjectProgressesController < ApplicationController
       subject: subject,
       status: current_user.status_for(subject),
       missing: availability.missing_subjects(subject.id),
-      badges: ([subject] + subject.dependent_subjects).index_with { |item| availability.status(item.id) }
+      badges: ([subject] + subject.dependent_subjects).index_with { |item| availability.status(item.id) },
+      progress: Curriculum::ProgressSummary.new(statuses: availability.statuses)
     }
   end
 end
