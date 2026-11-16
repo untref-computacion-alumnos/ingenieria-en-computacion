@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :study_plans, only: %i[index show]
   resources :subjects, only: :show do
     resource :progress, only: :update, controller: "subject_progresses"
+    resource :grade, only: :update, controller: "subject_grades"
   end
   namespace :users do
     resource :study_plan, only: %i[edit update]

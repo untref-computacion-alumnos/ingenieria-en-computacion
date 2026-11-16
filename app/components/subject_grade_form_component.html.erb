@@ -1,0 +1,50 @@
+<div id="<%= dom_id %>">
+  <% if show_form? %>
+    <%= form_with model: progress, scope: :subject_progress, url: subject_grade_path(subject), method: :patch, class: "max-w-md space-y-3" do |form| %>
+      <h3 class="font-semibold">
+        <%= t("subject_grades.form.title") %>
+      </h3>
+      <% if progress.errors.any? %>
+        <div role="alert" class="alert alert-error alert-soft flex-col items-start gap-1 text-sm">
+          <ul class="list-disc pl-5">
+            <% progress.errors.full_messages.each do |message| %>
+              <li>
+                <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <fieldset class="fieldset">
+        <%= form.label :grade, t("subject_grades.form.grade"), class: "fieldset-legend" %>
+        <%= form.number_field :grade, value: grade_value, min: 1, max: 10, step: 0.1, class: "input w-full", inputmode: "decimal", aria: { describedby: hint_id(:grade) } %>
+        <p id="<%= hint_id(:grade) %>" class="label">
+          <%= t("subject_grades.form.grade_hint") %>
+        </p>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :approved_on, t("subject_grades.form.approved_on"), class: "fieldset-legend" %>
+        <%= form.date_field :approved_on, max: Date.current.iso8601, class: "input w-full", aria: { describedby: hint_id(:approved_on) } %>
+        <p id="<%= hint_id(:approved_on) %>" class="label">
+          <%= t("subject_grades.form.approved_on_hint") %>
+        </p>
+      </fieldset>
+      <% if promoted? %>
+        <fieldset class="fieldset">
+          <label class="label gap-2">
+            <%= form.check_box :final_exam_taken, class: "checkbox checkbox-sm" %>
+            <%= t("subject_grades.form.final_exam_taken") %>
+          </label>
+        </fieldset>
+      <% end %>
+        <div class="flex items-center gap-3">
+          <%= form.submit t("subject_grades.form.save"), class: "btn btn-sm btn-primary" %>
+          <% if saved %>
+            <p role="status" class="text-sm">
+              <%= t("subject_grades.form.saved") %>
+            </p>
+          <% end %>
+        </div>
+    <% end %>
+  <% end %>
+</div>

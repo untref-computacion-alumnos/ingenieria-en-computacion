@@ -67,6 +67,16 @@ es-AR:
       title: Planes de estudio
     show:
       title: Plan de estudios %{year}
+  subject_grades:
+    form:
+      approved_on: Fecha de aprobación
+      approved_on_hint: Opcional. No puede ser posterior a hoy.
+      final_exam_taken: Rindió final
+      grade: Nota
+      grade_hint: Opcional. De 1 a 10, con un decimal como máximo.
+      save: Guardar
+      saved: Guardado
+      title: Mi nota
   subject_progresses:
     picker:
       label: Estado de la materia
