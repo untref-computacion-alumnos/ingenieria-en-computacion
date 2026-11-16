@@ -8,6 +8,7 @@ es-AR:
         grade: Nota
       user:
         study_plan: Plan de estudios
+        terms: Términos y condiciones
     errors:
       models:
         prerequisite:
@@ -33,6 +34,12 @@ es-AR:
       percent: "%{percent} %"
       title: Mi avance
   devise:
+    registrations:
+      new:
+        accept_terms: Acepto los términos y condiciones
+        privacy_link: política de privacidad
+        terms_hint_html: Leé los %{terms} y la %{privacy} antes de aceptar (se abren en una pestaña nueva)
+        terms_link: términos y condiciones
     shared:
       minimum_password_length:
         one: "(%{count} carácter como mínimo)"

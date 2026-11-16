@@ -4,7 +4,14 @@ require "rails_helper"
 
 RSpec.describe "Registrations" do
   let(:valid_params) do
-    { user: { email: "ana@example.com", password: "a-long-password", password_confirmation: "a-long-password" } }
+    {
+      user: {
+        email: "ana@example.com",
+        password: "a-long-password",
+        password_confirmation: "a-long-password",
+        terms: "1"
+      }
+    }
   end
 
   describe "GET /users/sign_up" do
@@ -36,6 +43,18 @@ RSpec.describe "Registrations" do
     it "uses a titled page in Spanish" do
       assert_select "h1", text: I18n.t("devise.registrations.new.sign_up")
     end
+
+    it "asks to accept the terms with a labelled checkbox" do
+      assert_select "form" do
+        assert_select "input[type='checkbox'][name='user[terms]'][required]"
+      end
+      assert_select "label[for='user_terms']", text: I18n.t("devise.registrations.new.accept_terms")
+    end
+
+    it "links to the terms and to the privacy notice" do
+      assert_select "form a[href='#{terms_path}'][target='_blank']"
+      assert_select "form a[href='#{privacy_path}'][target='_blank']"
+    end
   end
 
   describe "POST /users" do
@@ -52,6 +71,11 @@ RSpec.describe "Registrations" do
       it "gives the new user the student role" do
         post user_registration_path, params: valid_params
         expect(User.find_by!(email: "ana@example.com")).to have_role(:student)
+      end
+
+      it "stores when the terms were accepted" do
+        post user_registration_path, params: valid_params
+        expect(User.find_by!(email: "ana@example.com").terms_accepted_at).to be_within(1.minute).of(Time.current)
       end
     end
 
@@ -74,7 +98,16 @@ RSpec.describe "Registrations" do
     end
 
     context "with a short password" do
-      let(:params) { { user: { email: "ana@example.com", password: "short", password_confirmation: "short" } } }
+      let(:params) do
+        {
+          user: {
+            email: "ana@example.com",
+            password: "short",
+            password_confirmation: "short",
+            terms: "1"
+          }
+        }
+      end
 
       it "does not create a user" do
         expect { post user_registration_path, params: params }.not_to change(User, :count)
@@ -88,7 +121,14 @@ RSpec.describe "Registrations" do
 
     context "when the confirmation does not match" do
       let(:params) do
-        { user: { email: "ana@example.com", password: "a-long-password", password_confirmation: "another-one-0" } }
+        {
+          user: {
+            email: "ana@example.com",
+            password: "a-long-password",
+            password_confirmation: "another-one-0",
+            terms: "1"
+          }
+        }
       end
 
       it "does not create a user" do
@@ -98,6 +138,38 @@ RSpec.describe "Registrations" do
       it "renders the form again with an error status" do
         post user_registration_path, params: params
         expect(response).to have_http_status(:unprocessable_content)
+      end
+    end
+
+    context "without accepting the terms" do
+      let(:params) do
+        {
+          user: {
+            email: "ana@example.com",
+            password: "a-long-password",
+            password_confirmation: "a-long-password",
+            terms: "0"
+          }
+        }
+      end
+
+      it "does not create a user" do
+        expect { post user_registration_path, params: params }.not_to change(User, :count)
+      end
+
+      it "renders the form again with an error status" do
+        post user_registration_path, params: params
+        expect(response).to have_http_status(:unprocessable_content)
+      end
+
+      it "asks to accept the terms" do
+        post user_registration_path, params: params
+        expect(response.body).to include(I18n.t("errors.messages.accepted"))
+      end
+
+      it "does not create a user when the terms are missing from the request" do
+        params[:user].delete(:terms)
+        expect { post user_registration_path, params: params }.not_to change(User, :count)
       end
     end
   end

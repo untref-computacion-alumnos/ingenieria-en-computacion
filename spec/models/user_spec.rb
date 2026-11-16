@@ -103,4 +103,38 @@ RSpec.describe User do
       end
     end
   end
+
+  describe "terms of service" do
+    it "must be accepted to create a user" do
+      user = build(:user, terms: nil)
+      user.validate
+      expect(user.errors).to be_of_kind(:terms, :accepted)
+    end
+
+    it "is not accepted when the checkbox is left unchecked" do
+      user = build(:user, terms: "0")
+      user.validate
+      expect(user.errors).to be_of_kind(:terms, :accepted)
+    end
+
+    it "is accepted when the checkbox is checked" do
+      expect(build(:user, terms: "1")).to be_valid
+    end
+
+    it "stores when the users were accepted" do
+      user = create(:user, terms: "1")
+      expect(user.terms_accepted_at).to be_within(1.minute).of(Time.current)
+    end
+
+    it "does not store a date when the terms were not accepted" do
+      user = build(:user, terms: nil)
+      user.save(validate: false)
+      expect(user.terms_accepted_at).to be_nil
+    end
+
+    it "is not asked again when an existing user is updated" do
+      user = described_class.find(create(:user).id)
+      expect(user.update(email: "new@example.com")).to be(true)
+    end
+  end
 end
