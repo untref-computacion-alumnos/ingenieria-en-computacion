@@ -1,0 +1,24 @@
+<%= provide(:title, t(".title")) %>
+<article class="mx-auto max-w-prose space-y-4 py-6">
+  <h1 class="text-2xl font-semibold">
+    <%= t(".title") %>
+  </h1>
+  <p>
+    <%= t(".intro") %>
+  </p>
+  <%= render LegalSectionComponent.new(id: "terms_use", title: t(".use.title")) do %>
+    <p>
+      <%= t(".use.body") %>
+    </p>
+  <% end %>
+  <%= render LegalSectionComponent.new(id: "terms_account", title: t(".account.title")) do %>
+    <p>
+      <%= t(".account.body") %>
+    </p>
+  <% end %>
+  <%= render LegalSectionComponent.new(id: "terms_changes", title: t(".changes.title")) do %>
+    <p>
+      <%= t(".changes.body") %>
+    </p>
+  <% end %>
+</article>

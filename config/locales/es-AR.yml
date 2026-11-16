@@ -51,6 +51,34 @@ es-AR:
       sign_in: Iniciar sesión
       sign_out: Cerrar sesión
       sign_up: Crear cuenta
+  pages:
+    privacy:
+      data:
+        body: Guardamos tu correo electrónico, tu contraseña (cifrada, nunca en texto plano), el plan de estudios que cursás y el estado, la nota y la fecha de aprobación que cargás en cada materia. Cuando creás tu cuenta, guardamos también cuándo aceptaste los términos y condiciones.
+        title: Qué datos guardamos
+      intro: Acá te contamos qué datos guarda la aplicación y para qué los usamos.
+      progress:
+        body: Tu avance es privado por defecto. Nadie más puede verlo.
+        title: Tu avance es privado.
+      rights:
+        body: Estamos preparando la posibilidad de exportar y de borrar tus datos desde la apicación. Todavía no está disponible y lo vamos a anunciar cuando llegue.
+        title: Exportar y borrar tus datos
+      title: Políticas de privacidad
+      use:
+        body: Usamos tus datos solo para mostrarte tu avance en la carrera y para que puedas volver a entrar. No usamos cookies de seguimiento ni publicidad, y no compartimos tus datos con terceros.
+        title: Para qué los usamos
+    terms:
+      account:
+        body: Sos responsable de la contraseña de tu cuenta y de los datos que cargues en ella. Podés dejar de usar la aplicación cuando quieras.
+        title: Tu cuenta
+      changes:
+        body: Si cambiamos estos términos, publicamos la nueva versión en esta página.
+        title: Cambios en los términos
+      intro: Estas son las condiciones para usar la aplicación
+      title: Términos y condiciones
+      use:
+        body: 'Esta aplicación es una herramienta de ayuda para estudiantes de Ingeniería en Computación. No es un sistema oficial de la universidad: la información académica oficial es la que figura en los sistemas de la universidad.'
+        title: Uso de la aplicación
   study_plans:
     card:
       active: Vigente
