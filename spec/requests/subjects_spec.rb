@@ -91,5 +91,45 @@ RSpec.describe "Subjects" do
         assert_select "[role='note']", count: 0
       end
     end
+
+    context "with the grade and date of the student" do
+      let(:plan) { create(:study_plan) }
+      let(:subject_record) { create(:subject, study_plan: plan) }
+      let(:user) { create(:user, study_plan: plan) }
+
+      it "shows the grade form to a student who approved the subject" do
+        create(:subject_progress, user: user, subject: subject_record, status: :approved, grade: 8)
+        sign_in user
+        get subject_path(subject_record)
+        assert_select "form[action='#{subject_grade_path(subject_record)}']
+          input[name='subject_progress[grade]'][value='8']"
+      end
+
+      it "shows the final exam checkout to a student who promoted the subject" do
+        create(:subject_progress, user: user, subject: subject_record, status: :promoted)
+        sign_in user
+        get subject_path(subject_record)
+        assert_select "input[type='checkbox'][name='subject_progress[final_exam_taken]']"
+      end
+
+      it "does not show the form for a subject that is not completed" do
+        create(:subject_progress, user: user, subject: subject_record, status: :regular)
+        sign_in user
+        get subject_path(subject_record)
+        assert_select "form[action='#{subject_grade_path(subject_record)}']", count: 0
+      end
+
+      it "does not show the form to a visitor" do
+        get subject_path(subject_record)
+        assert_select "form[action='#{subject_grade_path(subject_record)}']", count: 0
+      end
+
+      it "does not show another student's grade" do
+        create(:subject_progress, subject: subject_record, status: :approved, grade: 9)
+        sign_in user
+        get subject_path(subject_record)
+        assert_select "input[name='subject_progress[grade]']", count: 0
+      end
+    end
   end
 end

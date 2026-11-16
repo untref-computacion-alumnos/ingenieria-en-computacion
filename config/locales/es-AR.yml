@@ -2,6 +2,10 @@
 es-AR:
   activerecord:
     attributes:
+      subject_progress:
+        approved_on: Fecha de aprobación
+        final_exam_taken: Rindió final
+        grade: Nota
       user:
         study_plan: Plan de estudios
     errors:
@@ -14,6 +18,10 @@ es-AR:
               self_reference: no puede ser la misma materia
         subject_progress:
           attributes:
+            approved_on:
+              future: no puede ser posterior a hoy
+            grade:
+              invalid_grade: debe ser un número entre 1 y 10
             status:
               blocked: 'no se puede empezar a cursar: faltan correlativas'
   app:
@@ -59,6 +67,16 @@ es-AR:
       title: Planes de estudio
     show:
       title: Plan de estudios %{year}
+  subject_grades:
+    form:
+      approved_on: Fecha de aprobación
+      approved_on_hint: Opcional. No puede ser posterior a hoy.
+      final_exam_taken: Rindió final
+      grade: Nota
+      grade_hint: Opcional. De 1 a 10, con un decimal como máximo.
+      save: Guardar
+      saved: Guardado
+      title: Mi nota
   subject_progresses:
     picker:
       label: Estado de la materia

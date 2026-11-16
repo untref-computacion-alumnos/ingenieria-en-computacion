@@ -203,6 +203,34 @@ RSpec.describe "SubjectProgresses" do
         mark_with_turbo("pending")
         assert_select "turbo-stream[target='progress_bar'] progress[value='0']"
       end
+
+      it "replaces the grade form" do
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[action='replace'][target='grade_form_subject_#{subject_record.id}']"
+      end
+
+      it "shows the grade fields when the subject becomes approved" do
+        mark_with_turbo("approved")
+        assert_select "turbo-stream[target='grade_form_subject_#{subject_record.id}']
+          input[name='subject_progress[grade]']"
+      end
+
+      it "shows the final exam checkbox when the subject becomes promoted" do
+        mark_with_turbo("promoted")
+        assert_select "turbo-stream[target='grade_form_subject_#{subject_record.id}'] input[type='checkbox']"
+      end
+
+      it "empties the grade form when the subject is no longer completed" do
+        create(:subject_progress, user: user, subject: subject_record, status: :approved, grade: 8)
+        mark_with_turbo("regular")
+        assert_select "turbo-stream[target='grade_form_subject_#{subject_record.id}'] form", count: 0
+      end
+
+      it "forgets the grade when the subject is no longer completed" do
+        progress = create(:subject_progress, user: user, subject: subject_record, status: :approved, grade: 8)
+        mark_with_turbo("regular")
+        expect(progress.reload.grade).to be_nil
+      end
     end
 
     context "when a prerequisite is missing" do
@@ -251,6 +279,11 @@ RSpec.describe "SubjectProgresses" do
       it "does not replace the progress bar when the change is rejected" do
         patch subject_progress_path(subject_record), params: { status: "in_progress" }, headers: turbo_headers
         assert_select "turbo-stream[target='progress_bar']", count: 0
+      end
+
+      it "does not replace the grade form when the change is rejected" do
+        patch subject_progress_path(subject_record), params: { status: "in_progress" }, headers: turbo_headers
+        assert_select "turbo-stream[target='grade_form_subject_#{subject_record.id}']", count: 0
       end
     end
 

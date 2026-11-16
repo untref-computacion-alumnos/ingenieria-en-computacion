@@ -108,6 +108,12 @@ met) uses the `status-pending` look, and **Blocked** (some prerequisite is missi
   always written as text, so the bar is never the only way to read the progress. Only approved and promoted subjects
   count. Visitors, and students viewing a plan they do not follow, do not see it. When a status changes, the Turbo
   Stream response replaces the whole section by its id, so the bar updates without reloading.
+- **Grade and approval date**: when the status of a subject is _Aprobada_ or _Promocionada_, the side panel shows a
+  form under the status picker (`div#grade_form_subject_N`) with the grade (number, 1 to 10, one decimal) and
+  the approval date (date, not after today), both optional; a _Promocionada_ subject also has a "Rindió final"
+  checkbox. It follows the _Forms_ rules (one `fieldset` per field, hint tied with `aria-describedby`, errors in an
+  `alert alert-error alert-soft` with `role="alert"`) and confirms a save with a `role="status"` message. Changing
+  the status with Turbo shows or hides the form, and leaving _Aprobada_/_Promocionada_ clears the saved values.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 

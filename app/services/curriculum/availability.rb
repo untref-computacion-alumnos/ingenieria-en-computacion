@@ -33,6 +33,10 @@ module Curriculum
       subject_ids.index_with { |subject_id| status(subject_id) }
     end
 
+    def statuses_for(subjects)
+      subjects.index_with { |subject| status(subject.id) }
+    end
+
     def blocked?(subject_id)
       missing_ids(subject_id).any?
     end
