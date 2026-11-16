@@ -3,3 +3,4 @@
 <% end %>
 <%= turbo_stream.replace ActionView::RecordIdentifier.dom_id(subject, :status_picker), SubjectStatusPickerComponent.new(subject: subject, status: status, missing: missing) %>
 <%= turbo_stream.replace "progress_bar", ProgressBarComponent.new(progress: progress) %>
+<%= turbo_stream.replace ActionView::RecordIdentifier.dom_id(subject, :grade_form), SubjectGradeFormComponent.new(subject: subject, progress: record, saved: false) %>

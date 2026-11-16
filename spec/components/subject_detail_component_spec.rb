@@ -35,4 +35,18 @@ RSpec.describe SubjectDetailComponent, type: :component do
     render_inline(described_class.new(subject: subject_record, status: "pending", missing: [required]))
     expect(page).to have_css("[role='note']", text: "Álgebra")
   end
+
+  it "includes the container of the grade form" do
+    expect(page).to have_css("#grade_form_subject_#{subject_record.id}")
+  end
+
+  it "shows the grade form to a student who approved the subject" do
+    progress = build_stubbed(:subject_progress, subject: subject_record, status: :approved)
+    render_inline(described_class.new(subject: subject_record, status: "approved", progress: progress))
+    expect(page).to have_css("form[action='/subjects/#{subject_record.id}/grade']")
+  end
+
+  it "does not show the grade form when there is no progress" do
+    expect(page).to have_no_css("form[action$='/grade']")
+  end
 end
