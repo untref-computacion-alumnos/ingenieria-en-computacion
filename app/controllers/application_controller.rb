@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
   allow_browser versions: :modern
+  before_action :configure_permitted_parameters, if: :devise_controller?
   stale_when_importmap_changes
 
   private
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
     return edit_users_study_plan_path unless resource.study_plan
 
     wanted_path || study_plans_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:terms])
   end
 
   def require_study_plan

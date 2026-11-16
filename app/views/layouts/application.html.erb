@@ -41,5 +41,11 @@
       <%= render "layouts/flash" %>
       <%= yield %>
     </main>
+    <footer class="mt-8 border-t border-base-300">
+      <nav aria-label="<%= t("layouts.footer.label") %>" class="container mx-auto flex flex-wrap items-center gap-4 px-5 py-4 text-sm">
+        <%= link_to t("layouts.footer.privacy"), privacy_path, class: "link" %>
+        <%= link_to t("layouts.footer.terms"), terms_path, class: "link" %>
+      </nav>
+    </footer>
   </body>
 </html>

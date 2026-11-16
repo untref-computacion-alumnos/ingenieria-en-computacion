@@ -21,6 +21,15 @@
       <%= f.label :password_confirmation, class: "fieldset-legend" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "input w-full" %>
     </fieldset>
+    <fieldset class="fieldset">
+      <div class="flex items-center gap-2">
+        <%= f.check_box :terms, required: true, aria: { describedby: "terms_hint" }, class: "checkbox" %>
+        <%= f.label :terms, t(".accept_terms"), class: "label" %>
+      </div>
+      <p id="terms_hint" class="label">
+        <%= t(".terms_hint_html", terms: link_to(t(".terms_link"), terms_path, target: "_blank", rel: "noopener", class: "link"), privacy: link_to(t(".privacy_link"), privacy_path, target: "_blank", rel: "noopener", class: "link")) %>
+      </p>
+    </fieldset>
     <%= f.submit t(".sign_up"), class: "btn btn-primary w-full" %>
   <% end %>
 </div>
