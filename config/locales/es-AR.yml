@@ -51,6 +51,10 @@ es-AR:
       sign_in: Iniciar sesión
       sign_out: Cerrar sesión
       sign_up: Crear cuenta
+    footer:
+      label: Información legal
+      privacy: Política de privacidad
+      terms: Términos y condiciones
   pages:
     privacy:
       data:
