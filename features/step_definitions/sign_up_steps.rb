@@ -2,11 +2,12 @@
 
 VALID_PASSWORD = "a-long-password"
 
-def sign_up_with(email, password: VALID_PASSWORD)
+def sign_up_with(email, password: VALID_PASSWORD, accept_terms: true)
   visit new_user_registration_path
   fill_in User.human_attribute_name(:email), with: email
   fill_in User.human_attribute_name(:password), with: password, match: :prefer_exact
   fill_in User.human_attribute_name(:password_confirmation), with: password
+  check I18n.t("devise.registrations.new.accept_terms") if accept_terms
   click_button I18n.t("devise.registrations.new.sign_up")
 end
 
