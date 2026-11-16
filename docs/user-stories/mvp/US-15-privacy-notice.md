@@ -3,7 +3,7 @@
 - **Epic:** Privacy
 - **Size:** S
 - **Depends on:** US-07
-- **Status:** Backlog
+- **Status:** Done
 
 ## Story
 

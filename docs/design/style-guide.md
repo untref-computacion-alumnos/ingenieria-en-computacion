@@ -114,6 +114,11 @@ met) uses the `status-pending` look, and **Blocked** (some prerequisite is missi
   checkbox. It follows the _Forms_ rules (one `fieldset` per field, hint tied with `aria-describedby`, errors in an
   `alert alert-error alert-soft` with `role="alert"`) and confirms a save with a `role="status"` message. Changing
   the status with Turbo shows or hides the form, and leaving _Aprobada_/_Promocionada_ clears the saved values.
+- **Legal pages and terms**: `/privacy` and `/terms` are public, static, readable pages (`article`, `max-w-prose`,
+  one `h1` and one `h2` per section built with `LegalSectionComponent`). Every screen has a `<footer>` with a
+  labelled `<nav>` that links to both. The sign-up form has a required "Acepto los términos y condiciones"
+  checkbox (`checkbox` class, label beside it) with a hint that links to both pages, which open in a new tab and
+  say so. The server also rejects a sign-up without it.
 - Prefer server-rendered Turbo over custom JavaScript. Add a Stimulus controller only when Turbo cannot do it.
 - Motion is small and wrapped in `motion-safe:`; `prefers-reduced-motion` is also respected globally.
 
