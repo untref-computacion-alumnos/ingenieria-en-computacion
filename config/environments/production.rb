@@ -21,15 +21,20 @@ Rails.application.configure do
   config.cache_store = :solid_cache_store
   config.active_job.queue_adapter = :solid_queue
   # config.solid_queue.connects_to = { database: { writing: :queue } }
-  # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "example.com"), protocol: "https" }
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch("APP_HOST", "example.com"),
+    protocol: "https"
+  }
+  config.action_mailer.smtp_settings = {
+    user_name: ENV.fetch("BREVO_SMPT_USER"),
+    password: ENV.fetch("BREVO_SMTP_KEY"),
+    address: "smtp-relay.brevo.com",
+    port: 587,
+    authentication: :plain,
+    enable_starttsl_auto: true
+  }
   config.i18n.fallbacks = true
   config.active_record.dump_schema_after_migration = false
   config.active_record.attributes_for_inspect = [:id]
