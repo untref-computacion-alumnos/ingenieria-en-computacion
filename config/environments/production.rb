@@ -28,12 +28,12 @@ Rails.application.configure do
     protocol: "https"
   }
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch("BREVO_SMTP_USER"),
-    password: ENV.fetch("BREVO_SMTP_KEY"),
+    user_name: ENV.fetch("BREVO_SMTP_USER", nil),
+    password: ENV.fetch("BREVO_SMTP_KEY", nil),
     address: "smtp-relay.brevo.com",
     port: 587,
     authentication: :plain,
-    enable_starttsl_auto: true
+    enable_starttls_auto: true
   }
   config.i18n.fallbacks = true
   config.active_record.dump_schema_after_migration = false
