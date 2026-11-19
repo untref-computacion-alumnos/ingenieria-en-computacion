@@ -1,0 +1,378 @@
+career: Ingeniería en Computación
+year: 2007
+subjects:
+  - code: 939
+    name: Física I
+    year: 1
+    term: 1
+    hours: 90
+  - code: 861
+    name: Análisis Matemático I
+    year: 1
+    term: 1
+    hours: 90
+  - code: 742
+    name: Matemática Discreta I
+    year: 1
+    term: 1
+    hours: 60
+  - code: 743
+    name: Estructura de Datos I
+    year: 1
+    term: 1
+    hours: 60
+  - code: 862
+    name: Álgebra I
+    year: 1
+    term: 1
+    hours: 60
+  - code: 591
+    name: Problemas de Historia del Siglo XX
+    year: 1
+    term: 1
+    hours: 60
+  - code: 592
+    name: Introducción a la Problemática del Mundo Contemporáneo
+    year: 1
+    term: 1
+    hours: 60
+  - code: 942
+    name: Física II
+    year: 1
+    term: 2
+    hours: 90
+    prerequisites:
+      - 939
+  - code: 941
+    name: Análisis Matemático II
+    year: 1
+    term: 2
+    hours: 90
+    prerequisites:
+      - 861
+  - code: 744
+    name: Matemática Discreta II
+    year: 1
+    term: 2
+    hours: 60
+    prerequisites:
+      - 742
+  - code: 745
+    name: Lenguaje de Programación I
+    year: 1
+    term: 2
+    hours: 60
+    prerequisites:
+      - 743
+  - code: 952
+    name: Álgebra II
+    year: 1
+    term: 2
+    hours: 60
+    prerequisites:
+      - 862
+  - code: 2
+    name: Cultura Contemporánea
+    year: 1
+    term: 2
+    hours: 60
+  - code: 746
+    name: Probabilidad y Estadística I
+    year: 2
+    term: 1
+    hours: 60
+    prerequisites:
+      - 861
+  - code: 943
+    name: Análisis Matemático III
+    year: 2
+    term: 1
+    hours: 90
+    prerequisites:
+      - 941
+  - code: 747
+    name: Estructura de Datos II
+    year: 2
+    term: 1
+    hours: 60
+    prerequisites:
+      - 743
+  - code: 748
+    name: Teoría de Sistemas
+    year: 2
+    term: 1
+    hours: 60
+    prerequisites:
+      - 744
+  - code: 749
+    name: Lenguaje de Programación II
+    year: 2
+    term: 1
+    hours: 60
+    prerequisites:
+      - 745
+  - code: 3
+    name: Cuestiones de Sociología, Economía y Política
+    year: 2
+    term: 1
+    hours: 60
+  - code: 750
+    name: Física III
+    year: 2
+    term: 2
+    hours: 90
+    prerequisites:
+      - 942
+  - code: 751
+    name: Probabilidad y Estadística II
+    year: 2
+    term: 2
+    hours: 60
+    prerequisites:
+      - 746
+  - code: 752
+    name: Arquitectura de Computadoras
+    year: 2
+    term: 2
+    hours: 60
+    prerequisites:
+      - 942
+  - code: 753
+    name: Estructura de Datos III
+    year: 2
+    term: 2
+    hours: 60
+    prerequisites:
+      - 747
+  - code: 754
+    name: Análisis y Diseño Estructurado
+    year: 2
+    term: 2
+    hours: 60
+    prerequisites:
+      - 748
+  - code: 1196
+    name: Investigación Operativa
+    year: 2
+    term: 2
+    hours: 64
+    prerequisites:
+      - 941
+  - code: 755
+    name: Química
+    year: 3
+    term: 1
+    hours: 90
+    prerequisites:
+      - 750
+  - code: 756
+    name: Bases de Datos I
+    year: 3
+    term: 1
+    hours: 90
+    prerequisites:
+      - 753
+  - code: 757
+    name: Teoría de la Información
+    year: 3
+    term: 1
+    hours: 60
+    prerequisites:
+      - 751
+  - code: 758
+    name: Lenguaje de Programación III
+    year: 3
+    term: 1
+    hours: 60
+    prerequisites:
+      - 749
+  - code: 1
+    name: Metodología de la Información
+    year: 3
+    term: 1
+    hours: 60
+  - code: 759
+    name: Inglés Básico
+    year: 3
+    term: 1
+    hours: 60
+  - code: 760
+    name: Análisis y Diseño Orientado a Objetos
+    year: 3
+    term: 2
+    hours: 60
+    prerequisites:
+      - 754
+  - code: 761
+    name: Bases de Datos II
+    year: 3
+    term: 2
+    hours: 90
+    prerequisites:
+      - 756
+  - code: 762
+    name: Sistemas Operativos
+    year: 3
+    term: 2
+    hours: 120
+    prerequisites:
+      - 752
+  - code: 763
+    name: Lenguaje de Programación IV
+    year: 3
+    term: 2
+    hours: 60
+    prerequisites:
+      - 758
+  - code: 764
+    name: Teleinformática
+    year: 3
+    term: 2
+    hours: 60
+    prerequisites:
+      - 757
+  - code: 765
+    name: Inglés Técnico
+    year: 3
+    term: 2
+    hours: 60
+    prerequisites:
+      - 759
+  - code: 766
+    name: Análisis y Diseño de Sistemas en Tiempo Real
+    year: 4
+    term: 1
+    hours: 60
+    prerequisites:
+      - 760
+  - code: 767
+    name: Compiladores e Intérpretes
+    year: 4
+    term: 1
+    hours: 60
+    prerequisites:
+      - 763
+  - code: 768
+    name: Procesos Estocásticos
+    year: 4
+    term: 1
+    hours: 60
+    prerequisites:
+      - 751
+  - code: 769
+    name: Ingeniería en Software
+    year: 4
+    term: 1
+    hours: 60
+    prerequisites:
+      - 760
+  - code: 770
+    name: Procesamiento de Señales I
+    year: 4
+    term: 1
+    hours: 60
+    prerequisites:
+      - 943
+  - code: 771
+    name: Simulación de Sistemas
+    year: 4
+    term: 2
+    hours: 60
+    prerequisites:
+      - 1196
+  - code: 772
+    name: Seguridad Informática
+    year: 4
+    term: 2
+    hours: 90
+    prerequisites:
+      - 750
+  - code: 773
+    name: Inteligencia Artificial
+    year: 4
+    term: 2
+    hours: 60
+    prerequisites:
+      - 753
+  - code: 774
+    name: Procesamiento de Imágenes
+    year: 4
+    term: 2
+    hours: 60
+    prerequisites:
+      - 770
+  - code: 775
+    name: Circuitos Electrónicos
+    year: 4
+    term: 2
+    hours: 90
+    prerequisites:
+      - 942
+  - code: 1101
+    name: Sistemas de Adquisición de Datos
+    year: 5
+    term: 1
+    hours: 60
+    prerequisites:
+      - 775
+  - code: 777
+    name: Bioinformática
+    year: 5
+    term: 1
+    hours: 60
+    prerequisites:
+      - 755
+  - code: 778
+    name: Robótica
+    year: 5
+    term: 1
+    hours: 90
+    prerequisites:
+      - 939
+  - code: 779
+    name: Laboratorio de Electrónica
+    year: 5
+    term: 1
+    hours: 90
+    prerequisites:
+      - 775
+  - code: 780
+    name: Informática Médica
+    year: 5
+    term: 1
+    hours: 60
+    prerequisites:
+      - 761
+  - code: 781
+    name: Software Legal
+    year: 5
+    term: 2
+    hours: 60
+  - code: 782
+    name: Procesamiento de Señales II
+    year: 5
+    term: 2
+    hours: 60
+    prerequisites:
+      - 770
+  - code: 783
+    name: Auditoría de Sistemas
+    year: 5
+    term: 2
+    hours: 60
+    prerequisites:
+      - 772
+  - code: 784
+    name: Informática Industrial
+    year: 5
+    term: 2
+    hours: 60
+    prerequisites:
+      - 778
+  - code: 785
+    name: Trabajo de Tesis
+    year: 5
+    term: 2
+    hours: 60
+    prerequisites:
+      - 769
