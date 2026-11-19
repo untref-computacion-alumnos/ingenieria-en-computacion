@@ -1,0 +1,340 @@
+career: Ingeniería en Computación
+year: 2013
+subjects:
+  - code: 1234
+    name: Sistemas de Representación
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1235
+    name: Algoritmos y Programación I
+    year: 1
+    term: 1
+    hours: 128
+  - code: 1265
+    name: Análisis Matemático I
+    year: 1
+    term: 1
+    hours: 128
+  - code: 862
+    name: Álgebra I
+    year: 1
+    term: 1
+    hours: 64
+  - code: 592
+    name: Introducción a la Problemática del Mundo Contemporáneo
+    year: 1
+    term: 1
+    hours: 64
+  - code: 1236
+    name: Algoritmos y Programación II
+    year: 1
+    term: 2
+    hours: 128
+    prerequisites:
+      - 1235
+  - code: 1266
+    name: Física I
+    year: 1
+    term: 2
+    hours: 128
+    prerequisites:
+      - 1265
+  - code: 1267
+    name: Álgebra II
+    year: 1
+    term: 2
+    hours: 128
+    prerequisites:
+      - 862
+  - code: 591
+    name: Problemas de Historia del Siglo XX
+    year: 1
+    term: 2
+    hours: 64
+  - code: 1237
+    name: Estructura de Datos
+    year: 2
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1236
+  - code: 1238
+    name: Diseño Lógico
+    year: 2
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1234
+      - 862
+  - code: 941
+    name: Análisis Matemático II
+    year: 2
+    term: 1
+    hours: 128
+    prerequisites:
+      - 1265
+      - 1267
+  - code: 1239
+    name: Matemática Discreta
+    year: 2
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1267
+  - code: 3
+    name: "Cuestiones de Sociología, Economía y Política"
+    year: 2
+    term: 1
+    hours: 64
+  - code: 1240
+    name: Algoritmos y Programación III
+    year: 2
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1237
+  - code: 752
+    name: Arquitectura de Computadoras I
+    year: 2
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1238
+  - code: 1269
+    name: Física II
+    year: 2
+    term: 2
+    hours: 128
+    prerequisites:
+      - 1266
+      - 941
+  - code: 1242
+    name: Matemáticas Especiales
+    year: 2
+    term: 2
+    hours: 64
+    prerequisites:
+      - 941
+  - code: 2
+    name: Cultura Contemporánea
+    year: 2
+    term: 2
+    hours: 64
+  - code: 759
+    name: Inglés Básico
+    year: 2
+    term: 2
+    hours: 32
+  - code: 762
+    name: Sistemas Operativos
+    year: 3
+    term: 1
+    hours: 128
+    prerequisites:
+      - 752
+  - code: 1243
+    name: Fundamentos de Computación
+    year: 3
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1237
+      - 1239
+  - code: 1270
+    name: Física III
+    year: 3
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1269
+  - code: 351
+    name: Probabilidad y Estadística
+    year: 3
+    term: 1
+    hours: 128
+    prerequisites:
+      - 941
+  - code: 765
+    name: Inglés Técnico
+    year: 3
+    term: 1
+    hours: 32
+    prerequisites:
+      - 759
+  - code: 779
+    name: Laboratorio de Microprocesadores
+    year: 3
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1240
+      - 752
+  - code: 775
+    name: Teoría de Circuitos Electrónicos
+    year: 3
+    term: 2
+    hours: 96
+    prerequisites:
+      - 1269
+      - 1242
+  - code: 1246
+    name: Arquitectura de Computadoras II
+    year: 3
+    term: 2
+    hours: 96
+    prerequisites:
+      - 752
+      - 1269
+  - code: 1247
+    name: Comunicación de Datos
+    year: 3
+    term: 2
+    hours: 128
+    prerequisites:
+      - 1269
+      - 762
+      - 351
+  - code: 1248
+    name: Diseño y Arquitectura de Sistemas de Computación
+    year: 4
+    term: 1
+    hours: 128
+    prerequisites:
+      - 762
+      - 1243
+      - 779
+      - 1246
+  - code: 1249
+    name: Electrónica
+    year: 4
+    term: 1
+    hours: 96
+    prerequisites:
+      - 1270
+      - 775
+  - code: 761
+    name: Base de Datos
+    year: 4
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1237
+      - 351
+  - code: 1251
+    name: Redes de Computadoras
+    year: 4
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1247
+  - code: 763
+    name: Construcción de Sistemas de Computación
+    year: 4
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1248
+  - code: 1253
+    name: Ingeniería de Calidad
+    year: 4
+    term: 2
+    hours: 96
+    prerequisites:
+      - 1248
+  - code: 762
+    name: Procesamiento de Señales
+    year: 4
+    term: 2
+    hours: 96
+    prerequisites:
+      - 1242
+      - 351
+      - 779
+  - code: 1255
+    name: Análisis Numérico
+    year: 4
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1242
+  - code: 755
+    name: Química
+    year: 4
+    term: 2
+    hours: 64
+    prerequisites:
+      - 1266
+  - code: 1256
+    name: Organización de Proyectos
+    year: 5
+    term: 1
+    hours: 64
+    # prerequisites:
+    #   - 759 # Hasta tercer año
+  - code: 769
+    name: Ingeniería de Software
+    year: 5
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1253
+  - code: 1258
+    name: Ingeniería de Requerimientos
+    year: 5
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1253
+  - code: 1259
+    name: Sistemas Embebidos
+    year: 5
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1248
+      - 1249
+  - code: 766
+    name: Sistemas de Tiempo Real
+    year: 5
+    term: 1
+    hours: 64
+    prerequisites:
+      - 1248
+      - 1249
+  - code: 785
+    name: Trabajo Final Integrador
+    year: 5
+    term: 2
+    hours: 32
+    prerequisites:
+      - 1256
+      # Y todo cuarto año
+  - code: 832
+    name: Práctica Profesional Supervisada
+    year: 5
+    term: 2
+    hours: 200
+    # prerequisites:
+    # - Todo cuarto año
+  - code: 1262
+    name: Economía y Legislación
+    year: 5
+    term: 2
+    hours: 64
+    # prerequisites:
+    # - Todo tercer año
+  - code: 1263
+    name: "Seguridad, Salud Ocupacional y Medio Ambiente"
+    year: 5
+    term: 2
+    hours: 64
+    # prerequisites:
+    # - Todo tercer año
+  - code: 1
+    name: Metodología de la Investigación
+    year: 5
+    term: 2
+    hours: 64
+    # prerequisites:
+    # - Todo tercer año
