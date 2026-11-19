@@ -28,7 +28,7 @@ Rails.application.configure do
     protocol: "https"
   }
   config.action_mailer.smtp_settings = {
-    user_name: ENV.fetch("BREVO_SMPT_USER"),
+    user_name: ENV.fetch("BREVO_SMTP_USER"),
     password: ENV.fetch("BREVO_SMTP_KEY"),
     address: "smtp-relay.brevo.com",
     port: 587,
